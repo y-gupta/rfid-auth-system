@@ -1,10 +1,10 @@
 {
   "output": "./../",
   "locals": {
-    "url": "http://localhost:8080",
-    "name": "The Wintersmith's blog",
-    "owner": "Someone",
-    "description": "Ramblings of an immor(t)al demigod"
+    "url": "http://1upon0.github.io/rfid-auth-system/",
+    "name": "RFID Authentication System",
+    "owner": "Yash Gupta, Righit Sanmikhani, Shubham Rawat, Rohan Das",
+    "description": "Embedded Systems Project for Hostel-Mess Management"
   },
   "plugins": [
     "./plugins/paginator.coffee"
