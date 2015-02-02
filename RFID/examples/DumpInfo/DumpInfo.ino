@@ -60,12 +60,12 @@ void loop() {
 	if ( ! mfrc522.PICC_IsNewCardPresent()) {
 		return;
 	}
-
+Serial.println("Card detected!");
 	// Select one of the cards
 	if ( ! mfrc522.PICC_ReadCardSerial()) {
 		return;
 	}
-
+Serial.println("Card Read!");
 	// Dump debug info about the card; PICC_HaltA() is automatically called
 	mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
 }
