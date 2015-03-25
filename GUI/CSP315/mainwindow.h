@@ -21,8 +21,12 @@ public:
 
     ~MainWindow();
 
-private slots:
+    //Rebate helper functions
+    void checkRebateUi();
+    void initRebateUi();
 
+private slots:
+    //These are the rebate buttons
     void on_toolButton_inc_present_clicked();
 
     void on_toolButton_inc_future_clicked();
@@ -30,6 +34,12 @@ private slots:
     void on_toolButton_dec_present_clicked();
 
     void on_toolButton_dec_future_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_8_clicked();
+
+    void on_pushButton_9_clicked();
 
     //These are the messing buttons part
     void on_pushButton_clicked();

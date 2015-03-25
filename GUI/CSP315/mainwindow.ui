@@ -362,7 +362,7 @@
              </font>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <property name="iconSize">
              <size>
@@ -1217,6 +1217,9 @@
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="maxLength">
+           <number>4</number>
           </property>
           <property name="echoMode">
            <enum>QLineEdit::Password</enum>

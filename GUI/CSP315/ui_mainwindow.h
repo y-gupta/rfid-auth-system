@@ -835,6 +835,7 @@ public:
         lineEdit_password->setSizePolicy(sizePolicy1);
         lineEdit_password->setMaximumSize(QSize(16777215, 80));
         lineEdit_password->setFont(font2);
+        lineEdit_password->setMaxLength(4);
         lineEdit_password->setEchoMode(QLineEdit::Password);
         lineEdit_password->setAlignment(Qt::AlignCenter);
 
@@ -973,7 +974,7 @@ public:
         stackedWidget->setCurrentIndex(1);
         stackedWidget_statistics->setCurrentIndex(1);
         stackedWidget_graph->setCurrentIndex(0);
-        tabWidget_option->setCurrentIndex(0);
+        tabWidget_option->setCurrentIndex(1);
         stackedWidget_admin->setCurrentIndex(1);
 
 

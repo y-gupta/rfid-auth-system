@@ -6,8 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->dateEdit_present->setDate(QDate::currentDate());
-    ui->dateEdit_future->setDate(QDate::currentDate().addDays(1));
+    initRebateUi();
     ui->stackedWidget->addWidget(new QWidget);
 
     //TODO - Set the date and time
@@ -19,28 +18,4 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::on_toolButton_inc_present_clicked()
-{
-    QDate tmp = ui->dateEdit_present->date();
-    ui->dateEdit_present->setDate(tmp.addDays(1));
-}
-
-void MainWindow::on_toolButton_inc_future_clicked()
-{
-    QDate tmp = ui->dateEdit_future->date();
-    ui->dateEdit_future->setDate(tmp.addDays(1));
-}
-
-void MainWindow::on_toolButton_dec_present_clicked()
-{
-    QDate tmp = ui->dateEdit_present->date();
-    ui->dateEdit_present->setDate(tmp.addDays(-1));
-}
-
-void MainWindow::on_toolButton_dec_future_clicked()
-{
-    QDate tmp = ui->dateEdit_future->date();
-    ui->dateEdit_future->setDate(tmp.addDays(-1));
 }

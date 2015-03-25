@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     utility.cpp \
     ../printer/printer.cpp \
     messing.cpp \
-    stafflogin.cpp
+    stafflogin.cpp \
+    rebate.cpp
 
 HEADERS  += mainwindow.h \
     utility.h \
