@@ -3,12 +3,6 @@
 #include <cstring>
 using namespace std;
 
-void MainWindow::initRebateUi(){
-    ui->dateEdit_present->setDate(QDate::currentDate());
-    ui->dateEdit_future->setDate(QDate::currentDate());
-    checkRebateUi();
-}
-
 void MainWindow::checkRebateUi(){
     QDate cur_date = QDate::currentDate();
     QDate pre_date = ui->dateEdit_present->date();

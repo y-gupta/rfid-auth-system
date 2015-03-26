@@ -6,8 +6,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    initRebateUi();
-    ui->stackedWidget->addWidget(new QWidget);
+
+    //gotoGeneral();
 
     //TODO - Set the date and time
     ui->label_time->setText(QString::fromStdString("Date : " +

@@ -19,10 +19,13 @@ SOURCES += main.cpp\
     ../printer/printer.cpp \
     messing.cpp \
     stafflogin.cpp \
-    rebate.cpp
+    rebate.cpp \
+    ../rfid/rfid.cpp \
+    welcome.cpp
 
 HEADERS  += mainwindow.h \
     utility.h \
-    ../printer/printer.h
+    ../printer/printer.h \
+    ../rfid/rfid.h
 
 FORMS    += mainwindow.ui

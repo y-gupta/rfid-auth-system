@@ -51,7 +51,9 @@ SOURCES       = main.cpp \
 		../printer/printer.cpp \
 		messing.cpp \
 		stafflogin.cpp \
-		rebate.cpp moc_mainwindow.cpp
+		rebate.cpp \
+		../rfid/rfid.cpp \
+		welcome.cpp moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		utility.o \
@@ -59,6 +61,8 @@ OBJECTS       = main.o \
 		messing.o \
 		stafflogin.o \
 		rebate.o \
+		rfid.o \
+		welcome.o \
 		moc_mainwindow.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
@@ -294,7 +298,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/CSP3151.0.0 || mkdir -p .tmp/CSP3151.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/CSP3151.0.0/ && $(COPY_FILE) --parents mainwindow.h utility.h ../printer/printer.h .tmp/CSP3151.0.0/ && $(COPY_FILE) --parents main.cpp mainwindow.cpp utility.cpp ../printer/printer.cpp messing.cpp stafflogin.cpp rebate.cpp .tmp/CSP3151.0.0/ && $(COPY_FILE) --parents mainwindow.ui .tmp/CSP3151.0.0/ && (cd `dirname .tmp/CSP3151.0.0` && $(TAR) CSP3151.0.0.tar CSP3151.0.0 && $(COMPRESS) CSP3151.0.0.tar) && $(MOVE) `dirname .tmp/CSP3151.0.0`/CSP3151.0.0.tar.gz . && $(DEL_FILE) -r .tmp/CSP3151.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/CSP3151.0.0/ && $(COPY_FILE) --parents mainwindow.h utility.h ../printer/printer.h ../rfid/rfid.h .tmp/CSP3151.0.0/ && $(COPY_FILE) --parents main.cpp mainwindow.cpp utility.cpp ../printer/printer.cpp messing.cpp stafflogin.cpp rebate.cpp ../rfid/rfid.cpp welcome.cpp .tmp/CSP3151.0.0/ && $(COPY_FILE) --parents mainwindow.ui .tmp/CSP3151.0.0/ && (cd `dirname .tmp/CSP3151.0.0` && $(TAR) CSP3151.0.0.tar CSP3151.0.0 && $(COMPRESS) CSP3151.0.0.tar) && $(MOVE) `dirname .tmp/CSP3151.0.0`/CSP3151.0.0.tar.gz . && $(DEL_FILE) -r .tmp/CSP3151.0.0
 
 
 clean:compiler_clean 
@@ -1427,6 +1431,12 @@ rebate.o: rebate.cpp mainwindow.h \
 		/usr/include/qt5/QtWidgets/qtoolbutton.h \
 		/usr/include/qt5/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rebate.o rebate.cpp
+
+rfid.o: ../rfid/rfid.cpp ../rfid/rfid.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rfid.o ../rfid/rfid.cpp
+
+welcome.o: welcome.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o welcome.o welcome.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
