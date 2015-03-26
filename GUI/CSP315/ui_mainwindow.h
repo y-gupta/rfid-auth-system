@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.2.1
+** Created by: Qt User Interface Compiler version 5.3.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -503,6 +503,10 @@ public:
         spinBox_val->setFont(font9);
         spinBox_val->setFocusPolicy(Qt::WheelFocus);
         spinBox_val->setContextMenuPolicy(Qt::DefaultContextMenu);
+        spinBox_val->setStyleSheet(QLatin1String("spinBox_val:focus{\n"
+"border:none;\n"
+"outline:none\n"
+"}"));
         spinBox_val->setFrame(false);
         spinBox_val->setAlignment(Qt::AlignCenter);
         spinBox_val->setReadOnly(true);
@@ -974,7 +978,7 @@ public:
         stackedWidget->setCurrentIndex(1);
         stackedWidget_statistics->setCurrentIndex(1);
         stackedWidget_graph->setCurrentIndex(0);
-        tabWidget_option->setCurrentIndex(1);
+        tabWidget_option->setCurrentIndex(0);
         stackedWidget_admin->setCurrentIndex(1);
 
 
@@ -1010,9 +1014,9 @@ public:
         toolButton_inc_2->setText(QApplication::translate("MainWindow", "Increase", 0));
         toolButton_dec_2->setText(QApplication::translate("MainWindow", "Decrease", 0));
         tabWidget_option->setTabText(tabWidget_option->indexOf(extra_messing), QApplication::translate("MainWindow", "Extra Messing", 0));
-        pushButton_9->setText(QApplication::translate("MainWindow", "Next 5 meal", 0));
+        pushButton_9->setText(QApplication::translate("MainWindow", "Next 5 meals", 0));
         pushButton_7->setText(QApplication::translate("MainWindow", "Next meal", 0));
-        pushButton_8->setText(QApplication::translate("MainWindow", "Next 3 meal", 0));
+        pushButton_8->setText(QApplication::translate("MainWindow", "Next 3 meals", 0));
         label_2->setText(QApplication::translate("MainWindow", "Custom Date", 0));
         toolButton_inc_present->setText(QApplication::translate("MainWindow", "Increase", 0));
         toolButton_inc_future->setText(QApplication::translate("MainWindow", "Increase", 0));

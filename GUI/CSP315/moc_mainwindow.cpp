@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'mainwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.2.1. It"
+#error "This file was generated using the moc from 5.3.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,12 +20,12 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[29];
-    char stringdata[721];
+    char stringdata[720];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_MainWindow_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData) \
+    qptrdiff(offsetof(qt_meta_stringdata_MainWindow_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
@@ -81,7 +81,7 @@ QT_MOC_LITERAL(28, 692, 27)
     "on_pushButton_18_clicked\0"
     "on_pushButton_20_clicked\0"
     "on_pushButton_del_clicked\0"
-    "on_pushButton_enter_clicked\0"
+    "on_pushButton_enter_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -99,33 +99,33 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  149,    2, 0x08,
-       3,    0,  150,    2, 0x08,
-       4,    0,  151,    2, 0x08,
-       5,    0,  152,    2, 0x08,
-       6,    0,  153,    2, 0x08,
-       7,    0,  154,    2, 0x08,
-       8,    0,  155,    2, 0x08,
-       9,    0,  156,    2, 0x08,
-      10,    0,  157,    2, 0x08,
-      11,    0,  158,    2, 0x08,
-      12,    0,  159,    2, 0x08,
-      13,    0,  160,    2, 0x08,
-      14,    0,  161,    2, 0x08,
-      15,    0,  162,    2, 0x08,
-      16,    0,  163,    2, 0x08,
-      17,    0,  164,    2, 0x08,
-      18,    0,  165,    2, 0x08,
-      19,    0,  166,    2, 0x08,
-      20,    0,  167,    2, 0x08,
-      21,    0,  168,    2, 0x08,
-      22,    0,  169,    2, 0x08,
-      23,    0,  170,    2, 0x08,
-      24,    0,  171,    2, 0x08,
-      25,    0,  172,    2, 0x08,
-      26,    0,  173,    2, 0x08,
-      27,    0,  174,    2, 0x08,
-      28,    0,  175,    2, 0x08,
+       1,    0,  149,    2, 0x08 /* Private */,
+       3,    0,  150,    2, 0x08 /* Private */,
+       4,    0,  151,    2, 0x08 /* Private */,
+       5,    0,  152,    2, 0x08 /* Private */,
+       6,    0,  153,    2, 0x08 /* Private */,
+       7,    0,  154,    2, 0x08 /* Private */,
+       8,    0,  155,    2, 0x08 /* Private */,
+       9,    0,  156,    2, 0x08 /* Private */,
+      10,    0,  157,    2, 0x08 /* Private */,
+      11,    0,  158,    2, 0x08 /* Private */,
+      12,    0,  159,    2, 0x08 /* Private */,
+      13,    0,  160,    2, 0x08 /* Private */,
+      14,    0,  161,    2, 0x08 /* Private */,
+      15,    0,  162,    2, 0x08 /* Private */,
+      16,    0,  163,    2, 0x08 /* Private */,
+      17,    0,  164,    2, 0x08 /* Private */,
+      18,    0,  165,    2, 0x08 /* Private */,
+      19,    0,  166,    2, 0x08 /* Private */,
+      20,    0,  167,    2, 0x08 /* Private */,
+      21,    0,  168,    2, 0x08 /* Private */,
+      22,    0,  169,    2, 0x08 /* Private */,
+      23,    0,  170,    2, 0x08 /* Private */,
+      24,    0,  171,    2, 0x08 /* Private */,
+      25,    0,  172,    2, 0x08 /* Private */,
+      26,    0,  173,    2, 0x08 /* Private */,
+      27,    0,  174,    2, 0x08 /* Private */,
+      28,    0,  175,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,

@@ -26,3 +26,6 @@ HEADERS  += mainwindow.h \
     ../printer/printer.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    resources.qrc

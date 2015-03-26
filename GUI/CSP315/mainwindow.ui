@@ -362,7 +362,7 @@
              </font>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="iconSize">
              <size>
@@ -561,6 +561,12 @@
                    <property name="contextMenuPolicy">
                     <enum>Qt::DefaultContextMenu</enum>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true">spinBox_val:focus{
+border:none;
+outline:none
+}</string>
+                   </property>
                    <property name="frame">
                     <bool>false</bool>
                    </property>
@@ -652,7 +658,7 @@
                    </sizepolicy>
                   </property>
                   <property name="text">
-                   <string>Next 5 meal</string>
+                   <string>Next 5 meals</string>
                   </property>
                  </widget>
                 </item>
@@ -678,7 +684,7 @@
                    </sizepolicy>
                   </property>
                   <property name="text">
-                   <string>Next 3 meal</string>
+                   <string>Next 3 meals</string>
                   </property>
                  </widget>
                 </item>
