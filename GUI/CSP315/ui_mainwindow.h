@@ -44,7 +44,17 @@ public:
     QWidget *welcome;
     QGridLayout *gridLayout;
     QLabel *label_hostel_2;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_developed;
+    QPushButton *pushButton_staff_login;
     QLabel *label_time;
+    QLabel *label_time_status;
+    QFrame *frame_graph;
+    QGridLayout *gridLayout_11;
+    QStackedWidget *stackedWidget_graph;
+    QWidget *page_meal_2;
+    QWidget *page_no_meal_2;
+    QLabel *label_3;
     QFrame *frame_statistics;
     QGridLayout *gridLayout_10;
     QStackedWidget *stackedWidget_statistics;
@@ -59,14 +69,6 @@ public:
     QLabel *label_10;
     QLabel *label_11;
     QLabel *label;
-    QFrame *frame_graph;
-    QGridLayout *gridLayout_11;
-    QStackedWidget *stackedWidget_graph;
-    QWidget *page_meal_2;
-    QWidget *page_no_meal_2;
-    QLabel *label_3;
-    QLabel *label_developed;
-    QLabel *label_time_status;
     QWidget *general;
     QGridLayout *gridLayout_8;
     QVBoxLayout *verticalLayout_2;
@@ -162,7 +164,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->setEnabled(true);
-        MainWindow->resize(1094, 518);
+        MainWindow->resize(1094, 486);
         MainWindow->setMinimumSize(QSize(1094, 0));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
@@ -195,103 +197,64 @@ public:
 
         gridLayout->addWidget(label_hostel_2, 0, 0, 1, 2);
 
-        label_time = new QLabel(welcome);
-        label_time->setObjectName(QStringLiteral("label_time"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        label_developed = new QLabel(welcome);
+        label_developed->setObjectName(QStringLiteral("label_developed"));
         QFont font1;
         font1.setPointSize(16);
-        label_time->setFont(font1);
-        label_time->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        font1.setItalic(true);
+        label_developed->setFont(font1);
 
-        gridLayout->addWidget(label_time, 3, 1, 1, 1);
+        horizontalLayout_2->addWidget(label_developed);
 
-        frame_statistics = new QFrame(welcome);
-        frame_statistics->setObjectName(QStringLiteral("frame_statistics"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        pushButton_staff_login = new QPushButton(welcome);
+        pushButton_staff_login->setObjectName(QStringLiteral("pushButton_staff_login"));
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::MinimumExpanding);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(frame_statistics->sizePolicy().hasHeightForWidth());
-        frame_statistics->setSizePolicy(sizePolicy1);
-        frame_statistics->setFrameShape(QFrame::StyledPanel);
-        frame_statistics->setFrameShadow(QFrame::Raised);
-        gridLayout_10 = new QGridLayout(frame_statistics);
-        gridLayout_10->setSpacing(6);
-        gridLayout_10->setContentsMargins(11, 11, 11, 11);
-        gridLayout_10->setObjectName(QStringLiteral("gridLayout_10"));
-        stackedWidget_statistics = new QStackedWidget(frame_statistics);
-        stackedWidget_statistics->setObjectName(QStringLiteral("stackedWidget_statistics"));
-        page_meal = new QWidget();
-        page_meal->setObjectName(QStringLiteral("page_meal"));
-        gridLayout_12 = new QGridLayout(page_meal);
-        gridLayout_12->setSpacing(6);
-        gridLayout_12->setContentsMargins(11, 11, 11, 11);
-        gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
-        label_5 = new QLabel(page_meal);
-        label_5->setObjectName(QStringLiteral("label_5"));
+        sizePolicy1.setHeightForWidth(pushButton_staff_login->sizePolicy().hasHeightForWidth());
+        pushButton_staff_login->setSizePolicy(sizePolicy1);
+        pushButton_staff_login->setMaximumSize(QSize(16777215, 100));
         QFont font2;
-        font2.setPointSize(26);
-        label_5->setFont(font2);
+        font2.setPointSize(16);
+        pushButton_staff_login->setFont(font2);
 
-        gridLayout_12->addWidget(label_5, 0, 0, 1, 1);
+        horizontalLayout_2->addWidget(pushButton_staff_login);
 
-        label_6 = new QLabel(page_meal);
-        label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setFont(font2);
+        label_time = new QLabel(welcome);
+        label_time->setObjectName(QStringLiteral("label_time"));
+        label_time->setFont(font2);
+        label_time->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout_12->addWidget(label_6, 0, 1, 1, 1);
+        horizontalLayout_2->addWidget(label_time);
 
-        label_7 = new QLabel(page_meal);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setFont(font2);
 
-        gridLayout_12->addWidget(label_7, 1, 0, 1, 1);
+        gridLayout->addLayout(horizontalLayout_2, 3, 0, 1, 2);
 
-        label_8 = new QLabel(page_meal);
-        label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setFont(font2);
-
-        gridLayout_12->addWidget(label_8, 1, 1, 1, 1);
-
-        stackedWidget_statistics->addWidget(page_meal);
-        page_no_meal = new QWidget();
-        page_no_meal->setObjectName(QStringLiteral("page_no_meal"));
-        gridLayout_13 = new QGridLayout(page_no_meal);
-        gridLayout_13->setSpacing(6);
-        gridLayout_13->setContentsMargins(11, 11, 11, 11);
-        gridLayout_13->setObjectName(QStringLiteral("gridLayout_13"));
-        label_10 = new QLabel(page_no_meal);
-        label_10->setObjectName(QStringLiteral("label_10"));
-        label_10->setFont(font2);
-
-        gridLayout_13->addWidget(label_10, 0, 0, 1, 1);
-
-        label_11 = new QLabel(page_no_meal);
-        label_11->setObjectName(QStringLiteral("label_11"));
-        label_11->setFont(font2);
-
-        gridLayout_13->addWidget(label_11, 0, 1, 1, 1);
-
-        stackedWidget_statistics->addWidget(page_no_meal);
-
-        gridLayout_10->addWidget(stackedWidget_statistics, 1, 0, 1, 1);
-
-        label = new QLabel(frame_statistics);
-        label->setObjectName(QStringLiteral("label"));
+        label_time_status = new QLabel(welcome);
+        label_time_status->setObjectName(QStringLiteral("label_time_status"));
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(label_time_status->sizePolicy().hasHeightForWidth());
+        label_time_status->setSizePolicy(sizePolicy2);
+        label_time_status->setMaximumSize(QSize(16777215, 100));
         QFont font3;
-        font3.setPointSize(16);
-        font3.setBold(true);
-        font3.setWeight(75);
-        label->setFont(font3);
-        label->setAlignment(Qt::AlignCenter);
+        font3.setPointSize(30);
+        label_time_status->setFont(font3);
+        label_time_status->setAlignment(Qt::AlignCenter);
 
-        gridLayout_10->addWidget(label, 0, 0, 1, 1);
-
-
-        gridLayout->addWidget(frame_statistics, 1, 0, 1, 1);
+        gridLayout->addWidget(label_time_status, 2, 0, 1, 2);
 
         frame_graph = new QFrame(welcome);
         frame_graph->setObjectName(QStringLiteral("frame_graph"));
-        sizePolicy1.setHeightForWidth(frame_graph->sizePolicy().hasHeightForWidth());
-        frame_graph->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(frame_graph->sizePolicy().hasHeightForWidth());
+        frame_graph->setSizePolicy(sizePolicy3);
         frame_graph->setFrameShape(QFrame::StyledPanel);
         frame_graph->setFrameShadow(QFrame::Raised);
         gridLayout_11 = new QGridLayout(frame_graph);
@@ -312,7 +275,11 @@ public:
 
         label_3 = new QLabel(frame_graph);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setFont(font3);
+        QFont font4;
+        font4.setPointSize(16);
+        font4.setBold(true);
+        font4.setWeight(75);
+        label_3->setFont(font4);
         label_3->setAlignment(Qt::AlignCenter);
 
         gridLayout_11->addWidget(label_3, 0, 0, 1, 1);
@@ -320,29 +287,82 @@ public:
 
         gridLayout->addWidget(frame_graph, 1, 1, 1, 1);
 
-        label_developed = new QLabel(welcome);
-        label_developed->setObjectName(QStringLiteral("label_developed"));
-        QFont font4;
-        font4.setPointSize(16);
-        font4.setItalic(true);
-        label_developed->setFont(font4);
-
-        gridLayout->addWidget(label_developed, 3, 0, 1, 1);
-
-        label_time_status = new QLabel(welcome);
-        label_time_status->setObjectName(QStringLiteral("label_time_status"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Expanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(label_time_status->sizePolicy().hasHeightForWidth());
-        label_time_status->setSizePolicy(sizePolicy2);
-        label_time_status->setMaximumSize(QSize(16777215, 100));
+        frame_statistics = new QFrame(welcome);
+        frame_statistics->setObjectName(QStringLiteral("frame_statistics"));
+        sizePolicy3.setHeightForWidth(frame_statistics->sizePolicy().hasHeightForWidth());
+        frame_statistics->setSizePolicy(sizePolicy3);
+        frame_statistics->setFrameShape(QFrame::StyledPanel);
+        frame_statistics->setFrameShadow(QFrame::Raised);
+        gridLayout_10 = new QGridLayout(frame_statistics);
+        gridLayout_10->setSpacing(6);
+        gridLayout_10->setContentsMargins(11, 11, 11, 11);
+        gridLayout_10->setObjectName(QStringLiteral("gridLayout_10"));
+        stackedWidget_statistics = new QStackedWidget(frame_statistics);
+        stackedWidget_statistics->setObjectName(QStringLiteral("stackedWidget_statistics"));
+        page_meal = new QWidget();
+        page_meal->setObjectName(QStringLiteral("page_meal"));
+        gridLayout_12 = new QGridLayout(page_meal);
+        gridLayout_12->setSpacing(6);
+        gridLayout_12->setContentsMargins(11, 11, 11, 11);
+        gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
+        label_5 = new QLabel(page_meal);
+        label_5->setObjectName(QStringLiteral("label_5"));
         QFont font5;
-        font5.setPointSize(30);
-        label_time_status->setFont(font5);
-        label_time_status->setAlignment(Qt::AlignCenter);
+        font5.setPointSize(26);
+        label_5->setFont(font5);
 
-        gridLayout->addWidget(label_time_status, 2, 0, 1, 2);
+        gridLayout_12->addWidget(label_5, 0, 0, 1, 1);
+
+        label_6 = new QLabel(page_meal);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setFont(font5);
+
+        gridLayout_12->addWidget(label_6, 0, 1, 1, 1);
+
+        label_7 = new QLabel(page_meal);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setFont(font5);
+
+        gridLayout_12->addWidget(label_7, 1, 0, 1, 1);
+
+        label_8 = new QLabel(page_meal);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setFont(font5);
+
+        gridLayout_12->addWidget(label_8, 1, 1, 1, 1);
+
+        stackedWidget_statistics->addWidget(page_meal);
+        page_no_meal = new QWidget();
+        page_no_meal->setObjectName(QStringLiteral("page_no_meal"));
+        gridLayout_13 = new QGridLayout(page_no_meal);
+        gridLayout_13->setSpacing(6);
+        gridLayout_13->setContentsMargins(11, 11, 11, 11);
+        gridLayout_13->setObjectName(QStringLiteral("gridLayout_13"));
+        label_10 = new QLabel(page_no_meal);
+        label_10->setObjectName(QStringLiteral("label_10"));
+        label_10->setFont(font5);
+
+        gridLayout_13->addWidget(label_10, 0, 0, 1, 1);
+
+        label_11 = new QLabel(page_no_meal);
+        label_11->setObjectName(QStringLiteral("label_11"));
+        label_11->setFont(font5);
+
+        gridLayout_13->addWidget(label_11, 0, 1, 1, 1);
+
+        stackedWidget_statistics->addWidget(page_no_meal);
+
+        gridLayout_10->addWidget(stackedWidget_statistics, 1, 0, 1, 1);
+
+        label = new QLabel(frame_statistics);
+        label->setObjectName(QStringLiteral("label"));
+        label->setFont(font4);
+        label->setAlignment(Qt::AlignCenter);
+
+        gridLayout_10->addWidget(label, 0, 0, 1, 1);
+
+
+        gridLayout->addWidget(frame_statistics, 1, 0, 1, 1);
 
         stackedWidget->addWidget(welcome);
         general = new QWidget();
@@ -359,11 +379,11 @@ public:
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
         label_name = new QLabel(general);
         label_name->setObjectName(QStringLiteral("label_name"));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(label_name->sizePolicy().hasHeightForWidth());
-        label_name->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(label_name->sizePolicy().hasHeightForWidth());
+        label_name->setSizePolicy(sizePolicy4);
         QFont font6;
         font6.setPointSize(32);
         font6.setBold(true);
@@ -418,43 +438,43 @@ public:
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
         pushButton = new QPushButton(extra_messing);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        sizePolicy1.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
+        pushButton->setSizePolicy(sizePolicy3);
 
         gridLayout_5->addWidget(pushButton, 0, 0, 1, 1);
 
         pushButton_2 = new QPushButton(extra_messing);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        sizePolicy1.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
+        pushButton_2->setSizePolicy(sizePolicy3);
 
         gridLayout_5->addWidget(pushButton_2, 0, 1, 1, 1);
 
         pushButton_3 = new QPushButton(extra_messing);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        sizePolicy1.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
-        pushButton_3->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
+        pushButton_3->setSizePolicy(sizePolicy3);
 
         gridLayout_5->addWidget(pushButton_3, 1, 0, 1, 1);
 
         pushButton_4 = new QPushButton(extra_messing);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        sizePolicy1.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
-        pushButton_4->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
+        pushButton_4->setSizePolicy(sizePolicy3);
 
         gridLayout_5->addWidget(pushButton_4, 1, 1, 1, 1);
 
         pushButton_5 = new QPushButton(extra_messing);
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
-        sizePolicy1.setHeightForWidth(pushButton_5->sizePolicy().hasHeightForWidth());
-        pushButton_5->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(pushButton_5->sizePolicy().hasHeightForWidth());
+        pushButton_5->setSizePolicy(sizePolicy3);
 
         gridLayout_5->addWidget(pushButton_5, 2, 0, 1, 1);
 
         pushButton_6 = new QPushButton(extra_messing);
         pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
-        sizePolicy1.setHeightForWidth(pushButton_6->sizePolicy().hasHeightForWidth());
-        pushButton_6->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(pushButton_6->sizePolicy().hasHeightForWidth());
+        pushButton_6->setSizePolicy(sizePolicy3);
 
         gridLayout_5->addWidget(pushButton_6, 2, 1, 1, 1);
 
@@ -479,11 +499,11 @@ public:
 
         frame_3 = new QFrame(extra_messing);
         frame_3->setObjectName(QStringLiteral("frame_3"));
-        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(frame_3->sizePolicy().hasHeightForWidth());
-        frame_3->setSizePolicy(sizePolicy4);
+        QSizePolicy sizePolicy5(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(frame_3->sizePolicy().hasHeightForWidth());
+        frame_3->setSizePolicy(sizePolicy5);
         frame_3->setMaximumSize(QSize(400, 16777215));
         frame_3->setFrameShape(QFrame::StyledPanel);
         frame_3->setFrameShadow(QFrame::Raised);
@@ -493,11 +513,11 @@ public:
         gridLayout_18->setObjectName(QStringLiteral("gridLayout_18"));
         spinBox_val = new QSpinBox(frame_3);
         spinBox_val->setObjectName(QStringLiteral("spinBox_val"));
-        QSizePolicy sizePolicy5(QSizePolicy::Minimum, QSizePolicy::Minimum);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(spinBox_val->sizePolicy().hasHeightForWidth());
-        spinBox_val->setSizePolicy(sizePolicy5);
+        QSizePolicy sizePolicy6(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(spinBox_val->sizePolicy().hasHeightForWidth());
+        spinBox_val->setSizePolicy(sizePolicy6);
         QFont font9;
         font9.setKerning(true);
         spinBox_val->setFont(font9);
@@ -528,16 +548,16 @@ public:
 
         toolButton_inc_2 = new QToolButton(frame_3);
         toolButton_inc_2->setObjectName(QStringLiteral("toolButton_inc_2"));
-        sizePolicy1.setHeightForWidth(toolButton_inc_2->sizePolicy().hasHeightForWidth());
-        toolButton_inc_2->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(toolButton_inc_2->sizePolicy().hasHeightForWidth());
+        toolButton_inc_2->setSizePolicy(sizePolicy3);
         toolButton_inc_2->setFocusPolicy(Qt::TabFocus);
 
         gridLayout_18->addWidget(toolButton_inc_2, 1, 0, 1, 1);
 
         toolButton_dec_2 = new QToolButton(frame_3);
         toolButton_dec_2->setObjectName(QStringLiteral("toolButton_dec_2"));
-        sizePolicy1.setHeightForWidth(toolButton_dec_2->sizePolicy().hasHeightForWidth());
-        toolButton_dec_2->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(toolButton_dec_2->sizePolicy().hasHeightForWidth());
+        toolButton_dec_2->setSizePolicy(sizePolicy3);
 
         gridLayout_18->addWidget(toolButton_dec_2, 3, 0, 1, 1);
 
@@ -556,22 +576,22 @@ public:
         gridLayout_7->setObjectName(QStringLiteral("gridLayout_7"));
         pushButton_9 = new QPushButton(rebate);
         pushButton_9->setObjectName(QStringLiteral("pushButton_9"));
-        sizePolicy1.setHeightForWidth(pushButton_9->sizePolicy().hasHeightForWidth());
-        pushButton_9->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(pushButton_9->sizePolicy().hasHeightForWidth());
+        pushButton_9->setSizePolicy(sizePolicy3);
 
         gridLayout_7->addWidget(pushButton_9, 2, 0, 1, 1);
 
         pushButton_7 = new QPushButton(rebate);
         pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
-        sizePolicy1.setHeightForWidth(pushButton_7->sizePolicy().hasHeightForWidth());
-        pushButton_7->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(pushButton_7->sizePolicy().hasHeightForWidth());
+        pushButton_7->setSizePolicy(sizePolicy3);
 
         gridLayout_7->addWidget(pushButton_7, 0, 0, 1, 1);
 
         pushButton_8 = new QPushButton(rebate);
         pushButton_8->setObjectName(QStringLiteral("pushButton_8"));
-        sizePolicy1.setHeightForWidth(pushButton_8->sizePolicy().hasHeightForWidth());
-        pushButton_8->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(pushButton_8->sizePolicy().hasHeightForWidth());
+        pushButton_8->setSizePolicy(sizePolicy3);
 
         gridLayout_7->addWidget(pushButton_8, 1, 0, 1, 1);
 
@@ -596,8 +616,8 @@ public:
 
         frame = new QFrame(rebate);
         frame->setObjectName(QStringLiteral("frame"));
-        sizePolicy1.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
-        frame->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
+        frame->setSizePolicy(sizePolicy3);
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
         gridLayout_9 = new QGridLayout(frame);
@@ -606,11 +626,11 @@ public:
         gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
         label_2 = new QLabel(frame);
         label_2->setObjectName(QStringLiteral("label_2"));
-        QSizePolicy sizePolicy6(QSizePolicy::Expanding, QSizePolicy::Fixed);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy6);
+        QSizePolicy sizePolicy7(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy7.setHorizontalStretch(0);
+        sizePolicy7.setVerticalStretch(0);
+        sizePolicy7.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy7);
         label_2->setBaseSize(QSize(0, 0));
         label_2->setFont(font10);
         label_2->setAlignment(Qt::AlignCenter);
@@ -619,53 +639,57 @@ public:
 
         toolButton_inc_present = new QToolButton(frame);
         toolButton_inc_present->setObjectName(QStringLiteral("toolButton_inc_present"));
-        sizePolicy1.setHeightForWidth(toolButton_inc_present->sizePolicy().hasHeightForWidth());
-        toolButton_inc_present->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(toolButton_inc_present->sizePolicy().hasHeightForWidth());
+        toolButton_inc_present->setSizePolicy(sizePolicy3);
 
         gridLayout_9->addWidget(toolButton_inc_present, 1, 0, 1, 1);
 
         toolButton_inc_future = new QToolButton(frame);
         toolButton_inc_future->setObjectName(QStringLiteral("toolButton_inc_future"));
-        sizePolicy1.setHeightForWidth(toolButton_inc_future->sizePolicy().hasHeightForWidth());
-        toolButton_inc_future->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(toolButton_inc_future->sizePolicy().hasHeightForWidth());
+        toolButton_inc_future->setSizePolicy(sizePolicy3);
 
         gridLayout_9->addWidget(toolButton_inc_future, 1, 1, 1, 1);
 
         dateEdit_present = new QDateEdit(frame);
         dateEdit_present->setObjectName(QStringLiteral("dateEdit_present"));
-        QSizePolicy sizePolicy7(QSizePolicy::Minimum, QSizePolicy::Expanding);
-        sizePolicy7.setHorizontalStretch(0);
-        sizePolicy7.setVerticalStretch(0);
-        sizePolicy7.setHeightForWidth(dateEdit_present->sizePolicy().hasHeightForWidth());
-        dateEdit_present->setSizePolicy(sizePolicy7);
+        QSizePolicy sizePolicy8(QSizePolicy::Minimum, QSizePolicy::Expanding);
+        sizePolicy8.setHorizontalStretch(0);
+        sizePolicy8.setVerticalStretch(0);
+        sizePolicy8.setHeightForWidth(dateEdit_present->sizePolicy().hasHeightForWidth());
+        dateEdit_present->setSizePolicy(sizePolicy8);
+        dateEdit_present->setAlignment(Qt::AlignCenter);
+        dateEdit_present->setButtonSymbols(QAbstractSpinBox::NoButtons);
 
         gridLayout_9->addWidget(dateEdit_present, 2, 0, 1, 1);
 
         dateEdit_future = new QDateEdit(frame);
         dateEdit_future->setObjectName(QStringLiteral("dateEdit_future"));
-        sizePolicy7.setHeightForWidth(dateEdit_future->sizePolicy().hasHeightForWidth());
-        dateEdit_future->setSizePolicy(sizePolicy7);
+        sizePolicy8.setHeightForWidth(dateEdit_future->sizePolicy().hasHeightForWidth());
+        dateEdit_future->setSizePolicy(sizePolicy8);
+        dateEdit_future->setAlignment(Qt::AlignCenter);
+        dateEdit_future->setButtonSymbols(QAbstractSpinBox::NoButtons);
 
         gridLayout_9->addWidget(dateEdit_future, 2, 1, 1, 1);
 
         toolButton_dec_present = new QToolButton(frame);
         toolButton_dec_present->setObjectName(QStringLiteral("toolButton_dec_present"));
-        sizePolicy1.setHeightForWidth(toolButton_dec_present->sizePolicy().hasHeightForWidth());
-        toolButton_dec_present->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(toolButton_dec_present->sizePolicy().hasHeightForWidth());
+        toolButton_dec_present->setSizePolicy(sizePolicy3);
 
         gridLayout_9->addWidget(toolButton_dec_present, 3, 0, 1, 1);
 
         toolButton_dec_future = new QToolButton(frame);
         toolButton_dec_future->setObjectName(QStringLiteral("toolButton_dec_future"));
-        sizePolicy1.setHeightForWidth(toolButton_dec_future->sizePolicy().hasHeightForWidth());
-        toolButton_dec_future->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(toolButton_dec_future->sizePolicy().hasHeightForWidth());
+        toolButton_dec_future->setSizePolicy(sizePolicy3);
 
         gridLayout_9->addWidget(toolButton_dec_future, 3, 1, 1, 1);
 
         pushButton_confirm = new QPushButton(frame);
         pushButton_confirm->setObjectName(QStringLiteral("pushButton_confirm"));
-        sizePolicy1.setHeightForWidth(pushButton_confirm->sizePolicy().hasHeightForWidth());
-        pushButton_confirm->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(pushButton_confirm->sizePolicy().hasHeightForWidth());
+        pushButton_confirm->setSizePolicy(sizePolicy3);
 
         gridLayout_9->addWidget(pushButton_confirm, 4, 0, 1, 2);
 
@@ -695,44 +719,44 @@ public:
 
         pushButton_master = new QPushButton(admin);
         pushButton_master->setObjectName(QStringLiteral("pushButton_master"));
-        sizePolicy7.setHeightForWidth(pushButton_master->sizePolicy().hasHeightForWidth());
-        pushButton_master->setSizePolicy(sizePolicy7);
+        sizePolicy8.setHeightForWidth(pushButton_master->sizePolicy().hasHeightForWidth());
+        pushButton_master->setSizePolicy(sizePolicy8);
         pushButton_master->setMaximumSize(QSize(16777215, 100));
-        pushButton_master->setFont(font2);
+        pushButton_master->setFont(font5);
 
         gridLayout_14->addWidget(pushButton_master, 1, 0, 1, 1);
 
         pushButton_reg = new QPushButton(admin);
         pushButton_reg->setObjectName(QStringLiteral("pushButton_reg"));
-        sizePolicy7.setHeightForWidth(pushButton_reg->sizePolicy().hasHeightForWidth());
-        pushButton_reg->setSizePolicy(sizePolicy7);
+        sizePolicy8.setHeightForWidth(pushButton_reg->sizePolicy().hasHeightForWidth());
+        pushButton_reg->setSizePolicy(sizePolicy8);
         pushButton_reg->setMaximumSize(QSize(16777215, 100));
-        pushButton_reg->setFont(font2);
+        pushButton_reg->setFont(font5);
 
         gridLayout_14->addWidget(pushButton_reg, 1, 1, 1, 1);
 
         pushButton_delete = new QPushButton(admin);
         pushButton_delete->setObjectName(QStringLiteral("pushButton_delete"));
-        sizePolicy7.setHeightForWidth(pushButton_delete->sizePolicy().hasHeightForWidth());
-        pushButton_delete->setSizePolicy(sizePolicy7);
+        sizePolicy8.setHeightForWidth(pushButton_delete->sizePolicy().hasHeightForWidth());
+        pushButton_delete->setSizePolicy(sizePolicy8);
         pushButton_delete->setMaximumSize(QSize(16777215, 100));
-        pushButton_delete->setFont(font2);
+        pushButton_delete->setFont(font5);
 
         gridLayout_14->addWidget(pushButton_delete, 1, 2, 1, 1);
 
         pushButton_allow = new QPushButton(admin);
         pushButton_allow->setObjectName(QStringLiteral("pushButton_allow"));
-        sizePolicy7.setHeightForWidth(pushButton_allow->sizePolicy().hasHeightForWidth());
-        pushButton_allow->setSizePolicy(sizePolicy7);
+        sizePolicy8.setHeightForWidth(pushButton_allow->sizePolicy().hasHeightForWidth());
+        pushButton_allow->setSizePolicy(sizePolicy8);
         pushButton_allow->setMaximumSize(QSize(16777215, 100));
-        pushButton_allow->setFont(font2);
+        pushButton_allow->setFont(font5);
 
         gridLayout_14->addWidget(pushButton_allow, 1, 3, 1, 1);
 
         frame_2 = new QFrame(admin);
         frame_2->setObjectName(QStringLiteral("frame_2"));
-        sizePolicy1.setHeightForWidth(frame_2->sizePolicy().hasHeightForWidth());
-        frame_2->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(frame_2->sizePolicy().hasHeightForWidth());
+        frame_2->setSizePolicy(sizePolicy3);
         frame_2->setFrameShape(QFrame::StyledPanel);
         frame_2->setFrameShadow(QFrame::Raised);
         gridLayout_15 = new QGridLayout(frame_2);
@@ -752,16 +776,16 @@ public:
         gridLayout_16->setObjectName(QStringLiteral("gridLayout_16"));
         label_4 = new QLabel(page_5);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setFont(font3);
+        label_4->setFont(font4);
         label_4->setAlignment(Qt::AlignCenter);
 
         gridLayout_16->addWidget(label_4, 0, 0, 1, 4);
 
         label_card = new QLabel(page_5);
         label_card->setObjectName(QStringLiteral("label_card"));
-        sizePolicy4.setHeightForWidth(label_card->sizePolicy().hasHeightForWidth());
-        label_card->setSizePolicy(sizePolicy4);
-        label_card->setFont(font1);
+        sizePolicy5.setHeightForWidth(label_card->sizePolicy().hasHeightForWidth());
+        label_card->setSizePolicy(sizePolicy5);
+        label_card->setFont(font2);
 
         gridLayout_16->addWidget(label_card, 1, 0, 1, 1);
 
@@ -769,32 +793,32 @@ public:
         label_card_num->setObjectName(QStringLiteral("label_card_num"));
         sizePolicy2.setHeightForWidth(label_card_num->sizePolicy().hasHeightForWidth());
         label_card_num->setSizePolicy(sizePolicy2);
-        label_card_num->setFont(font2);
+        label_card_num->setFont(font5);
         label_card_num->setAlignment(Qt::AlignCenter);
 
         gridLayout_16->addWidget(label_card_num, 1, 1, 1, 3);
 
         label_9 = new QLabel(page_5);
         label_9->setObjectName(QStringLiteral("label_9"));
-        sizePolicy4.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
-        label_9->setSizePolicy(sizePolicy4);
-        label_9->setFont(font1);
+        sizePolicy5.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
+        label_9->setSizePolicy(sizePolicy5);
+        label_9->setFont(font2);
 
         gridLayout_16->addWidget(label_9, 2, 0, 1, 1);
 
         toolButton_inc = new QToolButton(page_5);
         toolButton_inc->setObjectName(QStringLiteral("toolButton_inc"));
-        sizePolicy1.setHeightForWidth(toolButton_inc->sizePolicy().hasHeightForWidth());
-        toolButton_inc->setSizePolicy(sizePolicy1);
-        toolButton_inc->setFont(font2);
+        sizePolicy3.setHeightForWidth(toolButton_inc->sizePolicy().hasHeightForWidth());
+        toolButton_inc->setSizePolicy(sizePolicy3);
+        toolButton_inc->setFont(font5);
 
         gridLayout_16->addWidget(toolButton_inc, 2, 1, 1, 1);
 
         spinBox_days = new QSpinBox(page_5);
         spinBox_days->setObjectName(QStringLiteral("spinBox_days"));
-        sizePolicy1.setHeightForWidth(spinBox_days->sizePolicy().hasHeightForWidth());
-        spinBox_days->setSizePolicy(sizePolicy1);
-        spinBox_days->setFont(font2);
+        sizePolicy3.setHeightForWidth(spinBox_days->sizePolicy().hasHeightForWidth());
+        spinBox_days->setSizePolicy(sizePolicy3);
+        spinBox_days->setFont(font5);
         spinBox_days->setAlignment(Qt::AlignCenter);
         spinBox_days->setReadOnly(false);
         spinBox_days->setButtonSymbols(QAbstractSpinBox::PlusMinus);
@@ -804,17 +828,17 @@ public:
 
         toolButton_dec = new QToolButton(page_5);
         toolButton_dec->setObjectName(QStringLiteral("toolButton_dec"));
-        sizePolicy1.setHeightForWidth(toolButton_dec->sizePolicy().hasHeightForWidth());
-        toolButton_dec->setSizePolicy(sizePolicy1);
-        toolButton_dec->setFont(font2);
+        sizePolicy3.setHeightForWidth(toolButton_dec->sizePolicy().hasHeightForWidth());
+        toolButton_dec->setSizePolicy(sizePolicy3);
+        toolButton_dec->setFont(font5);
 
         gridLayout_16->addWidget(toolButton_dec, 2, 3, 1, 1);
 
         pushButton_confirm_2 = new QPushButton(page_5);
         pushButton_confirm_2->setObjectName(QStringLiteral("pushButton_confirm_2"));
-        sizePolicy7.setHeightForWidth(pushButton_confirm_2->sizePolicy().hasHeightForWidth());
-        pushButton_confirm_2->setSizePolicy(sizePolicy7);
-        pushButton_confirm_2->setFont(font2);
+        sizePolicy8.setHeightForWidth(pushButton_confirm_2->sizePolicy().hasHeightForWidth());
+        pushButton_confirm_2->setSizePolicy(sizePolicy8);
+        pushButton_confirm_2->setFont(font5);
 
         gridLayout_16->addWidget(pushButton_confirm_2, 3, 0, 1, 4);
 
@@ -835,10 +859,10 @@ public:
         gridLayout_17->setObjectName(QStringLiteral("gridLayout_17"));
         lineEdit_password = new QLineEdit(login);
         lineEdit_password->setObjectName(QStringLiteral("lineEdit_password"));
-        sizePolicy1.setHeightForWidth(lineEdit_password->sizePolicy().hasHeightForWidth());
-        lineEdit_password->setSizePolicy(sizePolicy1);
+        sizePolicy3.setHeightForWidth(lineEdit_password->sizePolicy().hasHeightForWidth());
+        lineEdit_password->setSizePolicy(sizePolicy3);
         lineEdit_password->setMaximumSize(QSize(16777215, 80));
-        lineEdit_password->setFont(font2);
+        lineEdit_password->setFont(font5);
         lineEdit_password->setMaxLength(4);
         lineEdit_password->setEchoMode(QLineEdit::Password);
         lineEdit_password->setAlignment(Qt::AlignCenter);
@@ -847,49 +871,49 @@ public:
 
         pushButton_14 = new QPushButton(login);
         pushButton_14->setObjectName(QStringLiteral("pushButton_14"));
-        sizePolicy1.setHeightForWidth(pushButton_14->sizePolicy().hasHeightForWidth());
-        pushButton_14->setSizePolicy(sizePolicy1);
-        pushButton_14->setFont(font2);
+        sizePolicy3.setHeightForWidth(pushButton_14->sizePolicy().hasHeightForWidth());
+        pushButton_14->setSizePolicy(sizePolicy3);
+        pushButton_14->setFont(font5);
 
         gridLayout_17->addWidget(pushButton_14, 5, 1, 1, 1);
 
         pushButton_17 = new QPushButton(login);
         pushButton_17->setObjectName(QStringLiteral("pushButton_17"));
-        sizePolicy1.setHeightForWidth(pushButton_17->sizePolicy().hasHeightForWidth());
-        pushButton_17->setSizePolicy(sizePolicy1);
-        pushButton_17->setFont(font2);
+        sizePolicy3.setHeightForWidth(pushButton_17->sizePolicy().hasHeightForWidth());
+        pushButton_17->setSizePolicy(sizePolicy3);
+        pushButton_17->setFont(font5);
 
         gridLayout_17->addWidget(pushButton_17, 6, 1, 1, 1);
 
         pushButton_12 = new QPushButton(login);
         pushButton_12->setObjectName(QStringLiteral("pushButton_12"));
-        sizePolicy1.setHeightForWidth(pushButton_12->sizePolicy().hasHeightForWidth());
-        pushButton_12->setSizePolicy(sizePolicy1);
-        pushButton_12->setFont(font2);
+        sizePolicy3.setHeightForWidth(pushButton_12->sizePolicy().hasHeightForWidth());
+        pushButton_12->setSizePolicy(sizePolicy3);
+        pushButton_12->setFont(font5);
 
         gridLayout_17->addWidget(pushButton_12, 4, 2, 1, 1);
 
         pushButton_16 = new QPushButton(login);
         pushButton_16->setObjectName(QStringLiteral("pushButton_16"));
-        sizePolicy1.setHeightForWidth(pushButton_16->sizePolicy().hasHeightForWidth());
-        pushButton_16->setSizePolicy(sizePolicy1);
-        pushButton_16->setFont(font2);
+        sizePolicy3.setHeightForWidth(pushButton_16->sizePolicy().hasHeightForWidth());
+        pushButton_16->setSizePolicy(sizePolicy3);
+        pushButton_16->setFont(font5);
 
         gridLayout_17->addWidget(pushButton_16, 6, 0, 1, 1);
 
         pushButton_18 = new QPushButton(login);
         pushButton_18->setObjectName(QStringLiteral("pushButton_18"));
-        sizePolicy1.setHeightForWidth(pushButton_18->sizePolicy().hasHeightForWidth());
-        pushButton_18->setSizePolicy(sizePolicy1);
-        pushButton_18->setFont(font2);
+        sizePolicy3.setHeightForWidth(pushButton_18->sizePolicy().hasHeightForWidth());
+        pushButton_18->setSizePolicy(sizePolicy3);
+        pushButton_18->setFont(font5);
 
         gridLayout_17->addWidget(pushButton_18, 6, 2, 1, 1);
 
         pushButton_10 = new QPushButton(login);
         pushButton_10->setObjectName(QStringLiteral("pushButton_10"));
-        sizePolicy1.setHeightForWidth(pushButton_10->sizePolicy().hasHeightForWidth());
-        pushButton_10->setSizePolicy(sizePolicy1);
-        pushButton_10->setFont(font2);
+        sizePolicy3.setHeightForWidth(pushButton_10->sizePolicy().hasHeightForWidth());
+        pushButton_10->setSizePolicy(sizePolicy3);
+        pushButton_10->setFont(font5);
 
         gridLayout_17->addWidget(pushButton_10, 4, 0, 1, 1);
 
@@ -897,24 +921,24 @@ public:
         label_12->setObjectName(QStringLiteral("label_12"));
         sizePolicy2.setHeightForWidth(label_12->sizePolicy().hasHeightForWidth());
         label_12->setSizePolicy(sizePolicy2);
-        label_12->setFont(font2);
+        label_12->setFont(font5);
         label_12->setAlignment(Qt::AlignCenter);
 
         gridLayout_17->addWidget(label_12, 1, 0, 1, 1);
 
         pushButton_13 = new QPushButton(login);
         pushButton_13->setObjectName(QStringLiteral("pushButton_13"));
-        sizePolicy1.setHeightForWidth(pushButton_13->sizePolicy().hasHeightForWidth());
-        pushButton_13->setSizePolicy(sizePolicy1);
-        pushButton_13->setFont(font2);
+        sizePolicy3.setHeightForWidth(pushButton_13->sizePolicy().hasHeightForWidth());
+        pushButton_13->setSizePolicy(sizePolicy3);
+        pushButton_13->setFont(font5);
 
         gridLayout_17->addWidget(pushButton_13, 5, 0, 1, 1);
 
         pushButton_15 = new QPushButton(login);
         pushButton_15->setObjectName(QStringLiteral("pushButton_15"));
-        sizePolicy1.setHeightForWidth(pushButton_15->sizePolicy().hasHeightForWidth());
-        pushButton_15->setSizePolicy(sizePolicy1);
-        pushButton_15->setFont(font2);
+        sizePolicy3.setHeightForWidth(pushButton_15->sizePolicy().hasHeightForWidth());
+        pushButton_15->setSizePolicy(sizePolicy3);
+        pushButton_15->setFont(font5);
 
         gridLayout_17->addWidget(pushButton_15, 5, 2, 1, 1);
 
@@ -927,33 +951,33 @@ public:
 
         pushButton_11 = new QPushButton(login);
         pushButton_11->setObjectName(QStringLiteral("pushButton_11"));
-        sizePolicy1.setHeightForWidth(pushButton_11->sizePolicy().hasHeightForWidth());
-        pushButton_11->setSizePolicy(sizePolicy1);
-        pushButton_11->setFont(font2);
+        sizePolicy3.setHeightForWidth(pushButton_11->sizePolicy().hasHeightForWidth());
+        pushButton_11->setSizePolicy(sizePolicy3);
+        pushButton_11->setFont(font5);
 
         gridLayout_17->addWidget(pushButton_11, 4, 1, 1, 1);
 
         pushButton_del = new QPushButton(login);
         pushButton_del->setObjectName(QStringLiteral("pushButton_del"));
-        sizePolicy1.setHeightForWidth(pushButton_del->sizePolicy().hasHeightForWidth());
-        pushButton_del->setSizePolicy(sizePolicy1);
-        pushButton_del->setFont(font2);
+        sizePolicy3.setHeightForWidth(pushButton_del->sizePolicy().hasHeightForWidth());
+        pushButton_del->setSizePolicy(sizePolicy3);
+        pushButton_del->setFont(font5);
 
         gridLayout_17->addWidget(pushButton_del, 7, 0, 1, 1);
 
         pushButton_20 = new QPushButton(login);
         pushButton_20->setObjectName(QStringLiteral("pushButton_20"));
-        sizePolicy1.setHeightForWidth(pushButton_20->sizePolicy().hasHeightForWidth());
-        pushButton_20->setSizePolicy(sizePolicy1);
-        pushButton_20->setFont(font2);
+        sizePolicy3.setHeightForWidth(pushButton_20->sizePolicy().hasHeightForWidth());
+        pushButton_20->setSizePolicy(sizePolicy3);
+        pushButton_20->setFont(font5);
 
         gridLayout_17->addWidget(pushButton_20, 7, 1, 1, 1);
 
         pushButton_enter = new QPushButton(login);
         pushButton_enter->setObjectName(QStringLiteral("pushButton_enter"));
-        sizePolicy1.setHeightForWidth(pushButton_enter->sizePolicy().hasHeightForWidth());
-        pushButton_enter->setSizePolicy(sizePolicy1);
-        pushButton_enter->setFont(font2);
+        sizePolicy3.setHeightForWidth(pushButton_enter->sizePolicy().hasHeightForWidth());
+        pushButton_enter->setSizePolicy(sizePolicy3);
+        pushButton_enter->setFont(font5);
 
         gridLayout_17->addWidget(pushButton_enter, 7, 2, 1, 1);
 
@@ -975,9 +999,10 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
-        stackedWidget_statistics->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
         stackedWidget_graph->setCurrentIndex(0);
+        stackedWidget_statistics->setCurrentIndex(1);
+
         tabWidget_option->setCurrentIndex(0);
         stackedWidget_admin->setCurrentIndex(1);
 
@@ -989,7 +1014,11 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
         label_hostel_2->setText(QApplication::translate("MainWindow", "Zanskar Hostel", 0));
+        label_developed->setText(QApplication::translate("MainWindow", "Developed by IITD", 0));
+        pushButton_staff_login->setText(QApplication::translate("MainWindow", "Staff Login", 0));
         label_time->setText(QString());
+        label_time_status->setText(QApplication::translate("MainWindow", "25 min to next meal", 0));
+        label_3->setText(QApplication::translate("MainWindow", "Graph", 0));
         label_5->setText(QApplication::translate("MainWindow", "Logged in:", 0));
         label_6->setText(QApplication::translate("MainWindow", "100", 0));
         label_7->setText(QApplication::translate("MainWindow", "Expected:", 0));
@@ -997,9 +1026,6 @@ public:
         label_10->setText(QApplication::translate("MainWindow", "Expected:", 0));
         label_11->setText(QApplication::translate("MainWindow", "300", 0));
         label->setText(QApplication::translate("MainWindow", "Statistics", 0));
-        label_3->setText(QApplication::translate("MainWindow", "Graph", 0));
-        label_developed->setText(QApplication::translate("MainWindow", "Developed by IITD", 0));
-        label_time_status->setText(QApplication::translate("MainWindow", "25 min to next meal", 0));
         label_name->setText(QApplication::translate("MainWindow", "Rishit Sanmukhani", 0));
         label_id->setText(QApplication::translate("MainWindow", "2013CS10255", 0));
         label_hostel_1->setText(QApplication::translate("MainWindow", "Zanskar hostel", 0));

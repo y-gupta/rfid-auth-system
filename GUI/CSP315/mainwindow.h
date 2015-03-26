@@ -5,6 +5,12 @@
 #include "ui_optionwindow.h"
 #include "../printer/printer.h"
 
+#define WELCOME 0
+#define GENERAL 1
+#define ADMIN 2
+#define STAFF_LOGIN 3
+
+
 namespace Ui {
 class MainWindow;
 }
@@ -21,9 +27,15 @@ public:
 
     ~MainWindow();
 
-    //Rebate helper functions
+    //Welcome helper functions
+
+
+    //General helper functions
+    void gotoGeneral();
     void checkRebateUi();
-    void initRebateUi();
+
+    //Staff Login helper functions
+    void gotoStaffLogin();
 
 private slots:
     //These are the rebate buttons
