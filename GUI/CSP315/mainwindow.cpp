@@ -5,14 +5,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    setMouseTracking(true);
     ui->setupUi(this);
+    initWelcomeUi();
+    initEventLoop();
+//    initWelcomeUi();
+//    checkWelcomeUi();
+//    gotoGeneral();
 
-    //gotoGeneral();
-
-    //TODO - Set the date and time
-    ui->label_time->setText(QString::fromStdString("Date : " +
-    QDate::currentDate().toString("dd/MM/yy").toStdString() + "\nTime : " +
-    QTime::currentTime().toString("hh:mm:ss").toStdString() + " "));
     QPixmap pixmap(":/images/rupee.jpg");
     cout<<pixmap.isNull()<<endl;
     QIcon ButtonIcon(pixmap);
@@ -34,9 +34,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->pushButton_6->setIcon(ButtonIcon);
     ui->pushButton_6->setIconSize(QSize(60,60));
+    installEventFilter(this);
 }
-
 MainWindow::~MainWindow()
 {
     delete ui;
+    removeEventFilter(this);
 }
+void MainWindow::on_toolButton_home_clicked(){
+    gotoWelcome();
+}
+

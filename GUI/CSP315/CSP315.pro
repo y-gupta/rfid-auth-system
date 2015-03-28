@@ -15,20 +15,24 @@ CONFIG += c++11
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    utility.cpp \
     ../printer/printer.cpp \
     messing.cpp \
     stafflogin.cpp \
     rebate.cpp \
     ../rfid/rfid.cpp \
-    welcome.cpp
+    welcome.cpp \
+    eventloop.cpp \
+    admin.cpp \
+    user.cpp
 
 HEADERS  += mainwindow.h \
-    utility.h \
     ../printer/printer.h \
-    ../rfid/rfid.h
+    ../rfid/rfid.h \
+    user.h
 
 FORMS    += mainwindow.ui
 
 RESOURCES += \
     resources.qrc
+
+OTHER_FILES +=

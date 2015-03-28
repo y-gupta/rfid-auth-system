@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.3.0
+** Created by: Qt User Interface Compiler version 5.2.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -155,6 +155,10 @@ public:
     QPushButton *pushButton_del;
     QPushButton *pushButton_20;
     QPushButton *pushButton_enter;
+    QHBoxLayout *horizontalLayout_3;
+    QSpacerItem *horizontalSpacer;
+    QToolButton *toolButton_home;
+    QSpacerItem *horizontalSpacer_2;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -219,13 +223,17 @@ public:
         pushButton_staff_login->setMaximumSize(QSize(16777215, 100));
         QFont font2;
         font2.setPointSize(16);
+        font2.setBold(true);
+        font2.setWeight(75);
         pushButton_staff_login->setFont(font2);
 
         horizontalLayout_2->addWidget(pushButton_staff_login);
 
         label_time = new QLabel(welcome);
         label_time->setObjectName(QStringLiteral("label_time"));
-        label_time->setFont(font2);
+        QFont font3;
+        font3.setPointSize(16);
+        label_time->setFont(font3);
         label_time->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         horizontalLayout_2->addWidget(label_time);
@@ -241,9 +249,9 @@ public:
         sizePolicy2.setHeightForWidth(label_time_status->sizePolicy().hasHeightForWidth());
         label_time_status->setSizePolicy(sizePolicy2);
         label_time_status->setMaximumSize(QSize(16777215, 100));
-        QFont font3;
-        font3.setPointSize(30);
-        label_time_status->setFont(font3);
+        QFont font4;
+        font4.setPointSize(30);
+        label_time_status->setFont(font4);
         label_time_status->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(label_time_status, 2, 0, 1, 2);
@@ -275,11 +283,7 @@ public:
 
         label_3 = new QLabel(frame_graph);
         label_3->setObjectName(QStringLiteral("label_3"));
-        QFont font4;
-        font4.setPointSize(16);
-        font4.setBold(true);
-        font4.setWeight(75);
-        label_3->setFont(font4);
+        label_3->setFont(font2);
         label_3->setAlignment(Qt::AlignCenter);
 
         gridLayout_11->addWidget(label_3, 0, 0, 1, 1);
@@ -356,7 +360,7 @@ public:
 
         label = new QLabel(frame_statistics);
         label->setObjectName(QStringLiteral("label"));
-        label->setFont(font4);
+        label->setFont(font2);
         label->setAlignment(Qt::AlignCenter);
 
         gridLayout_10->addWidget(label, 0, 0, 1, 1);
@@ -776,7 +780,7 @@ public:
         gridLayout_16->setObjectName(QStringLiteral("gridLayout_16"));
         label_4 = new QLabel(page_5);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setFont(font4);
+        label_4->setFont(font2);
         label_4->setAlignment(Qt::AlignCenter);
 
         gridLayout_16->addWidget(label_4, 0, 0, 1, 4);
@@ -785,7 +789,7 @@ public:
         label_card->setObjectName(QStringLiteral("label_card"));
         sizePolicy5.setHeightForWidth(label_card->sizePolicy().hasHeightForWidth());
         label_card->setSizePolicy(sizePolicy5);
-        label_card->setFont(font2);
+        label_card->setFont(font3);
 
         gridLayout_16->addWidget(label_card, 1, 0, 1, 1);
 
@@ -802,7 +806,7 @@ public:
         label_9->setObjectName(QStringLiteral("label_9"));
         sizePolicy5.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
         label_9->setSizePolicy(sizePolicy5);
-        label_9->setFont(font2);
+        label_9->setFont(font3);
 
         gridLayout_16->addWidget(label_9, 2, 0, 1, 1);
 
@@ -983,7 +987,33 @@ public:
 
         stackedWidget->addWidget(login);
 
-        gridLayout_2->addWidget(stackedWidget, 0, 0, 1, 1);
+        gridLayout_2->addWidget(stackedWidget, 1, 0, 1, 1);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer);
+
+        toolButton_home = new QToolButton(centralWidget);
+        toolButton_home->setObjectName(QStringLiteral("toolButton_home"));
+        QSizePolicy sizePolicy9(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy9.setHorizontalStretch(0);
+        sizePolicy9.setVerticalStretch(0);
+        sizePolicy9.setHeightForWidth(toolButton_home->sizePolicy().hasHeightForWidth());
+        toolButton_home->setSizePolicy(sizePolicy9);
+        toolButton_home->setMinimumSize(QSize(120, 60));
+        toolButton_home->setFont(font2);
+
+        horizontalLayout_3->addWidget(toolButton_home);
+
+        horizontalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_2);
+
+
+        gridLayout_2->addLayout(horizontalLayout_3, 0, 0, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
@@ -999,11 +1029,10 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(1);
         stackedWidget_graph->setCurrentIndex(0);
-        stackedWidget_statistics->setCurrentIndex(1);
-
-        tabWidget_option->setCurrentIndex(0);
+        stackedWidget_statistics->setCurrentIndex(0);
+        tabWidget_option->setCurrentIndex(1);
         stackedWidget_admin->setCurrentIndex(1);
 
 
@@ -1077,6 +1106,7 @@ public:
         pushButton_del->setText(QApplication::translate("MainWindow", "DEL", 0));
         pushButton_20->setText(QApplication::translate("MainWindow", "0", 0));
         pushButton_enter->setText(QApplication::translate("MainWindow", "ENTER", 0));
+        toolButton_home->setText(QApplication::translate("MainWindow", "Home", 0));
     } // retranslateUi
 
 };

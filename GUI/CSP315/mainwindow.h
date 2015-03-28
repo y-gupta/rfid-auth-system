@@ -2,8 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "ui_optionwindow.h"
 #include "../printer/printer.h"
+#include "../rfid/rfid.h"
+#include "user.h"
+
+#include <vector>
+#include <QTimer>
+#include <cstring>
+
+using namespace std;
 
 #define WELCOME 0
 #define GENERAL 1
@@ -27,17 +34,43 @@ public:
 
     ~MainWindow();
 
+    //Extra information
+    user current_user;
+
+    //Event loop helper functions
+    QTimer *timer;
+    int sec_count;
+    void initEventLoop();
+
+
     //Welcome helper functions
+    vector< pair<QTime,QTime> > timing;
+    void initWelcomeUi();
+    void gotoWelcome();
+    void checkWelcomeUi();
+    void setUpMealTimeUi();
+    void setUpNoMealTimeUi();
 
 
     //General helper functions
     void gotoGeneral();
     void checkRebateUi();
 
+
+    //Admin helper function
+    void gotoAdmin();
+
+
     //Staff Login helper functions
     void gotoStaffLogin();
+//    void mouseReleaseEvent(QMouseEvent *);
+
+public slots:
+    //Event loop helper slots
+    void doEvent();
 
 private slots:
+
     //These are the rebate buttons
     void on_toolButton_inc_present_clicked();
 
@@ -94,6 +127,11 @@ private slots:
     void on_pushButton_del_clicked();
 
     void on_pushButton_enter_clicked();
+
+    void on_pushButton_staff_login_clicked();
+
+    //These are MainWindow buttons
+    void on_toolButton_home_clicked();
 
 private:
     Ui::MainWindow *ui;

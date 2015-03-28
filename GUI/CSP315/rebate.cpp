@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <cstring>
-using namespace std;
+
 
 void MainWindow::checkRebateUi(){
     QDate cur_date = QDate::currentDate();

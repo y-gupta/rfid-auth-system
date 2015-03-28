@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <cstring>
-using namespace std;
 
 #define MESSING 0
 #define REBATE 1
@@ -17,6 +15,11 @@ void MainWindow::gotoGeneral(){
     //Initializing the extra-messing
     ui->tabWidget_option->setCurrentIndex(MESSING);
     ui->spinBox_val->setValue(1);
+
+    //Initializing the current user details
+    ui->label_name->setText(QString::fromStdString(current_user.user_name));
+    ui->label_hostel_1->setText(QString::fromStdString(current_user.hostel_name));
+    ui->label_id->setText(QString::fromStdString(current_user.entry_no));
 }
 void MainWindow::on_pushButton_clicked(){
     int value = ui->pushButton->text().toInt() * ui->spinBox_val->value();
