@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <stdint.h>
 using namespace std;
 
 class user

@@ -10,7 +10,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = CSP315
 TEMPLATE = app
-CONFIG += c++11
 
 
 SOURCES += main.cpp\
@@ -23,7 +22,8 @@ SOURCES += main.cpp\
     welcome.cpp \
     eventloop.cpp \
     admin.cpp \
-    user.cpp
+    user.cpp \
+    utility.cpp
 
 HEADERS  += mainwindow.h \
     ../printer/printer.h \

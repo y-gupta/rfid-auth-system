@@ -33,7 +33,6 @@ void MainWindow::doEvent(){
             else{
                 //User logged in
                 current_user.clear();
-
                 //Get the details
                 current_user.init(1,"Rishit Sanmukhani","2013CS10255","Zanskar Hostel");
                 gotoGeneral();
