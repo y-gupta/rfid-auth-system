@@ -28,7 +28,9 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     ../printer/printer.h \
     ../rfid/rfid.h \
-    user.h
+    user.h \
+    thread.h \
+    network.h
 
 FORMS    += mainwindow.ui
 
