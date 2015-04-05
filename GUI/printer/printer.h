@@ -9,18 +9,23 @@
 #include <iostream>
 #include <cstdio>
 #include <cstring>
+#include "user.h"
+
 using namespace std;
+
+#define print_len 30
 
 class printer{
 private: 
+	string line;
 	char buf[1024];
 	int fd;
+	string print_user(user usr);
 public:
 	printer();
 	~printer();
-	int printit(string message);
+	int rebate(user The_user,string start, string end);
+	int extra_messing(user The_user,string amount);
 };
-
-// declare printer object before starting python module
 
 #endif 
