@@ -24,7 +24,7 @@ string printer::print_user(user usr){
 	return s;
 }
 
-int rebate(user The_user,string start, string end){
+int printer::rebate(user The_user,string start, string end){
 	string s = line+"\n"+print_user(The_user)+"\n----Rebate Period----\n"+start+"\nTo\n"+end+"\n"+line+"\nTHANK YOU!!!\n.....";
     fd = open("../printer/printer_pipe", O_WRONLY);
 	
@@ -41,25 +41,21 @@ int rebate(user The_user,string start, string end){
 	close(fd);
 	return 1;
 }
-	int extra_messing(user The_user,string amount){
-	
-	string s = line+"\n"+print_user(The_user)+"\nThis Coupon is worth\n"+amount+"\n"+line+"\nTHANK YOU!!!\n.....";
-	
-	
+int printer::extra_messing(user The_user,string amount){
+    string s = line+"\n"+print_user(The_user)+"\nThis Coupon is worth\n"+amount+"\n"+line+"\nTHANK YOU!!!\n.....";
+
     fd = open("../printer/printer_pipe", O_WRONLY);
-	
-	if(fd<0){
-		cout<<"Cannot open pipe"<<endl;
-		return -1;
-	}
-	
-	bzero(buf,1024);
-	memcpy(buf,s.c_str(),s.size());
-	write(fd,buf,1024); 
-	
-	
-	close(fd);
-	return 1;
+
+    if(fd<0){
+        cout<<"Cannot open pipe"<<endl;
+        return -1;
+    }
+
+    bzero(buf,1024);
+    memcpy(buf,s.c_str(),s.size());
+    write(fd,buf,1024);
+    close(fd);
+    return 1;
 }
 
 

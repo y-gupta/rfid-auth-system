@@ -1069,7 +1069,25 @@ outline:none
              <property name="currentIndex">
               <number>1</number>
              </property>
-             <widget class="QWidget" name="page_4"/>
+             <widget class="QWidget" name="page_4">
+              <layout class="QGridLayout" name="gridLayout_19">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_14">
+                 <property name="font">
+                  <font>
+                   <pointsize>62</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Place Your Card</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
              <widget class="QWidget" name="page_5">
               <layout class="QGridLayout" name="gridLayout_16">
                <item row="0" column="0" colspan="4">
@@ -1082,7 +1100,7 @@ outline:none
                   </font>
                  </property>
                  <property name="text">
-                  <string>Register New Card</string>
+                  <string>Operation</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
@@ -1188,6 +1206,9 @@ outline:none
                  </property>
                  <property name="keyboardTracking">
                   <bool>true</bool>
+                 </property>
+                 <property name="value">
+                  <number>1</number>
                  </property>
                 </widget>
                </item>

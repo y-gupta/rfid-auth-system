@@ -56,11 +56,13 @@ void MainWindow::gotoWelcome(){
 void MainWindow::setUpMealTimeUi(){
     //TODO - MEAL TIME STUFF
     ui->stackedWidget_statistics->setCurrentIndex(MEAL_TIME);
+    ui->stackedWidget_graph->setCurrentIndex(MEAL_TIME);
 }
 void MainWindow::setUpNoMealTimeUi(){
     //TODO - NO_MEAL_TIME Stuff
     ui->stackedWidget_statistics->setCurrentIndex(NO_MEAL_TIME);
+    ui->stackedWidget_graph->setCurrentIndex(NO_MEAL_TIME);
 }
-void MainWindow::on_pushButton_staff_login_clicked(){
+void MainWindow::on_pushButton_staff_login_clicked(){reset();
     gotoStaffLogin();
 }

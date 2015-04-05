@@ -42,7 +42,7 @@ public:
     int sendRequest(Request *r){
         assert(thread && "valid worker thread");
         assert(r && "valid request");
-        string
+        string query = r->toString();
     }
 };
 

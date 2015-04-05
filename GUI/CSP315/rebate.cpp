@@ -21,39 +21,39 @@ void MainWindow::checkRebateUi(){
     }
 }
 
-void MainWindow::on_toolButton_inc_present_clicked(){
+void MainWindow::on_toolButton_inc_present_clicked(){reset();
     QDate tmp = ui->dateEdit_present->date();
     ui->dateEdit_present->setDate(tmp.addDays(1));
     checkRebateUi();
 }
 
-void MainWindow::on_toolButton_inc_future_clicked(){
+void MainWindow::on_toolButton_inc_future_clicked(){reset();
     QDate tmp = ui->dateEdit_future->date();
     ui->dateEdit_future->setDate(tmp.addDays(1));
     checkRebateUi();
 }
 
-void MainWindow::on_toolButton_dec_present_clicked(){
+void MainWindow::on_toolButton_dec_present_clicked(){reset();
     QDate tmp = ui->dateEdit_present->date();
     ui->dateEdit_present->setDate(tmp.addDays(-1));
     checkRebateUi();
 }
 
-void MainWindow::on_toolButton_dec_future_clicked(){
+void MainWindow::on_toolButton_dec_future_clicked(){reset();
     QDate tmp = ui->dateEdit_future->date();
     ui->dateEdit_future->setDate(tmp.addDays(-1));
     checkRebateUi();
 }
 
-void MainWindow::on_pushButton_7_clicked(){
+void MainWindow::on_pushButton_7_clicked(){reset();
 
 }
 
-void MainWindow::on_pushButton_8_clicked(){
+void MainWindow::on_pushButton_8_clicked(){reset();
 
 }
 
-void MainWindow::on_pushButton_9_clicked(){
+void MainWindow::on_pushButton_9_clicked(){reset();
 
 }
 

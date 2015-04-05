@@ -7,8 +7,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     setMouseTracking(true);
     ui->setupUi(this);
+    time_out=3;
+    connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
     initEventLoop();
+    gotoAdmin();
+
 //    initWelcomeUi();
 //    checkWelcomeUi();
 //    gotoGeneral();
@@ -41,7 +45,12 @@ MainWindow::~MainWindow()
     delete ui;
     removeEventFilter(this);
 }
-void MainWindow::on_toolButton_home_clicked(){
+void MainWindow::on_toolButton_home_clicked(){reset();
     gotoWelcome();
 }
-
+void MainWindow::timeout(){
+    gotoWelcome();
+}
+void MainWindow::reset(){
+    idle_time=0;
+}
