@@ -59,5 +59,4 @@ void MainWindow::reset(){
 void MainWindow::processAuthResponse(User usr){
     cout<<usr.user_name<<endl;
     cout<<usr.hostel_name<<endl;
-
 }

@@ -32,10 +32,8 @@ public:
     cost=_cost;
   }
   virtual int process(){//Non zero return value terminates thread!
-    cout<<"Hi i am virtual"<<endl;
-//    delete this;//awww?
-//    return 1;
-    return 0;
+    delete this;//awww?
+    return 1;
   }
 };
 
@@ -60,6 +58,7 @@ class WorkerThread{
             pthread_mutex_unlock(&queue_m);
         cost=j->cost;
         cout<<"Let's start"<<endl;
+
         err = j->process();
         cout<<"After this"<<endl;
         run=(err==0);
