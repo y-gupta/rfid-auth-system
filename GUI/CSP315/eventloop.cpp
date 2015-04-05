@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
-
+#include "request.h"
+#include "network.h"
 
 void MainWindow::initEventLoop(){
     //Initializing the timer
@@ -28,18 +28,23 @@ void MainWindow::doEvent(){
 
     //TODO rfid stuff
     bool isMasterCard=false;
-//    if(ui->stackedWidget->currentIndex()==0){
-//        if(RFID::readCard() != -1){
-//            if(isMasterCard){
-//                gotoAdmin();
-//            }
-//            else{
-//                //User logged in
-//                current_user.clear();
-//                //Get the details
-//                current_user.init(1,"Rishit Sanmukhani","2013CS10255","Zanskar Hostel");
-//                gotoGeneral();
-//            }
-//        }
-//    }
+    if(ui->stackedWidget->currentIndex()==0){
+        if(RFID::readCard() != -1){
+            Request r;
+            r.type=0;
+
+            Network::sendRequest(&r);
+            cout<<"I have sent request"<<endl;
+            if(isMasterCard){
+                gotoAdmin();
+            }
+            else{
+                //User logged in
+                current_user.clear();
+                //Get the details
+                current_user.init(1,"Rishit Sanmukhani","2013CS10255","Zanskar Hostel");
+                gotoGeneral();
+            }
+        }
+    }
 }

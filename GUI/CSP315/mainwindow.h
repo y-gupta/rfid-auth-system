@@ -1,7 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-
 #include <QMainWindow>
 #include "../printer/printer.h"
 #include "../rfid/rfid.h"
@@ -44,7 +43,7 @@ public:
 
 
     //Extra information
-    user current_user;
+    User current_user;
 
     //Event loop helper functions
     QTimer *timer;
@@ -69,7 +68,7 @@ public:
     //Admin helper function
     void gotoAdmin();
 
-
+    static void processAuthResponse(User usr);
     //Staff Login helper functions
     void gotoStaffLogin();
 //    void mouseReleaseEvent(QMouseEvent *);

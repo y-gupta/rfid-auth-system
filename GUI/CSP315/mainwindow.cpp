@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "network.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -8,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setMouseTracking(true);
     ui->setupUi(this);
     time_out=3;
+    Network::init("192.168.0.4/");
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
     initEventLoop();
@@ -53,4 +55,9 @@ void MainWindow::timeout(){
 }
 void MainWindow::reset(){
     idle_time=0;
+}
+void MainWindow::processAuthResponse(User usr){
+    cout<<usr.user_name<<endl;
+    cout<<usr.hostel_name<<endl;
+
 }

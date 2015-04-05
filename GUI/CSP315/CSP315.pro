@@ -10,7 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = CSP315
 TEMPLATE = app
-
+LIBS = -lcurl -lpthread
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -23,14 +23,17 @@ SOURCES += main.cpp\
     eventloop.cpp \
     admin.cpp \
     user.cpp \
-    utility.cpp
+    utility.cpp \
+    network.cpp \
+    request.cpp
 
 HEADERS  += mainwindow.h \
     ../printer/printer.h \
     ../rfid/rfid.h \
     user.h \
     thread.h \
-    network.h
+    network.h \
+    request.h
 
 FORMS    += mainwindow.ui
 

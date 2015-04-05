@@ -20,12 +20,12 @@ private:
 	string line;
 	char buf[1024];
 	int fd;
-	string print_user(user usr);
+    string print_user(User usr);
 public:
 	printer();
 	~printer();
-	int rebate(user The_user,string start, string end);
-	int extra_messing(user The_user,string amount);
+    int rebate(User The_user,string start, string end);
+    int extra_messing(User The_user,string amount);
 };
 
 #endif 

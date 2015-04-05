@@ -6,14 +6,14 @@
 #include <stdint.h>
 using namespace std;
 
-class user
+class User
 {
 public:
     string user_name,entry_no,hostel_name;
-    uint64_t user_id;
+    uint64_t uid;
 
-    user();
-    void init(uint64_t id = -1,string _u = "",string _e = "",string _h="");
+    User();
+    void init(uint64_t id = 0,string _u = "",string _e = "",string _h="");
     void clear();
 };
 

@@ -13,7 +13,6 @@ void MainWindow::gotoAdmin(){
 void MainWindow::on_pushButton_allow_clicked(){reset();
     //TODO - check the request response part of
     gotoWelcome();
-
 }
 void MainWindow::on_pushButton_delete_clicked(){reset();
     ui->stackedWidget_admin->setCurrentIndex(PLACE_CARD);

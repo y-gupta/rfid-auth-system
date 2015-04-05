@@ -8,7 +8,7 @@ printer::~printer(){
 	// unlink("printer_pipe");
 }
 
-string printer::print_user(user usr){
+string printer::print_user(User usr){
 	line="******************************************************";
 	string s;
 	s=s+"user ID :-";
@@ -24,7 +24,7 @@ string printer::print_user(user usr){
 	return s;
 }
 
-int printer::rebate(user The_user,string start, string end){
+int printer::rebate(User The_user,string start, string end){
 	string s = line+"\n"+print_user(The_user)+"\n----Rebate Period----\n"+start+"\nTo\n"+end+"\n"+line+"\nTHANK YOU!!!\n.....";
     fd = open("../printer/printer_pipe", O_WRONLY);
 	
@@ -41,7 +41,7 @@ int printer::rebate(user The_user,string start, string end){
 	close(fd);
 	return 1;
 }
-int printer::extra_messing(user The_user,string amount){
+int printer::extra_messing(User The_user,string amount){
     string s = line+"\n"+print_user(The_user)+"\nThis Coupon is worth\n"+amount+"\n"+line+"\nTHANK YOU!!!\n.....";
 
     fd = open("../printer/printer_pipe", O_WRONLY);
