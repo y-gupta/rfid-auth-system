@@ -37,7 +37,7 @@ void MainWindow::doEvent(){
                 AuthRequest r;
                 r.init(AUTH,device_id,current_user.uid);
                 r.rfid = rfid;
-                Network::sendRequest(r);
+                Network::sendRequest(&r);
             }
         }
     }
@@ -57,7 +57,7 @@ void MainWindow::doReadCard(int64_t rfid){
             read_card=-1;
         }
         break;
-    case CREATE_NEW_CARD:
+    case CREATE_NEW_CARD:{
         ui->stackedWidget_admin->setCurrentIndex(OPTION);
         ui->toolButton_dec->setEnabled(true);
         ui->toolButton_inc->setEnabled(true);
@@ -70,15 +70,15 @@ void MainWindow::doReadCard(int64_t rfid){
         Network::sendRequest(&r);
         read_card=-1;
         break;
-
-    case CREATE_MASTER_CARD:
+    }
+    case CREATE_MASTER_CARD:{
         CreateCardRequest r;
         r.init(CREATE_MASTER_CARD,device_id,current_user.uid);
         r.rfid = rfid;
         r.isMasterCard = true;
         Network::sendRequest(&r);
         read_card=-1;
-        break;
+        break;}
     default:
         return;
     }
