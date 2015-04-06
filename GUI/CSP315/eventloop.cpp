@@ -46,39 +46,52 @@ void MainWindow::doEvent(){
 }
 void MainWindow::doReadCard(int64_t rfid){
     switch (read_card){
-    case DELETE_CARD:
+    case DELETE_CARD:{
         ui->stackedWidget_admin->setCurrentIndex(OPTION);
         ui->pushButton_confirm_2->setEnabled(true);
-        if(attendRequest){
+        if(attendRequest==DELETE_CARD){
             DeleteCardRequest r;
             r.init(DELETE_CARD,device_id,current_user.uid);
             r.rfid = rfid;
             Network::sendRequest(&r);
             read_card=-1;
+            attendResponse = DELETE_CARD;
+            attendRequest = -1;
         }
         break;
-    case CREATE_NEW_CARD:
+    }
+    case CREATE_NEW_CARD:{
         ui->stackedWidget_admin->setCurrentIndex(OPTION);
         ui->toolButton_dec->setEnabled(true);
         ui->toolButton_inc->setEnabled(true);
         ui->pushButton_confirm_2->setEnabled(true);
-
-        CreateCardRequest r;
-        r.init(CREATE_NEW_CARD,device_id,current_user.uid);
-        r.rfid = rfid;
-        r.isMasterCard = false;
-        Network::sendRequest(&r);
-        read_card=-1;
+        if(attendRequest==CREATE_NEW_CARD){
+            CreateCardRequest r;
+            r.init(CREATE_NEW_CARD,device_id,current_user.uid);
+            r.rfid = rfid;
+            r.isMasterCard = false;
+            Network::sendRequest(&r);
+            read_card=-1;
+            attendResponse = CREATE_NEW_CARD;
+            attendRequest = -1;
+        }
         break;
-
-    case CREATE_MASTER_CARD:
-        CreateCardRequest r;
-        r.init(CREATE_MASTER_CARD,device_id,current_user.uid);
-        r.rfid = rfid;
-        r.isMasterCard = true;
-        Network::sendRequest(&r);
-        read_card=-1;
+    }
+    case CREATE_MASTER_CARD:{
+        ui->stackedWidget_admin->setCurrentIndex(OPTION);
+        ui->pushButton_confirm_2->setEnabled(true);
+        if(attendRequest==CREATE_MASTER_CARD){
+            CreateCardRequest r;
+            r.init(CREATE_MASTER_CARD,device_id,current_user.uid);
+            r.rfid = rfid;
+            r.isMasterCard = true;
+            Network::sendRequest(&r);
+            read_card=-1;
+            attendResponse = CREATE_MASTER_CARD;
+            attendRequest = -1;
+        }
         break;
+    }
     default:
         return;
     }

@@ -12,46 +12,42 @@ void MainWindow::gotoAdmin(){
 }
 void MainWindow::on_pushButton_allow_clicked(){
     reset();
-    Request *r=new Request;
-    r->type=ALLOW_TEMP;
+    AllowTempRequest r;
     Network::sendRequest(r);
     ui->label_notification->setText("Your request is being processed!");
+    attendRequest=-1;
+    attendResponse=ALLOW_TEMP;
 }
 void MainWindow::on_pushButton_delete_clicked(){
     reset();
     ui->stackedWidget_admin->setCurrentIndex(TEXT);
     read_card = DELETE_CARD;
-    attendRequest=false;
+    attendRequest=-1;
 }
 void MainWindow::on_pushButton_reg_clicked(){
     reset();
     ui->stackedWidget_admin->setCurrentIndex(TEXT);
     read_card = CREATE_NEW_CARD;
-    //TODO : READ the card and do the stuff
-
-    ui->stackedWidget_admin->setCurrentIndex(OPTION);
-    ui->toolButton_dec->setEnabled(true);
-    ui->toolButton_inc->setEnabled(true);
-    ui->pushButton_confirm_2->setEnabled(true);
-
+    attendRequest=-1;
 }
-void MainWindow::on_pushButton_master_clicked(){reset();
+void MainWindow::on_pushButton_master_clicked(){
+    reset();
     ui->stackedWidget_admin->setCurrentIndex(TEXT);
-    //TODO : READ the card and do the stuff
-
-    ui->stackedWidget_admin->setCurrentIndex(OPTION);
-    ui->pushButton_confirm_2->setEnabled(true);
+    read_card = CREATE_NEW_CARD;
+    attendRequest=-1;
 }
-void MainWindow::on_toolButton_inc_clicked(){reset();
+void MainWindow::on_toolButton_inc_clicked(){
+    reset();
     if(ui->spinBox_days->value()>=1)
     ui->spinBox_days->stepUp();
 }
-void MainWindow::on_toolButton_dec_clicked(){reset();
+void MainWindow::on_toolButton_dec_clicked(){
+    reset();
     if(ui->spinBox_days->value() > 1)
     ui->spinBox_days->stepDown();
 }
 void MainWindow::on_pushButton_confirm_2_clicked(){
-    attendRequest=true;
+    attendRequest=read_card;
     reset();
     gotoWelcome();
 }

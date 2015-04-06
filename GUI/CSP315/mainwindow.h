@@ -50,7 +50,8 @@ public:
     void initEventLoop();    
     int read_card;
     void doReadCard();
-    bool attendRequest;
+    int attendRequest;
+    int attendResponse;
 
 
     //Welcome helper functions

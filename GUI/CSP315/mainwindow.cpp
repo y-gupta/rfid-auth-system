@@ -55,9 +55,9 @@ void MainWindow::timeout(){
 }
 void MainWindow::reset(){
     idle_time=0;
-    if(!attendRequest)
+    if(attendRequest!=DELETE_CARD && attendRequest!=CREATE_NEW_CARD && attendRequest!=CREATE_MASTER_CARD)
         read_card=-1;
-    //Your request has expired
+    //Yourrequest has expired
 
 }
 void MainWindow::processAuthResponse(User usr){
@@ -78,10 +78,16 @@ void MainWindow::processCreateMasterCardResponse(){
 void MainWindow::processCreateNewCardResponse(){
 
 }
-void MainWindow::processDeleteCardResponse(){
+void MainWindow::processDeleteCardResponse(bool isSuccess){
+    if(isSuccess && attendResponse==DELETE_CARD){
+        attendResponse=-1;
+        gotoWelcome();
+    }
 
 }
 void MainWindow::processAllowTempResponse(bool isSuccess){
-    if(isSuccess)
+    if(isSuccess && attendResponse==ALLOW_TEMP){
+        attendResponse=-1;
         gotoWelcome();
+    }
 }
