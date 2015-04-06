@@ -57,10 +57,7 @@ class WorkerThread{
         assert(j&&"Valid job");
             pthread_mutex_unlock(&queue_m);
         cost=j->cost;
-        cout<<"Let's start"<<endl;
-
         err = j->process();
-        cout<<"After this"<<endl;
         run=(err==0);
         load-=cost;
         }
@@ -74,13 +71,10 @@ public:
     void pushJob(ThreadedJob *j){
         assert(j && "Valid job");
         load+=j->cost;
-        cout<<"Load is "<<load<<endl;
         pthread_mutex_lock(&queue_m);
         jobs.push_back(j);
         pthread_cond_signal(&queue_cv);
         pthread_mutex_unlock(&queue_m);
-
-        cout<<"Pushed"<<endl;
     }
     int getLoad(){
         return load;

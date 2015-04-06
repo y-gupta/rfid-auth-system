@@ -22,9 +22,9 @@ void MainWindow::doEvent(){
     if(sec_count==0){
         checkWelcomeUi();
     }
-    if(idle_time>=time_out){
-        emit TIMEOUT();
-    }
+//    if(idle_time>=time_out){
+//        emit TIMEOUT();
+//    }
 
     //TODO rfid stuff
     bool isMasterCard=false;
@@ -35,16 +35,16 @@ void MainWindow::doEvent(){
 
             Network::sendRequest(&r);
             cout<<"I have sent request"<<endl;
-            if(isMasterCard){
-                gotoAdmin();
-            }
-            else{
-                //User logged in
-                current_user.clear();
-                //Get the details
-                current_user.init(1,"Rishit Sanmukhani","2013CS10255","Zanskar Hostel");
-                gotoGeneral();
-            }
+//            if(isMasterCard){
+//                gotoAdmin();
+//            }
+//            else{
+//                //User logged in
+//                current_user.clear();
+//                //Get the details
+//                current_user.init(1,"Rishit Sanmukhani","2013CS10255","Zanskar Hostel");
+//                gotoGeneral();
+//            }
         }
     }
 }

@@ -9,7 +9,8 @@ MainWindow::MainWindow(QWidget *parent) :
     setMouseTracking(true);
     ui->setupUi(this);
     time_out=3;
-    Network::init("192.168.0.4/");
+    Network::init("192.168.1.102/");
+    Network::w = this;
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
     initEventLoop();
@@ -57,6 +58,14 @@ void MainWindow::reset(){
     idle_time=0;
 }
 void MainWindow::processAuthResponse(User usr){
-    cout<<usr.user_name<<endl;
-    cout<<usr.hostel_name<<endl;
+    if(usr.isAdmin){
+        gotoAdmin();
+    }
+    else{
+        //User logged in
+        current_user.clear();
+        //Get the details
+        current_user=usr;
+        gotoGeneral();
+    }
 }

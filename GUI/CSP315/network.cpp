@@ -3,6 +3,7 @@
 
 string Network::url = "";
 WorkerThread* Network::thread=NULL;
+MainWindow* Network::w = NULL;
 
 void processResponse(string resp,uint16_t type){
     //parse the json string
@@ -14,7 +15,7 @@ void processResponse(string resp,uint16_t type){
         if(true){   // TODO: use the success in the parsed string
             usr.init(1,"Shubham Rawat","2013CS10258",resp);
         }
-        MainWindow::processAuthResponse(usr);
+        Network::w->processAuthResponse(usr);
         break;
     }
 

@@ -68,10 +68,15 @@ public:
     //Admin helper function
     void gotoAdmin();
 
-    static void processAuthResponse(User usr);
     //Staff Login helper functions
     void gotoStaffLogin();
-//    void mouseReleaseEvent(QMouseEvent *);
+
+    //Processing the response functions
+    void processAuthResponse(User usr);
+    void processCreateMasterCardResponse();
+    void processCreateNewCardResponse();
+    void processDeleteCardResponse();
+    void processAllowTempResponse();
 
 public slots:
     //Event loop helper slots

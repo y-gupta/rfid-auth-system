@@ -2,12 +2,12 @@
 #define NETWORKTHREAD_H
 #include "thread.h"
 #include "request.h"
+#include "mainwindow.h"
 #include "user.h"
 #include <string>
 #include <stdint.h>
 #include <curl/curl.h>
 using namespace std;
-
 class NetworkJob : public ThreadedJob{
 public:
     string url;
@@ -15,9 +15,9 @@ public:
     static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp);
     virtual int process();
 };
-
 class Network{
 public:
+    static MainWindow *w;
     static string url;
     static WorkerThread *thread;
     Network();
