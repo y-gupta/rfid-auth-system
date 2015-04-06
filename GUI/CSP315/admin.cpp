@@ -2,9 +2,6 @@
 #include "ui_mainwindow.h"
 #include "network.h"
 
-#define TEXT 0
-#define OPTION 1
-
 void MainWindow::gotoAdmin(){
     ui->stackedWidget->setCurrentIndex(ADMIN);
     ui->stackedWidget_admin->setAcceptDrops(TEXT);
@@ -13,10 +10,9 @@ void MainWindow::gotoAdmin(){
 void MainWindow::on_pushButton_allow_clicked(){
     reset();
     AllowTempRequest r;
-    Network::sendRequest(r);
+    Network::sendRequest(&r);
     ui->label_notification->setText("Your request is being processed!");
     attendRequest=-1;
-    attendResponse=ALLOW_TEMP;
 }
 void MainWindow::on_pushButton_delete_clicked(){
     reset();

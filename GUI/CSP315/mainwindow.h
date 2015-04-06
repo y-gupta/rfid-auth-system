@@ -19,6 +19,8 @@ using namespace std;
 #define ADMIN 2
 #define STAFF_LOGIN 3
 
+#define TEXT 0
+#define OPTION 1
 
 namespace Ui {
 class MainWindow;
@@ -72,11 +74,15 @@ public:
     void gotoStaffLogin();
 
     //Processing the response functions
-    void processAuthResponse(User usr);
-    void processCreateMasterCardResponse();
-    void processCreateNewCardResponse();
-    void processDeleteCardResponse();
-    void processAllowTempResponse(bool isSuccess);
+    void processResponse(string _resp,uint16_t _type);
+    void processAuthResponse(string _resp);
+    void processCreateMasterCardResponse(string _resp);
+    void processCreateNewCardResponse(string _resp);
+    void processDeleteCardResponse(string _resp);
+    void processAllowTempResponse(string _resp);
+    void processMessingRequest(string _resp);
+    void processRebateRequest(string _resp);
+
 
 
 public slots:

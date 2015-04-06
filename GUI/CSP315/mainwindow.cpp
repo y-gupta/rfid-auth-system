@@ -60,34 +60,68 @@ void MainWindow::reset(){
     //Yourrequest has expired
 
 }
-void MainWindow::processAuthResponse(User usr){
-    if(usr.isAdmin){
-        gotoAdmin();
-    }
-    else{
-        //User logged in
-        current_user.clear();
-        //Get the details
-        current_user=usr;
-        gotoGeneral();
+void MainWindow::processResponse(string _resp,uint16_t _type){
+    switch(_type){
+        case AUTH:{
+            processAuthResponse(_resp);
+            break;
+        }
+        case DELETE_CARD:{
+            processDeleteCardResponse(_resp);
+            break;
+        }
+        case CREATE_NEW_CARD:{
+            processCreateNewCardResponse(_resp);
+            break;
+        }
+        case CREATE_MASTER_CARD:{
+            processCreateMasterCardResponse(_resp);
+            break;
+        }
+        default:
+            break;
     }
 }
-void MainWindow::processCreateMasterCardResponse(){
+
+void MainWindow::processAuthResponse(string _resp){
+//    if(usr.uid==0 && attendResponse!=AUTH){
+//        cout<<"Authentication failed!!"<<endl;
+//    }
+//    else{
+//        if(usr.isAdmin){
+//            gotoAdmin();
+//        }
+//        else{
+//            current_user.clear();
+//            current_user=usr;
+            gotoGeneral();
+//        }
+//    }
+}
+void MainWindow::processCreateMasterCardResponse(string _resp){
 
 }
-void MainWindow::processCreateNewCardResponse(){
+void MainWindow::processCreateNewCardResponse(string _resp){
 
 }
-void MainWindow::processDeleteCardResponse(bool isSuccess){
+void MainWindow::processDeleteCardResponse(string _resp){
+    bool isSuccess = true;
     if(isSuccess && attendResponse==DELETE_CARD){
         attendResponse=-1;
         gotoWelcome();
     }
 
 }
-void MainWindow::processAllowTempResponse(bool isSuccess){
+void MainWindow::processAllowTempResponse(string _resp){
+    bool isSuccess = true;
     if(isSuccess && attendResponse==ALLOW_TEMP){
         attendResponse=-1;
         gotoWelcome();
     }
+}
+void MainWindow::processMessingRequest(string _resp){
+    cout<<"This is Messing request"<<endl;
+}
+void MainWindow::processRebateRequest(string _resp){
+    cout<<"This is rebate request"<<endl;
 }

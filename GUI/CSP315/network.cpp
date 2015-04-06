@@ -3,7 +3,7 @@
 
 string Network::url = "";
 WorkerThread* Network::thread=NULL;
-Response Network::response();
+Response Network::response;
 void setResponse(string resp,uint16_t type){
     Network::response.lock();
     Network::response.set(resp,type);

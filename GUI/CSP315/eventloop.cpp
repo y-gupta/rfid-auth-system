@@ -29,15 +29,28 @@ void MainWindow::doEvent(){
         idle_time=0;
     }
 
+    Network::response.lock();
+    if(Network::response.isset){
+        string _resp = Network::response.resp;
+        uint16_t _type = Network::response.type;
+        processResponse(_resp,_type);
+    }
+    Network::response.unlock();
+
+
     if(read_card!=-1 || ui->stackedWidget->currentIndex()==0){
         int64_t rfid = RFID::readCard();
         if(rfid!=-1){
             doReadCard(rfid);
             if(ui->stackedWidget->currentIndex()==0){
+                if(attendRequest!=-1){
                 AuthRequest r;
                 r.init(AUTH,device_id,current_user.uid);
                 r.rfid = rfid;
                 Network::sendRequest(&r);
+                attendRequest=-1;
+                attendResponse=AUTH;
+                }
             }
         }
     }
