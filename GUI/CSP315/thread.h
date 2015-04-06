@@ -32,7 +32,7 @@ public:
     cost=_cost;
   }
   virtual int process(){//Non zero return value terminates thread!
-    delete this;//awww?
+    delete this;
     return 1;
   }
 };

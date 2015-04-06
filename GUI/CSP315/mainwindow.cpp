@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setMouseTracking(true);
     ui->setupUi(this);
     Network::init("192.168.1.102/");
-    Network::w = this;
+
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
     initEventLoop();

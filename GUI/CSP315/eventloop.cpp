@@ -37,7 +37,7 @@ void MainWindow::doEvent(){
                 AuthRequest r;
                 r.init(AUTH,device_id,current_user.uid);
                 r.rfid = rfid;
-                Network::sendRequest(r);
+                Network::sendRequest(&r);
             }
         }
     }

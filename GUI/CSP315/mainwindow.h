@@ -43,16 +43,15 @@ public:
 
     //Extra information
     User current_user;
-
+    uint64_t device_id;
     //Event loop helper functions
     QTimer *timer;
     int sec_count;
     void initEventLoop();    
     int read_card;
-    void doReadCard();
-    int attendRequest;
+    void doReadCard(int64_t);
+    bool attendRequest;
     int attendResponse;
-
 
     //Welcome helper functions
     vector< pair<QTime,QTime> > timing;
