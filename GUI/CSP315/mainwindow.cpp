@@ -8,7 +8,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     setMouseTracking(true);
     ui->setupUi(this);
-    time_out=3;
     Network::init("192.168.1.102/");
     Network::w = this;
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
@@ -56,6 +55,10 @@ void MainWindow::timeout(){
 }
 void MainWindow::reset(){
     idle_time=0;
+    if(!attendRequest)
+        read_card=-1;
+    //Your request has expired
+
 }
 void MainWindow::processAuthResponse(User usr){
     if(usr.isAdmin){
@@ -68,4 +71,17 @@ void MainWindow::processAuthResponse(User usr){
         current_user=usr;
         gotoGeneral();
     }
+}
+void MainWindow::processCreateMasterCardResponse(){
+
+}
+void MainWindow::processCreateNewCardResponse(){
+
+}
+void MainWindow::processDeleteCardResponse(){
+
+}
+void MainWindow::processAllowTempResponse(bool isSuccess){
+    if(isSuccess)
+        gotoWelcome();
 }

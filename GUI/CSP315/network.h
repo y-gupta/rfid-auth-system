@@ -4,10 +4,12 @@
 #include "request.h"
 #include "mainwindow.h"
 #include "user.h"
+#include "response.h"
 #include <string>
 #include <stdint.h>
 #include <curl/curl.h>
 using namespace std;
+
 class NetworkJob : public ThreadedJob{
 public:
     string url;
@@ -17,7 +19,7 @@ public:
 };
 class Network{
 public:
-    static MainWindow *w;
+    static Response response;
     static string url;
     static WorkerThread *thread;
     Network();

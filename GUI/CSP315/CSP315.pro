@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     user.cpp \
     utility.cpp \
     network.cpp \
-    request.cpp
+    request.cpp \
+    response.cpp
 
 HEADERS  += mainwindow.h \
     ../printer/printer.h \
@@ -33,7 +34,8 @@ HEADERS  += mainwindow.h \
     user.h \
     thread.h \
     network.h \
-    request.h
+    request.h \
+    response.h
 
 FORMS    += mainwindow.ui
 

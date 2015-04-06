@@ -6,6 +6,7 @@
 #include "../rfid/rfid.h"
 #include "user.h"
 #include "utility.cpp"
+#include "request.h"
 
 #include <vector>
 #include <QTimer>
@@ -40,15 +41,16 @@ public:
     int idle_time;
     void reset();
 
-
-
     //Extra information
     User current_user;
 
     //Event loop helper functions
     QTimer *timer;
     int sec_count;
-    void initEventLoop();
+    void initEventLoop();    
+    int read_card;
+    void doReadCard();
+    bool attendRequest;
 
 
     //Welcome helper functions
@@ -59,11 +61,9 @@ public:
     void setUpMealTimeUi();
     void setUpNoMealTimeUi();
 
-
     //General helper functions
     void gotoGeneral();
     void checkRebateUi();
-
 
     //Admin helper function
     void gotoAdmin();
@@ -76,7 +76,8 @@ public:
     void processCreateMasterCardResponse();
     void processCreateNewCardResponse();
     void processDeleteCardResponse();
-    void processAllowTempResponse();
+    void processAllowTempResponse(bool isSuccess);
+
 
 public slots:
     //Event loop helper slots

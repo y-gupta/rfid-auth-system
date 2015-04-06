@@ -3,22 +3,11 @@
 
 string Network::url = "";
 WorkerThread* Network::thread=NULL;
-MainWindow* Network::w = NULL;
-
-void processResponse(string resp,uint16_t type){
-    //parse the json string
-    //{key1:value1,key2:value2}
-
-    switch(type){
-    case AUTH:
-        User usr;
-        if(true){   // TODO: use the success in the parsed string
-            usr.init(1,"Shubham Rawat","2013CS10258",resp);
-        }
-        Network::w->processAuthResponse(usr);
-        break;
-    }
-
+Response Network::response();
+void setResponse(string resp,uint16_t type){
+    Network::response.lock();
+    Network::response.set(resp,type);
+    Network::response.unlock();
 }
 size_t NetworkJob::WriteCallback(void *contents, size_t size, size_t nmemb, void *userp)
 {
@@ -40,12 +29,15 @@ int NetworkJob::process(){
 
      if(res != CURLE_OK){
          fprintf(stderr, "curl_easy_perform() failed: %s\n",curl_easy_strerror(res));
+         delete this;
          return 1;
      }
          curl_easy_cleanup(curl);
-         processResponse(readBuffer,type);
+         setResponse(readBuffer,type);
+         delete this;
          return 0;
     }
+    delete this;
     return 2;
 }
 Network::Network(){
