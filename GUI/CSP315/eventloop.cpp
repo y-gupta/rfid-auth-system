@@ -39,16 +39,20 @@ void MainWindow::doEvent(){
     }
     Network::response.unlock();
 
-
+   // cout<<ui->stackedWidget->currentIndex()<<endl;
     if(read_card!=-1 || ui->stackedWidget->currentIndex()==0){
         int64_t rfid = RFID::readCard();
+       // cout<<rfid<<endl;
         if(rfid!=-1){
             doReadCard(rfid);
+
             if(ui->stackedWidget->currentIndex()==0){
+                cout<<attendRequest<<endl;
                 if(attendRequest==-1){
                 AuthRequest r;
                 r.init(device_id,rfid);
                 r.rfid = rfid;
+                cout<<"sending"<<endl;
                 Network::sendRequest(&r);
                 attendRequest=-1;
                 attendResponse=AUTH;
