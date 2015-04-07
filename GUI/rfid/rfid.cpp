@@ -1,16 +1,24 @@
 #include "rfid.h"
+#include <cstdio>
+#include <cstdlib>
 
 void RFID::init(){
 	cout<<"Creating pipe ";
     mkfifo("../rfid/rfid_pipe",0666);
-//	if(success !=0){
+    srand(NULL);
+
+    //	if(success !=0){
 //		cout<<"Error in creating pipe!"<<endl;
 //		exit(1);
 //	}
 	cout<<"pipe created ..."<<endl;
 }
 int64_t RFID::readCard(){
-    return 1;
+    if(rand()%10 < 6)
+        return -1;
+    else
+        return 1;
+
 //    char buff[20];
 
 //	int fd = open("../rfid/rfid_pipe",O_WRONLY);

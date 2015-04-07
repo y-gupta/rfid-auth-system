@@ -19,21 +19,26 @@ void MainWindow::on_pushButton_allow_clicked(){
 void MainWindow::on_pushButton_delete_clicked(){
     reset();
     ui->stackedWidget_admin->setCurrentIndex(TEXT);
+    ui->label_notification->setText("Place your card!");
     read_card = DELETE_CARD;
-    cout<<"Read-card:"<<read_card<<endl;
     attendRequest=-1;
+    cout<<"Read-card:"<<read_card<<endl;
 }
 void MainWindow::on_pushButton_reg_clicked(){
     reset();
     ui->stackedWidget_admin->setCurrentIndex(TEXT);
+    ui->label_notification->setText("Place your card!");
     read_card = CREATE_NEW_CARD;
     attendRequest=-1;
+    cout<<"Read-card:"<<read_card<<endl;
 }
 void MainWindow::on_pushButton_master_clicked(){
     reset();
     ui->stackedWidget_admin->setCurrentIndex(TEXT);
+    ui->label_notification->setText("Place your card!");
     read_card = CREATE_MASTER_CARD;
     attendRequest=-1;
+    cout<<"Read-card:"<<read_card<<endl;
 }
 void MainWindow::on_toolButton_inc_clicked(){
     reset();
@@ -46,9 +51,7 @@ void MainWindow::on_toolButton_dec_clicked(){
     ui->spinBox_days->stepDown();
 }
 void MainWindow::on_pushButton_confirm_2_clicked(){
-    cout<<"Read-card confirmed:"<<read_card<<endl;
     attendRequest=read_card;
     cout<<"Request confirmed:" <<attendRequest<<endl;
     reset();
-    gotoWelcome();
 }

@@ -5,6 +5,8 @@
 
 using namespace std;
 
+
+//Request and Response
 #define AUTH 0
 #define CREATE_MASTER_CARD 1
 #define CREATE_NEW_CARD 2
@@ -12,6 +14,7 @@ using namespace std;
 #define ALLOW_TEMP 4
 #define MESSING 5
 #define REBATE 6
+#define STAFF_LOGIN_REQ 7
 
 class Request
 {
@@ -59,4 +62,11 @@ public:
     void init(uint64_t device,uint64_t _uid,uint32_t nmeals,string _start="",string _end="" );
     virtual string toString();
 };
+class StaffLoginRequest : public Request{
+public:
+    string password;
+    void init(uint64_t _device_id,string _password);
+    virtual string toString();
+};
+
 #endif // REQUEST_H

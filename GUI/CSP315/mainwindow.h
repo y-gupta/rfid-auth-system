@@ -13,11 +13,13 @@
 
 using namespace std;
 
+//All the window screen
 #define WELCOME 0
 #define GENERAL 1
 #define ADMIN 2
 #define STAFF_LOGIN 3
 
+//Stacked widgets
 #define TEXT 0
 #define OPTION 1
 
@@ -45,6 +47,8 @@ public:
     //Extra information
     User current_user;
     uint64_t device_id;
+    string hostel_name;
+
     //Event loop helper functions
     QTimer *timer;
     int sec_count;
@@ -81,6 +85,7 @@ public:
     void processAllowTempResponse(string _resp);
     void processMessingRequest(string _resp);
     void processRebateRequest(string _resp);
+    void processStaffLoginResponse(string _resp);
 
 
 
