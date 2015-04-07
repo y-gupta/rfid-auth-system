@@ -67,7 +67,7 @@ void MainWindow::doReadCard(int64_t rfid){
         ui->pushButton_confirm_2->setEnabled(true);
         ui->toolButton_inc->setEnabled(false);
         ui->toolButton_dec->setEnabled(false);
-        cout<<"Request:"<<attendRequest<<endl;
+        cout<<"Attend-request:"<<attendRequest<<endl;
         if(attendRequest==DELETE_CARD){
             cout<<"Sending the delete card request"<<endl;
             DeleteCardRequest r;

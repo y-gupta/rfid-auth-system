@@ -134,6 +134,9 @@ void MainWindow::processRebateRequest(string _resp){
     cout<<"This is rebate request"<<endl;
 }
 void MainWindow::processStaffLoginResponse(string _resp){
-    if(attendResponse==STAFF_LOGIN_REQ)
-    cout<<"This is Staff Login request"<<endl;
+    if(attendResponse==STAFF_LOGIN_REQ){
+        cout<<"This is Staff Login request"<<endl;
+        attendResponse=-1;
+        gotoAdmin();
+    }
 }

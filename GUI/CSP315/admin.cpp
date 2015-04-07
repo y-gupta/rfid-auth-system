@@ -4,8 +4,11 @@
 
 void MainWindow::gotoAdmin(){
     ui->stackedWidget->setCurrentIndex(ADMIN);
-    ui->stackedWidget_admin->setAcceptDrops(TEXT);
+    ui->stackedWidget_admin->setCurrentIndex(TEXT);
     ui->label_notification->setText("Select any one!");
+    cout<<"Read-card:"<<read_card<<endl;
+    cout<<"Attend-Response"<<attendResponse<<endl;
+    cout<<"Admin page is called"<<endl;
 }
 void MainWindow::on_pushButton_allow_clicked(){
     reset();
