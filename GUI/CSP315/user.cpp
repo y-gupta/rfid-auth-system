@@ -8,6 +8,7 @@ void User::init(uint64_t _id,string _u,string _e,string _h,bool _isAdmin){
     entry_no = _e;
     hostel_name = _h;
     uid = _id;
+    isAdmin = _isAdmin;
 }
 void User::clear(){
     init();

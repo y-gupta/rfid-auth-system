@@ -1,14 +1,15 @@
 #include "mainwindow.h"
+#include "rapidjson/document.h"
 #include "ui_mainwindow.h"
 #include "network.h"
-
+using namespace rapidjson;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     setMouseTracking(true);
     ui->setupUi(this);
-    Network::init("localhost/csp.php");
+    Network::init("localhost/");
 
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
@@ -91,20 +92,47 @@ void MainWindow::processResponse(string _resp,uint16_t _type){
 }
 
 void MainWindow::processAuthResponse(string _resp){
-    current_user.hostel_name=_resp;
-//    if(usr.uid==0 && attendResponse!=AUTH){
-//        cout<<"Authentication failed!!"<<endl;
-//    }
-//    else{
-//        if(usr.isAdmin){
-//            gotoAdmin();
-//        }
-//        else{
-//            current_user.clear();
-//            current_user=usr;
-            //gotoGeneral();
-//        }
-//    }
+
+    Document arr ;arr.Parse(_resp.c_str());
+    Value& v = arr["success"];
+    assert(v.IsBool() && "invalid auth response");
+    User user;
+
+    if(v.GetBool()){
+
+        v = arr["uid"];
+        assert(v.IsInt() && "invalide uid in auth response");
+        user.uid=v.GetInt();
+        v = arr["master"];
+        assert(v.IsBool() && "invalide master in auth response");
+        user.isAdmin = v.GetBool();
+
+        v = arr["entry"];
+        assert(v.IsString() &&"invalid entry number in response");
+        user.entry_no = v.GetString();
+
+        v = arr["name"];
+        assert(v.IsString() &&"invalid name in response");
+        user.user_name = v.GetString();
+   }
+
+    if(user.uid==0 ||attendResponse!=AUTH){
+        cout<<"Authentication failed!!"<<endl;
+    }
+    else{
+
+        if(user.isAdmin){
+            gotoAdmin();
+        }
+        else{
+
+            current_user.clear();
+            current_user=user;
+            current_user.hostel_name="Zanskar";
+
+            gotoGeneral();
+        }
+    }
 }
 void MainWindow::processCreateMasterCardResponse(string _resp){
 
