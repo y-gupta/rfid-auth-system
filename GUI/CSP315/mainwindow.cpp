@@ -83,6 +83,9 @@ void MainWindow::processResponse(string _resp,uint16_t _type){
             processAllowTempResponse(_resp);
             break;
         }
+        case STAFF_LOGIN_REQ:{
+            processStaffLoginResponse(_resp);
+        }
         default:
             break;
     }
@@ -157,4 +160,8 @@ void MainWindow::processMessingRequest(string _resp){
 }
 void MainWindow::processRebateRequest(string _resp){
     cout<<"This is rebate request"<<endl;
+}
+void MainWindow::processStaffLoginResponse(string _resp){
+    if(attendResponse==STAFF_LOGIN_REQ)
+    cout<<"This is Staff Login request"<<endl;
 }

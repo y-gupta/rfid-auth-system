@@ -11,6 +11,7 @@ void MainWindow::initEventLoop(){
     time_out=5;
     idle_time=3;
     read_card=-1;
+    attendRequest=-1;
     //Initializing the rfid
     RFID::init();
 }

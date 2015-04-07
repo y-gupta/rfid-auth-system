@@ -76,3 +76,11 @@ string RebateRequest::toString(){
             "&uid="+to_string(uid)+"&n_meals="+to_string(n_meal)+"&start="+start
             +"&end="+end;
 }
+void StaffLoginRequest::init(uint64_t _device_id, string _password){
+    type = STAFF_LOGIN_REQ;
+    device_id = _device_id;
+    password = _password;
+}
+string StaffLoginRequest::toString(){
+    return "?type="+to_string(type)+"&password="+password;
+}

@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "request.h"
+#include "network.h"
 
 
 void MainWindow::gotoStaffLogin(){
@@ -54,7 +56,10 @@ reset();
 }
 void MainWindow::on_pushButton_enter_clicked(){
 reset();
-    //TODO-login stuff
-
+StaffLoginRequest r;
+r.init(device_id,ui->lineEdit_password->text().toStdString());
+Network::sendRequest(&r);
+attendRequest=-1;
+attendResponse=STAFF_LOGIN_REQ;
 }
 
