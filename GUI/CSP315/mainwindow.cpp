@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     setMouseTracking(true);
     ui->setupUi(this);
-    Network::init("192.168.1.102/");
+    Network::init("localhost/csp.php");
 
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
@@ -78,12 +78,17 @@ void MainWindow::processResponse(string _resp,uint16_t _type){
             processCreateMasterCardResponse(_resp);
             break;
         }
+        case ALLOW_TEMP:{
+            processAllowTempResponse(_resp);
+            break;
+        }
         default:
             break;
     }
 }
 
 void MainWindow::processAuthResponse(string _resp){
+    current_user.hostel_name=_resp;
 //    if(usr.uid==0 && attendResponse!=AUTH){
 //        cout<<"Authentication failed!!"<<endl;
 //    }
@@ -94,7 +99,7 @@ void MainWindow::processAuthResponse(string _resp){
 //        else{
 //            current_user.clear();
 //            current_user=usr;
-            gotoGeneral();
+            //gotoGeneral();
 //        }
 //    }
 }

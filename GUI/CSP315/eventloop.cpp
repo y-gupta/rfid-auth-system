@@ -9,7 +9,7 @@ void MainWindow::initEventLoop(){
     timer->start(1000);
     sec_count = 0;
     time_out=5;
-    idle_time=0;
+    idle_time=3;
     read_card=-1;
     //Initializing the rfid
     RFID::init();
@@ -33,7 +33,9 @@ void MainWindow::doEvent(){
     if(Network::response.isset){
         string _resp = Network::response.resp;
         uint16_t _type = Network::response.type;
+        cout<<"Type is:"<<_type<<endl;
         processResponse(_resp,_type);
+        Network::response.unset();
     }
     Network::response.unlock();
 
@@ -43,9 +45,9 @@ void MainWindow::doEvent(){
         if(rfid!=-1){
             doReadCard(rfid);
             if(ui->stackedWidget->currentIndex()==0){
-                if(attendRequest!=-1){
+                if(attendRequest==-1){
                 AuthRequest r;
-                r.init(AUTH,device_id,current_user.uid);
+                r.init(device_id,rfid);
                 r.rfid = rfid;
                 Network::sendRequest(&r);
                 attendRequest=-1;
@@ -62,9 +64,13 @@ void MainWindow::doReadCard(int64_t rfid){
     case DELETE_CARD:{
         ui->stackedWidget_admin->setCurrentIndex(OPTION);
         ui->pushButton_confirm_2->setEnabled(true);
+        ui->toolButton_inc->setEnabled(false);
+        ui->toolButton_dec->setEnabled(false);
+        cout<<"Request:"<<attendRequest<<endl;
         if(attendRequest==DELETE_CARD){
+            cout<<"Sending the delete card request"<<endl;
             DeleteCardRequest r;
-            r.init(DELETE_CARD,device_id,current_user.uid);
+            r.init(device_id,current_user.uid,rfid);
             r.rfid = rfid;
             Network::sendRequest(&r);
             read_card=-1;
@@ -80,7 +86,7 @@ void MainWindow::doReadCard(int64_t rfid){
         ui->pushButton_confirm_2->setEnabled(true);
         if(attendRequest==CREATE_NEW_CARD){
             CreateCardRequest r;
-            r.init(CREATE_NEW_CARD,device_id,current_user.uid);
+            r.init(device_id,current_user.uid,rfid,false);
             r.rfid = rfid;
             r.isMasterCard = false;
             Network::sendRequest(&r);
@@ -95,7 +101,7 @@ void MainWindow::doReadCard(int64_t rfid){
         ui->pushButton_confirm_2->setEnabled(true);
         if(attendRequest==CREATE_MASTER_CARD){
             CreateCardRequest r;
-            r.init(CREATE_MASTER_CARD,device_id,current_user.uid);
+            r.init(device_id,current_user.uid,rfid,true);
             r.rfid = rfid;
             r.isMasterCard = true;
             Network::sendRequest(&r);

@@ -58,7 +58,7 @@ void Network::sendRequest(Request *r){
     NetworkJob *job = new NetworkJob;
     job->url = qurl;
     job->type = r->type;
-    cout<<"Pusing the job"<<endl;
+    cout<<"Sending request:Type = "<<r->type<<endl;
     Network::thread->pushJob(job);
 }
 

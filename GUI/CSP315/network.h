@@ -2,7 +2,6 @@
 #define NETWORKTHREAD_H
 #include "thread.h"
 #include "request.h"
-#include "mainwindow.h"
 #include "user.h"
 #include "response.h"
 #include <string>

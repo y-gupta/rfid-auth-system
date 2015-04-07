@@ -6,7 +6,6 @@
 #include "../rfid/rfid.h"
 #include "user.h"
 #include "utility.cpp"
-#include "request.h"
 
 #include <vector>
 #include <QTimer>
@@ -52,7 +51,7 @@ public:
     void initEventLoop();    
     int read_card;
     void doReadCard(int64_t);
-    bool attendRequest;
+    int attendRequest;
     int attendResponse;
 
     //Welcome helper functions
