@@ -7,9 +7,10 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    setMyStyleSheet();
     setMouseTracking(true);
     ui->setupUi(this);
-    Network::init("localhost/");
+    Network::init("10.42.0.77/");
 
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
@@ -47,6 +48,14 @@ MainWindow::~MainWindow()
 {
     delete ui;
     removeEventFilter(this);
+}
+void MainWindow::setMyStyleSheet(){
+    ifstream in;
+    in.open("../style.css");
+    string Mystyle;
+    getline(in,Mystyle,((char)-1));
+    in.close();
+    qApp->setStyleSheet(Mystyle.c_str());
 }
 void MainWindow::on_toolButton_home_clicked(){reset();
     gotoWelcome();
@@ -92,7 +101,8 @@ void MainWindow::processResponse(string _resp,uint16_t _type){
 }
 
 void MainWindow::processAuthResponse(string _resp){
-
+    cout<<"Processing auth"<<endl;
+    cout<<"Resp:"<<_resp<<endl;
     Document arr ;arr.Parse(_resp.c_str());
     Value& v = arr["success"];
     assert(v.IsBool() && "invalid auth response");
@@ -110,7 +120,6 @@ void MainWindow::processAuthResponse(string _resp){
         v = arr["entry"];
         assert(v.IsString() &&"invalid entry number in response");
         user.entry_no = v.GetString();
-
         v = arr["name"];
         assert(v.IsString() &&"invalid name in response");
         user.user_name = v.GetString();

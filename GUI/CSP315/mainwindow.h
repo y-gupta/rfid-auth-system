@@ -8,6 +8,7 @@
 #include "utility.cpp"
 
 #include <vector>
+#include <fstream>
 #include <QTimer>
 #include <cstring>
 
@@ -39,6 +40,7 @@ public:
 
     ~MainWindow();
 
+    void setMyStyleSheet();
     //Timeout helper function
     int time_out;
     int idle_time;
