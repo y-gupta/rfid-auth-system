@@ -1,0 +1,15 @@
+{
+	"username":
+	"attendance":[{"UserId": ,"Time": ,"Hostel": ,"Success": }]
+	"UserData": [{"UserName": ,"UserId": ,"RF-ID": ,"Hostel": ,"EntryNo": }]
+	"ExtraMessing": [{"TransactionID": ,"UserId": ,"Amount": ,"Time": }]
+	"MessRebate": [{"RebateId": ,"UserId": ,"TimeSpan": ,"Time": }]
+	"Hostels": [ ]
+	"Graph1": [{"period": ,"expected": ,"actual": }]
+	"Graph2": [{"period": ,"expected": ,"actual": }]
+	"Graph3": [{"period": ,"expected": ,"actual": }]
+	"Graph4": [{"period": ,"expected": ,"actual": }]
+	"Graph5": [{"period": ,"expected": ,"actual": }]
+	"Predictions": [{"Hostel": ,"Graph":[{"period": ,"expected": }]}]
+	"Cards": [{"User":, "RF-ID": ,"Hostel":}]
+}
