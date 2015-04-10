@@ -22,8 +22,15 @@ module.exports = function(req, res, next) {
         console.log("User RFID detected");
         if(user.hostel === req.props.hostel)
           next();
-        else
-          res.forbidden('User of '+user.hostel+' not allowed in '+req.props.hostel);
+        else{
+            Roll.create({user:req.props.user.id,device:req.props.device,hostel:req.props.hostel,success:false},
+            function(err,roll){
+              if(err == null)
+                res.forbidden('User of '+user.hostel+' not allowed in '+req.props.hostel);
+              else
+                res.serverError("Failed to record login/roll. "+err)
+            });
+        }
       }else{
         Master.findOne({rfid:req.query.rfid}).populate('device').exec(function(err,master){
           if(master!=null){

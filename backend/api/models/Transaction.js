@@ -13,11 +13,11 @@ module.exports = {
       index:true
     },
     time:{
-      type:'number',
-      defaultsTo:Math.floor(Date.now()/1000)
+      type:'integer',
+       defaultsTo: function(){Math.floor(Date.now()/1000)}
     },
     amount:{
-      type:'number',
+      type:'integer',
       defaultsTo:0
     },
     device:{

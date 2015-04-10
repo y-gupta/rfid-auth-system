@@ -23,7 +23,7 @@ module.exports = {
     success: 'bool',
     time:{
       type: 'integer',
-      defaultsTo: Math.floor(Date.now()/1000)
+      defaultsTo: function(){Math.floor(Date.now()/1000)}
     }
   }
 };
