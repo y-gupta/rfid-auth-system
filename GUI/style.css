@@ -1,0 +1,40 @@
+*{
+	background-color:#FAFAFA 
+} 
+QLineEdit{
+	background-color:#FFFFFF
+} 
+QPushButton:focus {
+	outline: none;
+} 
+QPushButton {
+	position: relative;
+	padding: 10px 40px;
+	margin: 0px 10px 10px 0px;
+	float: left;
+	border-radius: 10px;
+	font-family: 'Pacifico', cursive;
+	font-size: 35px;
+	color: #FFF;
+	text-decoration: none;
+	background-color: #3498DB;
+	border-bottom: 5px solid #2980B9;
+	} 
+QPushButton:pressed {
+	border-bottom: 1px solid;
+	}
+QToolButton {
+	position: relative;
+	padding: 10px 40px;
+	margin: 0px 10px 10px 0px;
+	float: left;
+	border-radius: 10px;
+	font-family: 'Pacifico', cursive;
+	font-size: 35px;color: #FFF;
+	text-decoration: none;
+	background-color: #3498DB;
+	border-bottom: 5px solid #2980B9;
+} 
+QToolButton:pressed {
+	border-bottom: 1px solid;
+}
