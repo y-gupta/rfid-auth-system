@@ -21,51 +21,53 @@ class Request
 public:
     Request();
     uint16_t type;
-    uint64_t uid,device_id;
+    uint64_t rfid;
+    string mac;
     void init(uint16_t _type);
     virtual string toString();
 };
 class AuthRequest : public Request{
 public:
-    uint64_t rfid;
-    void init(uint64_t _device_id, uint64_t _rfid);
+
+    void init(string _mac, uint64_t _rfid);
     virtual string toString();
 };
 class CreateCardRequest : public Request{
 public:
-    uint64_t rfid;
+    string pin;
     bool isMasterCard;
-    void init(uint64_t _device_id, uint64_t _uid,uint64_t rfid,bool master=false);
+    void init(string _mac,string _pin,uint64_t rfid,bool master=false);
     virtual string toString();
 };
 class DeleteCardRequest : public Request{
 public:
-    uint64_t rfid;
-    void init(uint64_t _device_id,uint64_t _uid,uint64_t _rfid);
+    string pin;
+    void init(string _mac,string _pin,uint64_t _rfid);
     virtual string toString();
 };
 class AllowTempRequest : public Request{
 public:
-    void init(uint64_t _device,uint64_t _uid);
+    string pin;
+    void init(string _mac,string _pin);
     virtual string toString();
 };
 class MessingRequest : public Request{
 public:
     uint32_t amount;
-    void init(uint64_t device,uint64_t uid,uint32_t amount);
+    void init(string _mac,uint64_t _rfid,uint32_t _amount);
     virtual string toString();
 };
 class RebateRequest : public Request{
 public:
     string start,end;
     int n_meal;
-    void init(uint64_t device,uint64_t _uid,uint32_t nmeals,string _start="",string _end="" );
+    void init(string _mac,uint64_t _rfid,uint32_t _n_meal,string _start,string _end);
     virtual string toString();
 };
 class StaffLoginRequest : public Request{
 public:
-    string password;
-    void init(uint64_t _device_id,string _password);
+    string pin;
+    void init(string _mac,string _pin);
     virtual string toString();
 };
 
