@@ -8,79 +8,81 @@ void Request::init(uint16_t _type){
 }
 
 string Request::toString(){
-    return "?type="+to_string(type)+"&device="+to_string(device_id)+"&uid="+to_string(uid);
+    return "";
 }
 
-void AuthRequest::init(uint64_t _device_id, uint64_t _rfid){
+void AuthRequest::init(string _mac, uint64_t _rfid){
     type = AUTH;
-    device_id = _device_id;
+    mac = _mac;
     rfid = _rfid;
 }
 string AuthRequest::toString(){
-    return "?type="+to_string(type)+"&device="+to_string(device_id)+"&rfid="+to_string(rfid);
+    return "/user/login/?&mac="+mac+"&rfid="+to_string(rfid);
 }
 
-void CreateCardRequest::init(uint64_t _device_id, uint64_t _uid,uint64_t _rfid,bool master){
+void CreateCardRequest::init(string _mac,string _pin,uint64_t _rfid,bool master){
     if(master)type = CREATE_MASTER_CARD;
     else type = CREATE_NEW_CARD;
-    device_id = _device_id;
-    uid = _uid;
+    mac = _mac;
     rfid = _rfid;
+    pin = _pin;
     isMasterCard = master;
 }
 string CreateCardRequest::toString(){
-    return "?type="+to_string(type)+"&device="+to_string(device_id)+
-            "&uid="+to_string(uid)+"&rfid="+to_string(rfid)+"&master="+to_string(isMasterCard);
+    string res="/device/add/?&mac="+mac
+            +"&rfid="+to_string(rfid)+"&pin="+pin+"&master=";
+    if(isMasterCard)res+="true";
+    else res+="false";
+    return res;
 }
-void DeleteCardRequest::init(uint64_t _device_id,uint64_t _uid,uint64_t _rfid){
+void DeleteCardRequest::init(string _mac,string _pin,uint64_t _rfid){
     type = DELETE_CARD;
-    device_id = _device_id;
-    uid = _uid;
+    mac = _mac;
+    pin = _pin;
     rfid = _rfid;
 }
 string DeleteCardRequest::toString(){
-     return "?type="+to_string(type)+"&device="+to_string(device_id)+
-             "&uid="+to_string(uid)+"&rfid="+to_string(rfid);
+     return "/device/delete/?mac="+mac+"&rfid="+to_string(rfid)
+             +"&pin="+pin;
 }
-void AllowTempRequest::init(uint64_t _device,uint64_t _uid){
+void AllowTempRequest::init(string _mac,string _pin){
     type = ALLOW_TEMP;
-    device_id = _device;
-    uid = _uid;
+    mac = _mac;
+    pin=_pin;
 }
 string AllowTempRequest::toString(){
-    return "?type="+to_string(type)+"&device="+to_string(device_id)+
-            "&uid="+to_string(uid);
+    return "/device/allow/?mac="+mac+"&rfid="+to_string(rfid)
+            +"&pin="+pin;
 }
-void MessingRequest::init(uint64_t _device,uint64_t _uid,uint32_t _amount){
+void MessingRequest::init(string _mac,uint64_t _rfid,uint32_t _amount){
     type = MESSING;
-    device_id = _device;
-    uid = _uid;
+    mac = _mac;
+    rfid = _rfid;
     amount = _amount;
 
 }
 string MessingRequest::toString(){
-    return "?type="+to_string(type)+"&device="+to_string(device_id)+
-            "&uid="+to_string(uid)+"&amount="+to_string(amount);
+    return "/transact/allow/?mac="+mac+"&rfid="+to_string(rfid)
+            +"&amount="+to_string(amount);
 }
 
-void RebateRequest::init(uint64_t device,uint64_t _uid,uint32_t _n_meal,string _start,string _end){
+void RebateRequest::init(string _mac,uint64_t _rfid,uint32_t _n_meal,string _start,string _end){
     type = REBATE;
-    device_id = device;
-    uid= _uid;
+    mac = _mac;
+    rfid = _rfid;
     n_meal = _n_meal;
     start = _start;
     end=_end;
 }
 string RebateRequest::toString(){
-    return "?type="+to_string(type)+"&device="+to_string(device_id)+
-            "&uid="+to_string(uid)+"&n_meals="+to_string(n_meal)+"&start="+start
-            +"&end="+end;
+    return "/user/rebate/?mac="+mac+"&n_meals="+to_string(n_meal)
+            +"&start="+start+"&end="+end;
 }
-void StaffLoginRequest::init(uint64_t _device_id, string _password){
+void StaffLoginRequest::init(string _mac, string _pin){
     type = STAFF_LOGIN_REQ;
-    device_id = _device_id;
-    password = _password;
+    mac = _mac;
+    pin = _pin;
 }
 string StaffLoginRequest::toString(){
-    return "?type="+to_string(type)+"&password="+password;
+    return "/?mac="+mac+"&password="+pin;
 }

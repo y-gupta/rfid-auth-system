@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setMouseTracking(true);
     ui->setupUi(this);
     Network::init("10.42.0.77/");
-
+    device_mac = "00-00";
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
     initEventLoop();
@@ -110,22 +110,24 @@ void MainWindow::processAuthResponse(string _resp){
 
     if(v.GetBool()){
 
-        v = arr["uid"];
+        v = arr["rfid"];
         assert(v.IsInt() && "invalide uid in auth response");
-        user.uid=v.GetInt();
+        user.rfid=v.GetInt();
         v = arr["master"];
         assert(v.IsBool() && "invalide master in auth response");
         user.isAdmin = v.GetBool();
-
-        v = arr["entry"];
-        assert(v.IsString() &&"invalid entry number in response");
-        user.entry_no = v.GetString();
+        v = arr["hostel"];
+        user.hostel_name = v.GetString();
+//        v = arr["entry"];
+//        assert(v.IsString() &&"invalid entry number in response");
+//        user.entry_no = v.GetString();
+        user.entry_no = "2013CS007";
         v = arr["name"];
         assert(v.IsString() &&"invalid name in response");
         user.user_name = v.GetString();
    }
 
-    if(user.uid==0 ||attendResponse!=AUTH){
+    if(user.rfid==0 ||attendResponse!=AUTH){
         cout<<"Authentication failed!!"<<endl;
     }
     else{
@@ -137,8 +139,6 @@ void MainWindow::processAuthResponse(string _resp){
 
             current_user.clear();
             current_user=user;
-            current_user.hostel_name="Zanskar";
-
             gotoGeneral();
         }
     }

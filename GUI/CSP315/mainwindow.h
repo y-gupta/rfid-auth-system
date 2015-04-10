@@ -48,7 +48,7 @@ public:
 
     //Extra information
     User current_user;
-    uint64_t device_id;
+    string device_mac;
     string hostel_name;
 
     //Event loop helper functions
