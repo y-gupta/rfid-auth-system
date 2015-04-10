@@ -16,6 +16,9 @@ void MainWindow::initEventLoop(){
     RFID::init();
 }
 void MainWindow::doEvent(){
+    if(ui->stackedWidget->currentIndex()==INITIALIZE){
+        init();
+    }
     //Date and time event in the welcome screen
     sec_count = (sec_count+ 1)%60;
     idle_time++;

@@ -30,7 +30,7 @@
     <item row="1" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>3</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="welcome">
        <layout class="QGridLayout" name="gridLayout">
@@ -969,8 +969,11 @@ outline:none
           </property>
           <property name="font">
            <font>
-            <pointsize>26</pointsize>
+            <pointsize>-1</pointsize>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-size:26px;</string>
           </property>
           <property name="text">
            <string>Master Card</string>
@@ -993,8 +996,11 @@ outline:none
           </property>
           <property name="font">
            <font>
-            <pointsize>26</pointsize>
+            <pointsize>-1</pointsize>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-size:26px;</string>
           </property>
           <property name="text">
            <string>Register New Card</string>
@@ -1017,8 +1023,12 @@ outline:none
           </property>
           <property name="font">
            <font>
-            <pointsize>26</pointsize>
+            <pointsize>-1</pointsize>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-size:26px;
+</string>
           </property>
           <property name="text">
            <string>Delete Card</string>
@@ -1041,8 +1051,11 @@ outline:none
           </property>
           <property name="font">
            <font>
-            <pointsize>26</pointsize>
+            <pointsize>-1</pointsize>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-size:26px;</string>
           </property>
           <property name="text">
            <string>Allow Temporarily</string>
@@ -1549,6 +1562,25 @@ outline:none
           </property>
           <property name="text">
            <string>ENTER</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page">
+       <layout class="QGridLayout" name="gridLayout_20">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_14">
+          <property name="font">
+           <font>
+            <pointsize>50</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Device is initializing!!</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>

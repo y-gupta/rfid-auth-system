@@ -19,6 +19,7 @@ using namespace std;
 #define GENERAL 1
 #define ADMIN 2
 #define STAFF_LOGIN 3
+#define INITIALIZE 4
 
 //Stacked widgets
 #define TEXT 0
@@ -45,6 +46,9 @@ public:
     int time_out;
     int idle_time;
     void reset();
+
+    //Initialize
+    void init();
 
     //Extra information
     User current_user;

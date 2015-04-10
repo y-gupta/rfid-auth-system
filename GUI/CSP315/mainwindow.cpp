@@ -10,12 +10,18 @@ MainWindow::MainWindow(QWidget *parent) :
     setMyStyleSheet();
     setMouseTracking(true);
     ui->setupUi(this);
+
     Network::init("10.42.0.77/");
+
+    ui->stackedWidget->setCurrentIndex(INITIALIZE);
 
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
     initEventLoop();
-    gotoAdmin();
+
+    //TODO - Send the init request
+
+    //    gotoAdmin();
 
 //    initWelcomeUi();
 //    checkWelcomeUi();
@@ -49,6 +55,26 @@ MainWindow::~MainWindow()
     delete ui;
     removeEventFilter(this);
 }
+
+void MainWindow::init(){
+    //TODO - Init request
+    InitRequest r;
+    r.init(device_mac);
+    Network::sendRequest(&r);
+    Network::response.lock();
+    while(1){
+        if(Network::response.isset){
+            uint16_t _type = Network::response.type;
+            if(_type==INIT)
+                break;
+            Network::response.unset();
+        }
+    }
+    Network::response.unlock();
+    processInitResponse();
+    gotoWelcome();
+}
+
 void MainWindow::setMyStyleSheet(){
     ifstream in;
     in.open("../style.css");
