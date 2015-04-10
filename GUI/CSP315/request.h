@@ -15,6 +15,7 @@ using namespace std;
 #define MESSING 5
 #define REBATE 6
 #define STAFF_LOGIN_REQ 7
+#define INIT 8
 
 class Request
 {
@@ -68,6 +69,11 @@ class StaffLoginRequest : public Request{
 public:
     string pin;
     void init(string _mac,string _pin);
+    virtual string toString();
+};
+class InitRequest:public Request{
+public:
+    void init(string _mac);
     virtual string toString();
 };
 

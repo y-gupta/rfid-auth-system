@@ -92,6 +92,7 @@ public:
     void processMessingRequest(string _resp);
     void processRebateRequest(string _resp);
     void processStaffLoginResponse(string _resp);
+    void processInitResponse(string _resp);
 
 
 

@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     Network::init("10.42.0.77/");
 
     ui->stackedWidget->setCurrentIndex(INITIALIZE);
+    ui->toolButton_home->setHidden(true);
 
     device_mac = "00-00";
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
@@ -62,9 +63,11 @@ void MainWindow::init(){
     InitRequest r;
     r.init(device_mac);
     Network::sendRequest(&r);
+    string _resp;
     Network::response.lock();
     while(1){
         if(Network::response.isset){
+            _resp = Network::response.resp;
             uint16_t _type = Network::response.type;
             if(_type==INIT)
                 break;
@@ -72,8 +75,9 @@ void MainWindow::init(){
         }
     }
     Network::response.unlock();
-    processInitResponse();
+    processInitResponse(_resp);
     gotoWelcome();
+    ui->toolButton_home->setHidden(false);
 }
 
 void MainWindow::setMyStyleSheet(){
@@ -125,6 +129,9 @@ void MainWindow::processResponse(string _resp,uint16_t _type){
         default:
             break;
     }
+}
+void MainWindow::processInitResponse(string _resp){
+    //TODO
 }
 
 void MainWindow::processAuthResponse(string _resp){

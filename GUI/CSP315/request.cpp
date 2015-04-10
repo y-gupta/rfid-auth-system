@@ -86,3 +86,10 @@ void StaffLoginRequest::init(string _mac, string _pin){
 string StaffLoginRequest::toString(){
     return "/?mac="+mac+"&password="+pin;
 }
+void InitRequest::init(string _mac){
+    type = INIT;
+    mac =_mac;
+}
+string InitRequest::toString(){
+    return "/ /?mac="+mac;
+}
