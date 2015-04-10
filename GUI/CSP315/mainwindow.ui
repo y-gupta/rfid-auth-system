@@ -30,7 +30,7 @@
     <item row="1" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="welcome">
        <layout class="QGridLayout" name="gridLayout">
@@ -1577,7 +1577,7 @@ outline:none
            </font>
           </property>
           <property name="text">
-           <string>Device is initializing!!</string>
+           <string>Device in initializing</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>

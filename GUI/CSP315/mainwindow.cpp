@@ -11,9 +11,11 @@ MainWindow::MainWindow(QWidget *parent) :
     setMouseTracking(true);
     ui->setupUi(this);
 
-    Network::init("10.42.0.77/");
-
+    Network::init("192.168.1.104/");
+    ui->tabWidget_option ->setStyleSheet("QTabBar::tab { height: 100px; width: 660px; }");
+\
     ui->stackedWidget->setCurrentIndex(INITIALIZE);
+    ui->label_14->setText(QString::fromUtf8("\u20B9 50"));
     ui->toolButton_home->setHidden(true);
 
     device_mac = "00-00";
@@ -60,24 +62,25 @@ MainWindow::~MainWindow()
 
 void MainWindow::init(){
     //TODO - Init request
-    InitRequest r;
-    r.init(device_mac);
-    Network::sendRequest(&r);
-    string _resp;
-    Network::response.lock();
-    while(1){
-        if(Network::response.isset){
-            _resp = Network::response.resp;
-            uint16_t _type = Network::response.type;
-            if(_type==INIT)
-                break;
-            Network::response.unset();
-        }
-    }
-    Network::response.unlock();
-    processInitResponse(_resp);
-    gotoWelcome();
-    ui->toolButton_home->setHidden(false);
+//    InitRequest r;
+//    r.init(device_mac);
+//    Network::sendRequest(&r);
+//    string _resp;
+//    Network::response.lock();
+//    while(1){
+//        if(Network::response.isset){
+//            _resp = Network::response.resp;
+//            uint16_t _type = Network::response.type;
+//            if(_type==INIT)
+//                break;
+//            Network::response.unset();
+//        }
+//    }
+//    Network::response.unlock();
+//    processInitResponse(_resp);
+//    gotoWelcome();
+    gotoGeneral();
+//    ui->toolButton_home->setHidden(false);
 }
 
 void MainWindow::setMyStyleSheet(){
