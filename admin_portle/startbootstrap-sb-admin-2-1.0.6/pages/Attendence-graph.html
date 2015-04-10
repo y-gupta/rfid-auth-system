@@ -48,24 +48,19 @@
                         <li>
                             <a href="Current-cards.html"><i class="fa fa-credit-card fa-fw"></i> Admin Cards</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart fa-fw"></i> Graphs<span class="fa arrow"></span></a>
+                        {{#Hostels}}
+                        <li>                                
+                            <a href="#"><i class="fa fa-reorder fa-fw" ></i> {{Hostels}}<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                {{#Hostels}}
-                                <li>
-                                    <a href="#"><i class="fa fa-reorder fa-fw" ></i> {{Hostels}}<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="Attendence-graph.html"><i class="fa fa-male fa-fw"></i> Attendance</a>
-                                    </li>
-                                    <li>
-                                        <a href="Food Wastage-graph.html"><i class="fa fa-cutlery fa-fw"></i> Food Wastage</a>
-                                    </li>
-                                </ul>
-                                </li>
-                                {{/Hostels}}
+                            <li>
+                                <a href="Attendence-graph.html"><i class="fa fa-male fa-fw"></i> Attendance</a>
+                            </li>
+                            <li>
+                                <a href="Food Wastage-graph.html"><i class="fa fa-cutlery fa-fw"></i> Food Wastage</a>
+                            </li>
                             </ul>
                         </li>
+                        {{/Hostels}}
                         <li>
                             <a href="#"><i class="fa fa-list-alt fa-fw"></i> Tables<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">

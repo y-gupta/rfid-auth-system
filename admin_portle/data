@@ -11,5 +11,5 @@
 	"Graph4": [{"period": ,"expected": ,"actual": }]
 	"Graph5": [{"period": ,"expected": ,"actual": }]
 	"Predictions": [{"Hostel": ,"Graph":[{"period": ,"expected": }]}]
-	"Cards": [{"User":, "RF-ID": ,"Hostel":}]
+	"Cards": [{"ID":, "RF-ID": ,"Hostel":}]
 }
