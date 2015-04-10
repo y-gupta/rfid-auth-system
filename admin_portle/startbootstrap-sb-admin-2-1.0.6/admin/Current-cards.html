@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>CSP315</title>
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-    <link href="../dist/css/timeline.css" rel="stylesheet">
+    <link href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-    <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -20,15 +20,10 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
-                    
                 </button>
                 <a class="navbar-brand" href="index.html">IITD MESS ATTENDANCE</a>
             </div>
-            <!-- /.navbar-header -->
-
             <ul class="nav navbar-top-links navbar-right">
-                
-                <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
@@ -36,47 +31,37 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="index.html"><i class="fa fa-user fa-fw"></i> {{username}}</a>
                         </li>
+                        <li><a href="change-password.html?unername={{username}}"><i class="fa fa-gear fa-fw"></i> change password</a>
+                        </li>
                         <li class="divider"></li>
                         <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
-                    <!-- /.dropdown-user -->
                 </li>
-                <!-- /.dropdown -->
             </ul>
-            <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        
                         <li>
-                            <a href="index.html"><i class="fa fa-user fa-fw"></i> Home</a>
+                            <a href="index.html"><i class="fa fa-home fa-fw"></i> Home</a>
                         </li>
                         <li>
                             <a href="Current-cards.html"><i class="fa fa-credit-card fa-fw"></i> Admin Cards</a>
-                            
-                            <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart fa-fw"></i> Graphs<span class="fa arrow"></span></a>
+                        {{#Hostels}}
+                        <li>                                
+                            <a href="#"><i class="fa fa-reorder fa-fw" ></i> {{Hostels}}<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                {{#Hostels}}
-                                <li>
-                                    <a href="#"><i class="fa fa-reorder fa-fw" ></i> {{Hostels}}<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="Attendence-graph.html" ><i class="fa fa-male fa-fw"></i> Attendance</a>
-                                    </li>
-                                    <li>
-                                        <a href="Food Wastage-graph.html"><i class="fa fa-cutlery fa-fw"></i> Food Wastage</a>
-                                    </li>
-                                </ul>
-                                </li>
-                                {{/Hostels}}
+                            <li>
+                                <a href="Attendence-graph.html"><i class="fa fa-male fa-fw"></i> Attendance</a>
+                            </li>
+                            <li>
+                                <a href="Food Wastage-graph.html"><i class="fa fa-cutlery fa-fw"></i> Food Wastage</a>
+                            </li>
                             </ul>
-                            <!-- /.nav-second-level -->
                         </li>
+                        {{/Hostels}}
                         <li>
                             <a href="#"><i class="fa fa-list-alt fa-fw"></i> Tables<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -93,90 +78,62 @@
                                     <a href="Extra-Messing-Tables.html" ><i class="fa fa-rupee fa-fw"></i> Extra-Messing</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
                         </li>
-                        
                     </ul>
                 </div>
-                <!-- /.sidebar-collapse -->
             </div>
-            <!-- /.navbar-static-side -->
         </nav>
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"> Predictions</h1>
+                    <h1 class="page-header">Admin Cards</h1>
                 </div>
             </div>
             <div class="row">
-           {{#Predictions}}
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Predictions for {{Hostel}}
-                        </div>
-                
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Meal</th>
-                                                <th>Prediction</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {{#Graph}}
-                                            <tr>
-                                                <td>{{period}}</td>
-                                                <td>{{expected}}</td>
-                                            </tr>
-                                            {{/Graph}}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="col-lg-10">
-                                <div id="graph{{Hostel}}"></div>
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped  table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>RF-ID</th>
+                                            <th>Hostel</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#Cards}}
+                                        <tr>
+                                            <td>{{ID}}</td>
+                                            <td>{{RF-ID}}</td>
+                                            <td>{{Hostel}}<tt class="pull-right">
+                                            <button type="button" href="#" class="btn btn-danger"><i class="fa fa-minus-circle fa-fw"></i>Delete</button></tt></td>
+                                        </tr>
+                                        {{/Cards}}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        {{/Predictions}}
         </div>
+    </div>
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
-    <script src="../bower_components/raphael/raphael-min.js"></script>
-    <script src="../bower_components/morrisjs/morris.min.js"></script>
+    <script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
     <script src="../dist/js/sb-admin-2.js"></script>
     <script>
-    $(function() {
- {{#Predictions}}
-    Morris.Bar({
-        element: 'graph{{Hostel}}',
-        data: [
-        {{#Graph}}
-        {
-            y: {{period}},
-            a: {{expected}}
-        },
-        {{/Graph}}
-        {}],
-        xkey: 'y',
-        ykeys: ['a'],
-        labels: ['predicted'],
-        hideHover: 'auto',
-        resize: true,
-        xLabelAngle: 30,
-        yLabelAngle: 60
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+                responsive: true
+        });
     });
-{{/Predictions}}
-});
     </script>
+
 </body>
 
 </html>

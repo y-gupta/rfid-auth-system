@@ -16,6 +16,9 @@ void MainWindow::initEventLoop(){
     RFID::init();
 }
 void MainWindow::doEvent(){
+    if(ui->stackedWidget->currentIndex()==INITIALIZE){
+        init();
+    }
     //Date and time event in the welcome screen
     sec_count = (sec_count+ 1)%60;
     idle_time++;
@@ -51,7 +54,7 @@ void MainWindow::doEvent(){
                 cout<<attendRequest<<endl;
                 if(attendRequest==-1){
                 AuthRequest r;
-                r.init(device_id,rfid);
+                r.init(device_mac,rfid);
                 r.rfid = rfid;
                 cout<<"sending"<<endl;
                 Network::sendRequest(&r);
@@ -75,8 +78,7 @@ void MainWindow::doReadCard(int64_t rfid){
         if(attendRequest==DELETE_CARD){
             cout<<"Sending the delete card request"<<endl;
             DeleteCardRequest r;
-            r.init(device_id,current_user.uid,rfid);
-            r.rfid = rfid;
+            r.init(device_mac,current_user.pin,rfid);
             Network::sendRequest(&r);
             read_card=-1;
             attendResponse = DELETE_CARD;
@@ -91,8 +93,7 @@ void MainWindow::doReadCard(int64_t rfid){
         ui->pushButton_confirm_2->setEnabled(true);
         if(attendRequest==CREATE_NEW_CARD){
             CreateCardRequest r;
-            r.init(device_id,current_user.uid,rfid,false);
-            r.rfid = rfid;
+            r.init(device_mac,current_user.pin,rfid,false);
             r.isMasterCard = false;
             Network::sendRequest(&r);
             read_card=-1;
@@ -106,9 +107,7 @@ void MainWindow::doReadCard(int64_t rfid){
         ui->pushButton_confirm_2->setEnabled(true);
         if(attendRequest==CREATE_MASTER_CARD){
             CreateCardRequest r;
-            r.init(device_id,current_user.uid,rfid,true);
-            r.rfid = rfid;
-            r.isMasterCard = true;
+            r.init(device_mac,current_user.pin,rfid,true);
             Network::sendRequest(&r);
             read_card=-1;
             attendResponse = CREATE_MASTER_CARD;

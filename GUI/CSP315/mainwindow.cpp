@@ -10,12 +10,22 @@ MainWindow::MainWindow(QWidget *parent) :
     setMyStyleSheet();
     setMouseTracking(true);
     ui->setupUi(this);
-    Network::init("10.42.0.77/");
 
+    Network::init("192.168.1.104/");
+    ui->tabWidget_option ->setStyleSheet("QTabBar::tab { height: 100px; width: 660px; }");
+\
+    ui->stackedWidget->setCurrentIndex(INITIALIZE);
+    ui->label_14->setText(QString::fromUtf8("\u20B9 50"));
+    ui->toolButton_home->setHidden(true);
+
+    device_mac = "00-00";
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
     initEventLoop();
-    gotoAdmin();
+
+    //TODO - Send the init request
+
+    //    gotoAdmin();
 
 //    initWelcomeUi();
 //    checkWelcomeUi();
@@ -49,6 +59,30 @@ MainWindow::~MainWindow()
     delete ui;
     removeEventFilter(this);
 }
+
+void MainWindow::init(){
+    //TODO - Init request
+//    InitRequest r;
+//    r.init(device_mac);
+//    Network::sendRequest(&r);
+//    string _resp;
+//    Network::response.lock();
+//    while(1){
+//        if(Network::response.isset){
+//            _resp = Network::response.resp;
+//            uint16_t _type = Network::response.type;
+//            if(_type==INIT)
+//                break;
+//            Network::response.unset();
+//        }
+//    }
+//    Network::response.unlock();
+//    processInitResponse(_resp);
+//    gotoWelcome();
+    gotoGeneral();
+//    ui->toolButton_home->setHidden(false);
+}
+
 void MainWindow::setMyStyleSheet(){
     ifstream in;
     in.open("../style.css");
@@ -99,6 +133,9 @@ void MainWindow::processResponse(string _resp,uint16_t _type){
             break;
     }
 }
+void MainWindow::processInitResponse(string _resp){
+    //TODO
+}
 
 void MainWindow::processAuthResponse(string _resp){
     cout<<"Processing auth"<<endl;
@@ -110,22 +147,24 @@ void MainWindow::processAuthResponse(string _resp){
 
     if(v.GetBool()){
 
-        v = arr["uid"];
+        v = arr["rfid"];
         assert(v.IsInt() && "invalide uid in auth response");
-        user.uid=v.GetInt();
+        user.rfid=v.GetInt();
         v = arr["master"];
         assert(v.IsBool() && "invalide master in auth response");
         user.isAdmin = v.GetBool();
-
-        v = arr["entry"];
-        assert(v.IsString() &&"invalid entry number in response");
-        user.entry_no = v.GetString();
+        v = arr["hostel"];
+        user.hostel_name = v.GetString();
+//        v = arr["entry"];
+//        assert(v.IsString() &&"invalid entry number in response");
+//        user.entry_no = v.GetString();
+        user.entry_no = "2013CS007";
         v = arr["name"];
         assert(v.IsString() &&"invalid name in response");
         user.user_name = v.GetString();
    }
 
-    if(user.uid==0 ||attendResponse!=AUTH){
+    if(user.rfid==0 ||attendResponse!=AUTH){
         cout<<"Authentication failed!!"<<endl;
     }
     else{
@@ -137,8 +176,6 @@ void MainWindow::processAuthResponse(string _resp){
 
             current_user.clear();
             current_user=user;
-            current_user.hostel_name="Zanskar";
-
             gotoGeneral();
         }
     }
