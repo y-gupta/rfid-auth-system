@@ -1,7 +1,7 @@
 {
 	"username":
 	"attendance":[{"UserId": ,"Time": ,"Hostel": ,"Success": }]
-	"UserData": [{"UserName": ,"UserId": ,"RF-ID": ,"Hostel": ,"EntryNo": }]
+	"UserData": [{"UserName": ,"UserId": ,"RF-ID": ,"Hostel": ,"EntryNo": ,"Expiry"}]
 	"ExtraMessing": [{"TransactionID": ,"UserId": ,"Amount": ,"Time": }]
 	"MessRebate": [{"RebateId": ,"UserId": ,"TimeSpan": ,"Time": }]
 	"Hostels": [ ]
@@ -12,4 +12,7 @@
 	"Graph5": [{"period": ,"expected": ,"actual": }]
 	"Predictions": [{"Hostel": ,"Graph":[{"period": ,"expected": }]}]
 	"Cards": [{"ID":, "RF-ID": ,"Hostel":}]
+	"user": {"UserName": ,"UserId": ,"RF-ID": ,"Hostel": ,"EntryNo": ,"Expiry"}
+	"home": {"total_attendance": ,"ecpected": ,"accuracy": ,"extra_messing": }
+
 }
