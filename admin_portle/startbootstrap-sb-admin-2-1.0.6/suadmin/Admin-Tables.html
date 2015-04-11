@@ -102,9 +102,9 @@
                                     <thead>
                                         <tr>
                                             <th>Admin Name</th>
+                                            <th>Password</th>
                                             <th>Admin ID</th>
                                             <th>Alloted Hostels</th>
-                                            <th>Privilages</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -112,6 +112,7 @@
                                         {{#Admin}}
                                         <tr>
                                             <td>{{Name}}</td>
+                                            <td>{{Password}}</td>
                                             <td>{{Id}}</td>
                                             <td>
                                                 <ul>
@@ -122,7 +123,6 @@
                                                 {{/Hostels}}
                                                 </ul>
                                             </td>
-                                            <td>{{Privilages}}</td>
                                             <td><a href="Admins-Edit.html?id={{Id}}"><button type="button" class="btn btn-warning pull-right" ><i class="fa fa-edit fa-fw" ></i>Edit</button> </a></td>
                                         </tr>
                                         {{/Admin}}
