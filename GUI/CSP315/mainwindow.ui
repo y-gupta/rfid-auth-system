@@ -30,7 +30,7 @@
     <item row="1" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="welcome">
        <layout class="QGridLayout" name="gridLayout">
@@ -162,7 +162,7 @@
            <item row="1" column="0">
             <widget class="QStackedWidget" name="stackedWidget_graph">
              <property name="styleSheet">
-              <string notr="true">border-image : url(../Resources/graph.jpg) 0 0 0 0 stretch stretch;</string>
+              <string notr="true">border-image : url(../Resources/graph1.png) 0 0 0 0 stretch stretch;</string>
              </property>
              <property name="currentIndex">
               <number>0</number>

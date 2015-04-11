@@ -13,7 +13,6 @@ public:
     uint64_t rfid;
     string pin;
     bool isAdmin;
-
     User();
     void init(uint64_t id = 0,string _u = "",string _e = "",string _h="",bool isAdmin=false,string _pin="");
     void clear();

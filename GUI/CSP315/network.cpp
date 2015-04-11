@@ -15,12 +15,12 @@ size_t NetworkJob::WriteCallback(void *contents, size_t size, size_t nmemb, void
     return size * nmemb;
 }
 int NetworkJob::process(){
+
     CURL *curl = curl_easy_init();
     CURLcode res;
     string readBuffer;
     if(curl){
-
-
+     cout<<url<<endl;
      curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
      curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
      curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
@@ -28,6 +28,7 @@ int NetworkJob::process(){
      res = curl_easy_perform(curl);
 
      if(res != CURLE_OK){
+
          fprintf(stderr, "curl_easy_perform() failed: %s\n",curl_easy_strerror(res));
          delete this;
          return 1;
@@ -59,6 +60,7 @@ void Network::sendRequest(Request *r){
     job->url = qurl;
     job->type = r->type;
     cout<<"Sending request:Type = "<<r->type<<endl;
+
     Network::thread->pushJob(job);
 }
 
