@@ -181,8 +181,8 @@
         {{#Graph}}
         {
             y: "{{period}}",
-            b: {{actual}},
-            a: {{expected}}
+            a: {{actual}},
+            b: {{expected}}
         },
         {{/Graph}}
         ],
@@ -193,9 +193,10 @@
         resize: true,
         xLabelAngle: 30,
         yLabelAngle: 60,
-        smooth:false,
-        fillOpacity:'0.4',
-        eventLineColors: ["rgb(0,255,0)","rgb(255,0,0)"]
+        smooth:true,
+        behaveLikeLine:true,
+        fillOpacity:'0.2',
+        lineColors: ["rgb(0,255,0)","rgb(0,0,255)"]
     });
 {{/Predictions}}
 });
