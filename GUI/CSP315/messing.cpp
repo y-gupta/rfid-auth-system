@@ -17,6 +17,9 @@ void MainWindow::gotoGeneral(){
     ui->spinBox_val->setValue(1);
 
     //Initializing the current user details
+    current_user.user_name="Rishit Sanmukhani";
+    current_user.hostel_name="Zanskar hostel";
+    current_user.entry_no="2013CS10255";
     ui->label_name->setText(QString::fromStdString(current_user.user_name));
     ui->label_hostel_1->setText(QString::fromStdString(current_user.hostel_name));
     ui->label_id->setText(QString::fromStdString(current_user.entry_no));

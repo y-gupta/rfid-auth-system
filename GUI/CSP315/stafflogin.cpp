@@ -8,6 +8,10 @@ void MainWindow::gotoStaffLogin(){
     ui->stackedWidget->setCurrentIndex(STAFF_LOGIN);
     ui->lineEdit_password->clear();
 }
+void MainWindow::initStaffLoginUi(){
+    ui->pushButton_enter->setText(QString::fromUtf8("\u23CE "));
+    ui->pushButton_del->setText(QString::fromUtf8("\u232B "));
+}
 void MainWindow::on_pushButton_10_clicked(){
 reset();
     ui->lineEdit_password->setText(ui->lineEdit_password->text() + ui->pushButton_10->text());

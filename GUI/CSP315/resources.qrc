@@ -7,5 +7,7 @@
         <file>staff-login.png</file>
         <file>home.png</file>
         <file>card.png</file>
+        <file>down-circle.png</file>
+        <file>down-arrow.png</file>
     </qresource>
 </RCC>

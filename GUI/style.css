@@ -6,7 +6,7 @@ QLineEdit{
 } 
 QPushButton:focus {
 	outline: none;
-} 
+}
 QPushButton {
 	position: relative;
 	padding: 10px 40px;
@@ -28,6 +28,9 @@ QPushButton:disabled{
 QPushButton:pressed {
 	border-bottom: 1px solid;
 	}
+QPushButton:focus {
+        outline: none;
+}
 QToolButton {
 	position: relative;
 	padding: 10px 40px;
@@ -48,3 +51,23 @@ QToolButton:disabled{
         background-color: #ADD8E6;
         border-bottom: 5px solid #ADD8E6;
         }
+QTabBar::tab{
+    height: 80px;
+    width: 660px;
+    outline:none;
+}
+QSpinBox{
+    border:none;
+    color:black;
+    background-color:white;
+    selection-color: black;
+    selection-background-color: white;
+}
+QDateEdit{
+    border:none;
+    color:black;
+    background-color:white;
+    selection-color: black;
+    selection-background-color: white;
+}
+
