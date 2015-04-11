@@ -3,19 +3,19 @@
 	"home": {"total_attendance": 1249,"expected":1273,"accuracy":"95.7%","extra_messing":457},
 	"Predictions": [
   		{"Hostel": "All hostels",
-  		"Graph":[{"period": "12/12/12","expected": 758 ,"actual":777},
-  		{"period": "12/12/12","expected": 1145,"actual":1024},
-  		{"period": "12/12/12","expected": 1344,"actual":1299},
-  		{"period": "13/12/12","expected": 766,"actual":800},
-  		{"period": "13/12/12","expected": 1204,"actual":1300},
-  		{"period": "13/12/12","expected": 1422,"actual":1500},
-  		{"period": "14/12/12","expected": 777,"actual":800},
-  		{"period": "14/12/12","expected": 1100,"actual":0},
-  		{"period": "14/12/12","expected": 1400,"actual":0},
-  		{"period": "15/12/12","expected": 699,"actual":0},
-  		{"period": "15/12/12","expected": 1255,"actual":0},
-  		{"period": "15/12/12","expected": 1344,"actual":0},
-  		{"period": "16/12/12","expected": 766,"actual":0}]}
+  		"Graph":[{"period": "12/12/12 breakfast","expected": 758 ,"actual":777},
+  		{"period": "12/12/12 lunch","expected": 1145,"actual":1124},
+  		{"period": "12/12/12 dinner","expected": 1344,"actual":1299},
+  		{"period": "13/12/12 breakfast","expected": 766,"actual":800},
+  		{"period": "13/12/12 lunch","expected": 1204,"actual":1200},
+  		{"period": "13/12/12 dinner","expected": 1482,"actual":1500},
+  		{"period": "14/12/12 breakfast","expected": 777,"actual":800},
+  		{"period": "14/12/12 lunch","expected": 1100,"actual":0},
+  		{"period": "14/12/12 dinner","expected": 1400,"actual":0},
+  		{"period": "15/12/12 breakfast","expected": 699,"actual":0},
+  		{"period": "15/12/12 lunch","expected": 1255,"actual":0},
+  		{"period": "15/12/12 dinner","expected": 1344,"actual":0},
+  		{"period": "16/12/12 breakfast","expected": 766,"actual":0}]}
   		
   		],
 	"Admin":[
