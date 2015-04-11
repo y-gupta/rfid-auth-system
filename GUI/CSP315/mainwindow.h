@@ -19,6 +19,7 @@ using namespace std;
 #define GENERAL 1
 #define ADMIN 2
 #define STAFF_LOGIN 3
+#define INITIALIZE 4
 
 //Stacked widgets
 #define TEXT 0
@@ -46,6 +47,9 @@ public:
     int idle_time;
     void reset();
 
+    //Initialize
+    void init();
+
     //Extra information
     User current_user;
     string device_mac;
@@ -70,6 +74,7 @@ public:
 
     //General helper functions
     void gotoGeneral();
+    void initMessingUi();
     void checkRebateUi();
 
     //Admin helper function
@@ -88,6 +93,7 @@ public:
     void processMessingRequest(string _resp);
     void processRebateRequest(string _resp);
     void processStaffLoginResponse(string _resp);
+    void processInitResponse(string _resp);
 
 
 

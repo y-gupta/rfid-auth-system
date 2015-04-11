@@ -24,7 +24,7 @@ module.exports = {
     });
   },
   login: function (req,res){
-    res.send({'success':true,'master':true});    
+    res.send({pin:req.props.pin,success:true,master:true});    
   },
   addcard: function(req,res){
     if(req.query.rfid == null)

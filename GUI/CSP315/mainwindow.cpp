@@ -10,48 +10,62 @@ MainWindow::MainWindow(QWidget *parent) :
     setMyStyleSheet();
     setMouseTracking(true);
     ui->setupUi(this);
-    Network::init("10.42.0.77/");
+
+    Network::init("192.168.1.104/");
+    ui->tabWidget_option ->setStyleSheet("QTabBar::tab { height: 100px; width: 660px; }");
+
+//    ui->stackedWidget->setCurrentIndex(INITIALIZE);
+//    ui->label_14->setText(QString::fromUtf8("\u20B9 50"));
+//    ui->toolButton_home->setHidden(true);
+
     device_mac = "00-00";
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
+    initMessingUi();
+    gotoGeneral();
     initEventLoop();
-    gotoAdmin();
+
+    //TODO - Send the init request
+
+    //    gotoAdmin();
 
 //    initWelcomeUi();
 //    checkWelcomeUi();
 //    gotoGeneral();
-
-    QPixmap pixmap(":/images/rupee.jpg");
-    cout<<pixmap.isNull()<<endl;
-    QIcon ButtonIcon(pixmap);
-
-    ui->pushButton->setIcon(ButtonIcon);
-    ui->pushButton->setIconSize(QSize(60,60));
-
-    ui->pushButton_2->setIcon(ButtonIcon);
-    ui->pushButton_2->setIconSize(QSize(60,60));
-
-    ui->pushButton_3->setIcon(ButtonIcon);
-    ui->pushButton_3->setIconSize(QSize(60,60));
-
-    ui->pushButton_4->setIcon(ButtonIcon);
-    ui->pushButton_4->setIconSize(QSize(60,60));
-
-    ui->pushButton_5->setIcon(ButtonIcon);
-    ui->pushButton_5->setIconSize(QSize(60,60));
-
-    ui->pushButton_6->setIcon(ButtonIcon);
-    ui->pushButton_6->setIconSize(QSize(60,60));
-    installEventFilter(this);
 }
 MainWindow::~MainWindow()
 {
     delete ui;
     removeEventFilter(this);
 }
+
+void MainWindow::init(){
+    //TODO - Init request
+//    InitRequest r;
+//    r.init(device_mac);
+//    Network::sendRequest(&r);
+//    string _resp;
+//    Network::response.lock();
+//    while(1){
+//        if(Network::response.isset){
+//            _resp = Network::response.resp;
+//            uint16_t _type = Network::response.type;
+//            if(_type==INIT)
+//                break;
+//            Network::response.unset();
+//        }
+//    }
+//    Network::response.unlock();
+//    processInitResponse(_resp);
+//    gotoWelcome();
+    gotoGeneral();
+//    ui->toolButton_home->setHidden(false);
+}
+
 void MainWindow::setMyStyleSheet(){
     ifstream in;
     in.open("../style.css");
+    cout<<"Done"<<endl;
     string Mystyle;
     getline(in,Mystyle,((char)-1));
     in.close();
@@ -98,6 +112,9 @@ void MainWindow::processResponse(string _resp,uint16_t _type){
         default:
             break;
     }
+}
+void MainWindow::processInitResponse(string _resp){
+    //TODO
 }
 
 void MainWindow::processAuthResponse(string _resp){
