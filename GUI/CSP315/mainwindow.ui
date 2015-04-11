@@ -30,7 +30,7 @@
     <item row="1" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="welcome">
        <layout class="QGridLayout" name="gridLayout">
@@ -1087,7 +1087,7 @@ outline:none
           </property>
           <property name="icon">
            <iconset resource="resources.qrc">
-            <normaloff>:/images/card.png</normaloff>:/images/card.png</iconset>
+            <normaloff>:/images/card-master.png</normaloff>:/images/card-master.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -1124,7 +1124,7 @@ outline:none
           </property>
           <property name="icon">
            <iconset resource="resources.qrc">
-            <normaloff>:/images/card.png</normaloff>:/images/card.png</iconset>
+            <normaloff>:/images/card-add.png</normaloff>:/images/card-add.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -1162,7 +1162,7 @@ outline:none
           </property>
           <property name="icon">
            <iconset resource="resources.qrc">
-            <normaloff>:/images/card.png</normaloff>:/images/card.png</iconset>
+            <normaloff>:/images/card-remove.png</normaloff>:/images/card-remove.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -1195,7 +1195,17 @@ outline:none
            <string notr="true">font-size:26px;</string>
           </property>
           <property name="text">
-           <string>Allow Temporarily</string>
+           <string>Allow</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/images/logout.png</normaloff>:/images/logout.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>60</width>
+            <height>60</height>
+           </size>
           </property>
          </widget>
         </item>

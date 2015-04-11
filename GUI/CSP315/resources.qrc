@@ -9,5 +9,9 @@
         <file>card.png</file>
         <file>down-circle.png</file>
         <file>down-arrow.png</file>
+        <file>logout.png</file>
+        <file>card-remove.png</file>
+        <file>card-master.png</file>
+        <file>card-add.png</file>
     </qresource>
 </RCC>
