@@ -30,33 +30,10 @@
     <item row="1" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="welcome">
        <layout class="QGridLayout" name="gridLayout">
-        <item row="0" column="0" colspan="2">
-         <widget class="QLabel" name="label_hostel_2">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>32</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Zanskar Hostel</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
         <item row="3" column="0" colspan="2">
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
@@ -94,7 +71,20 @@
              </font>
             </property>
             <property name="text">
-             <string>Staff Login</string>
+             <string>     Staff login</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/images/staff-login.png</normaloff>:/images/staff-login.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="autoExclusive">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -392,7 +382,7 @@
              </font>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="iconSize">
              <size>
@@ -575,18 +565,25 @@
                  <item row="2" column="0">
                   <widget class="QSpinBox" name="spinBox_val">
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>50</height>
+                    </size>
+                   </property>
                    <property name="font">
                     <font>
+                     <pointsize>26</pointsize>
                      <kerning>true</kerning>
                     </font>
                    </property>
                    <property name="focusPolicy">
-                    <enum>Qt::WheelFocus</enum>
+                    <enum>Qt::NoFocus</enum>
                    </property>
                    <property name="contextMenuPolicy">
                     <enum>Qt::DefaultContextMenu</enum>
@@ -627,7 +624,7 @@ outline:none
                   <widget class="QLabel" name="label_13">
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <pointsize>20</pointsize>
                     </font>
                    </property>
                    <property name="text">
@@ -674,6 +671,16 @@ outline:none
                    </property>
                    <property name="text">
                     <string>Decrease</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="resources.qrc">
+                     <normaloff>:/images/down-circle.png</normaloff>:/images/down-circle.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>60</width>
+                     <height>60</height>
+                    </size>
                    </property>
                   </widget>
                  </item>
@@ -825,7 +832,7 @@ outline:none
                    </property>
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <pointsize>20</pointsize>
                     </font>
                    </property>
                    <property name="text">
@@ -885,13 +892,33 @@ outline:none
                  <item row="2" column="0">
                   <widget class="QDateEdit" name="dateEdit_present">
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>26</pointsize>
+                    </font>
+                   </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="readOnly">
+                    <bool>true</bool>
                    </property>
                    <property name="buttonSymbols">
                     <enum>QAbstractSpinBox::NoButtons</enum>
@@ -901,13 +928,33 @@ outline:none
                  <item row="2" column="1">
                   <widget class="QDateEdit" name="dateEdit_future">
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>26</pointsize>
+                    </font>
+                   </property>
                    <property name="alignment">
                     <set>Qt::AlignCenter</set>
+                   </property>
+                   <property name="readOnly">
+                    <bool>true</bool>
                    </property>
                    <property name="buttonSymbols">
                     <enum>QAbstractSpinBox::NoButtons</enum>
@@ -925,6 +972,16 @@ outline:none
                    <property name="text">
                     <string>Decrease</string>
                    </property>
+                   <property name="icon">
+                    <iconset resource="resources.qrc">
+                     <normaloff>:/images/down-circle.png</normaloff>:/images/down-circle.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>60</width>
+                     <height>60</height>
+                    </size>
+                   </property>
                   </widget>
                  </item>
                  <item row="3" column="1">
@@ -937,6 +994,16 @@ outline:none
                    </property>
                    <property name="text">
                     <string>Decrease</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="resources.qrc">
+                     <normaloff>:/images/down-circle.png</normaloff>:/images/down-circle.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>60</width>
+                     <height>60</height>
+                    </size>
                    </property>
                   </widget>
                  </item>
@@ -1018,6 +1085,16 @@ outline:none
           <property name="text">
            <string>Master Card</string>
           </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/images/card.png</normaloff>:/images/card.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>60</width>
+            <height>60</height>
+           </size>
+          </property>
          </widget>
         </item>
         <item row="1" column="1">
@@ -1043,7 +1120,17 @@ outline:none
            <string notr="true">font-size:26px;</string>
           </property>
           <property name="text">
-           <string>Register New Card</string>
+           <string>New Card</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/images/card.png</normaloff>:/images/card.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>60</width>
+            <height>60</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -1072,6 +1159,16 @@ outline:none
           </property>
           <property name="text">
            <string>Delete Card</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/images/card.png</normaloff>:/images/card.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>60</width>
+            <height>60</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -1120,7 +1217,7 @@ outline:none
            <item row="0" column="0">
             <widget class="QStackedWidget" name="stackedWidget_admin">
              <property name="currentIndex">
-              <number>0</number>
+              <number>2</number>
              </property>
              <widget class="QWidget" name="page_4">
               <layout class="QGridLayout" name="gridLayout_19">
@@ -1153,7 +1250,7 @@ outline:none
                   </font>
                  </property>
                  <property name="text">
-                  <string>Operation</string>
+                  <string>New Card</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
@@ -1233,6 +1330,16 @@ outline:none
                  <property name="text">
                   <string>Increase</string>
                  </property>
+                 <property name="icon">
+                  <iconset resource="resources.qrc">
+                   <normaloff>:/images/up-circle.png</normaloff>:/images/up-circle.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
+                 </property>
                 </widget>
                </item>
                <item row="2" column="2">
@@ -1255,7 +1362,7 @@ outline:none
                   <bool>false</bool>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::NoButtons</enum>
                  </property>
                  <property name="keyboardTracking">
                   <bool>true</bool>
@@ -1281,9 +1388,19 @@ outline:none
                  <property name="text">
                   <string>Decrease</string>
                  </property>
+                 <property name="icon">
+                  <iconset resource="resources.qrc">
+                   <normaloff>:/images/down-circle.png</normaloff>:/images/down-circle.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
+                 </property>
                 </widget>
                </item>
-               <item row="3" column="0" colspan="4">
+               <item row="3" column="2">
                 <widget class="QPushButton" name="pushButton_confirm_2">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
@@ -1297,7 +1414,94 @@ outline:none
                   </font>
                  </property>
                  <property name="text">
-                  <string>Confirm</string>
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources.qrc">
+                   <normaloff>:/images/tick.png</normaloff>:/images/tick.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="page_2">
+              <layout class="QGridLayout" name="gridLayout_21">
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_16">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>16</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Card number is 19</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0" colspan="2">
+                <widget class="QLabel" name="label_15">
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>16</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Delete Card</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0" colspan="2">
+                <widget class="QPushButton" name="pushButton_confirm_3">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources.qrc">
+                   <normaloff>:/images/tick.png</normaloff>:/images/tick.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
                  </property>
                 </widget>
                </item>
@@ -1348,6 +1552,9 @@ outline:none
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -1597,8 +1804,11 @@ outline:none
           </property>
           <property name="font">
            <font>
-            <pointsize>26</pointsize>
+            <pointsize>-1</pointsize>
            </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font-size : 62px;</string>
           </property>
           <property name="text">
            <string>ENTER</string>
@@ -1631,17 +1841,40 @@ outline:none
     <item row="0" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+       <widget class="QFrame" name="frame_4">
+        <property name="styleSheet">
+         <string notr="true">border-image : url(../Resources/graph.jpg) 0 0 0 0 stretch stretch;</string>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
         </property>
-       </spacer>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_hostel_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>32</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Zanskar Hostel</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QToolButton" name="toolButton_home">
@@ -1720,6 +1953,51 @@ outline:none
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>pushButton_staff_login</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>tabWidget_option</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>pushButton_5</tabstop>
+  <tabstop>pushButton_6</tabstop>
+  <tabstop>spinBox_val</tabstop>
+  <tabstop>toolButton_inc_2</tabstop>
+  <tabstop>toolButton_dec_2</tabstop>
+  <tabstop>pushButton_9</tabstop>
+  <tabstop>pushButton_7</tabstop>
+  <tabstop>pushButton_8</tabstop>
+  <tabstop>toolButton_inc_present</tabstop>
+  <tabstop>toolButton_inc_future</tabstop>
+  <tabstop>dateEdit_present</tabstop>
+  <tabstop>dateEdit_future</tabstop>
+  <tabstop>toolButton_dec_present</tabstop>
+  <tabstop>toolButton_dec_future</tabstop>
+  <tabstop>pushButton_confirm</tabstop>
+  <tabstop>pushButton_master</tabstop>
+  <tabstop>pushButton_reg</tabstop>
+  <tabstop>pushButton_delete</tabstop>
+  <tabstop>pushButton_allow</tabstop>
+  <tabstop>toolButton_inc</tabstop>
+  <tabstop>spinBox_days</tabstop>
+  <tabstop>toolButton_dec</tabstop>
+  <tabstop>pushButton_confirm_2</tabstop>
+  <tabstop>lineEdit_password</tabstop>
+  <tabstop>pushButton_14</tabstop>
+  <tabstop>pushButton_17</tabstop>
+  <tabstop>pushButton_12</tabstop>
+  <tabstop>pushButton_16</tabstop>
+  <tabstop>pushButton_18</tabstop>
+  <tabstop>pushButton_10</tabstop>
+  <tabstop>pushButton_13</tabstop>
+  <tabstop>pushButton_15</tabstop>
+  <tabstop>pushButton_11</tabstop>
+  <tabstop>pushButton_del</tabstop>
+  <tabstop>pushButton_20</tabstop>
+  <tabstop>pushButton_enter</tabstop>
+  <tabstop>toolButton_home</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

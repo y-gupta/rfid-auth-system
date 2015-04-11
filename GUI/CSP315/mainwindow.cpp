@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     Network::init("192.168.1.104/");
-    ui->tabWidget_option ->setStyleSheet("QTabBar::tab { height: 100px; width: 660px; }");
+    //ui->tabWidget_option ->setStyleSheet("QTabBar::tab { height: 100px; width: 660px; }");
 
 //    ui->stackedWidget->setCurrentIndex(INITIALIZE);
 //    ui->label_14->setText(QString::fromUtf8("\u20B9 50"));
@@ -22,7 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
     initMessingUi();
-    gotoGeneral();
+    initStaffLoginUi();
+    gotoAdmin();
     initEventLoop();
 
     //TODO - Send the init request

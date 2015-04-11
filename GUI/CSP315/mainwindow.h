@@ -24,6 +24,7 @@ using namespace std;
 //Stacked widgets
 #define TEXT 0
 #define OPTION 1
+#define DELETE 2
 
 namespace Ui {
 class MainWindow;
@@ -82,6 +83,7 @@ public:
 
     //Staff Login helper functions
     void gotoStaffLogin();
+    void initStaffLoginUi();
 
     //Processing the response functions
     void processResponse(string _resp,uint16_t _type);
