@@ -6,6 +6,7 @@
 #include "../rfid/rfid.h"
 #include "user.h"
 #include "utility.cpp"
+#include "userdialog.h"
 
 #include <vector>
 #include <fstream>

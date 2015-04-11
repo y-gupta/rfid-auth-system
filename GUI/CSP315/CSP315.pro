@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     utility.cpp \
     network.cpp \
     request.cpp \
-    response.cpp
+    response.cpp \
+    userdialog.cpp
 
 HEADERS  += mainwindow.h \
     ../printer/printer.h \
@@ -35,9 +36,11 @@ HEADERS  += mainwindow.h \
     thread.h \
     network.h \
     request.h \
-    response.h
+    response.h \
+    userdialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    userdialog.ui
 
 RESOURCES += \
     resources.qrc

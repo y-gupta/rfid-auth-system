@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1094</width>
-    <height>659</height>
+    <height>637</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -38,6 +38,12 @@
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
            <widget class="QLabel" name="label_developed">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>100</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <pointsize>26</pointsize>
@@ -90,6 +96,12 @@
           </item>
           <item>
            <widget class="QLabel" name="label_time">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>100</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <pointsize>26</pointsize>
@@ -1227,7 +1239,7 @@ outline:none
            <item row="0" column="0">
             <widget class="QStackedWidget" name="stackedWidget_admin">
              <property name="currentIndex">
-              <number>1</number>
+              <number>2</number>
              </property>
              <widget class="QWidget" name="page_4">
               <layout class="QGridLayout" name="gridLayout_19">
@@ -1994,7 +2006,6 @@ outline:none
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
