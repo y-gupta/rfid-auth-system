@@ -1,5 +1,11 @@
 <RCC>
     <qresource prefix="/images">
         <file>rupee.jpg</file>
+        <file>up-circle.png</file>
+        <file>up-arrow.png</file>
+        <file>tick.png</file>
+        <file>staff-login.png</file>
+        <file>home.png</file>
+        <file>card.png</file>
     </qresource>
 </RCC>

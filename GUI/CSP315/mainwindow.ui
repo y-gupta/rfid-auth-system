@@ -652,6 +652,16 @@ outline:none
                    <property name="text">
                     <string>Increase</string>
                    </property>
+                   <property name="icon">
+                    <iconset resource="resources.qrc">
+                     <normaloff>:/images/up-circle.png</normaloff>:/images/up-circle.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>52</width>
+                     <height>52</height>
+                    </size>
+                   </property>
                   </widget>
                  </item>
                  <item row="3" column="0">
@@ -837,6 +847,16 @@ outline:none
                    <property name="text">
                     <string>Increase</string>
                    </property>
+                   <property name="icon">
+                    <iconset resource="resources.qrc">
+                     <normaloff>:/images/up-circle.png</normaloff>:/images/up-circle.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>60</width>
+                     <height>60</height>
+                    </size>
+                   </property>
                   </widget>
                  </item>
                  <item row="1" column="1">
@@ -849,6 +869,16 @@ outline:none
                    </property>
                    <property name="text">
                     <string>Increase</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="resources.qrc">
+                     <normaloff>:/images/up-circle.png</normaloff>:/images/up-circle.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>60</width>
+                     <height>60</height>
+                    </size>
                    </property>
                   </widget>
                  </item>
@@ -919,7 +949,17 @@ outline:none
                     </sizepolicy>
                    </property>
                    <property name="text">
-                    <string>Confirm</string>
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="resources.qrc">
+                     <normaloff>:/images/tick.png</normaloff>:/images/tick.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>60</width>
+                     <height>60</height>
+                    </size>
                    </property>
                   </widget>
                  </item>
@@ -1627,6 +1667,16 @@ outline:none
         <property name="text">
          <string>Home</string>
         </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/images/home.png</normaloff>:/images/home.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>60</width>
+          <height>60</height>
+         </size>
+        </property>
        </widget>
       </item>
       <item>
@@ -1670,6 +1720,8 @@ outline:none
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
