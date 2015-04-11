@@ -54,17 +54,9 @@
                             <a href="#"><i class="fa fa-reorder fa-fw" ></i> Zanskar<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                             <li>
-                                <a href="Attendence-graph.html"><i class="fa fa-male fa-fw"></i> Attendance</a>
+                                <a href="Attendence-graph.html"><i class="fa fa-bar-chart fa-fw"></i> Grapths</a>
                             </li>
                             <li>
-                                <a href="Food Wastage-graph.html"><i class="fa fa-cutlery fa-fw"></i> Food Wastage</a>
-                            </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-list-alt fa-fw"></i> Tables<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
                                     <a href="Attendance-Tables.html" ><i class="fa fa-male fa-fw"></i> Attendance</a>
                                 </li>
                                 <li>
@@ -158,94 +150,12 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Predictions for Zanskar
+                            <i class="fa fa-bar-chart-o fa-fw"></i> All hostels
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Meal</th>
-                                                    <th>Prediction</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>monday breakfast</td>
-                                                    <td>758</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>monday lunch</td>
-                                                    <td>1145</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>monday dinner</td>
-                                                    <td>1344</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>tuesday breakfast</td>
-                                                    <td>766</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>tuesday lunch</td>
-                                                    <td>1204</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8">
-                                    <div id="graphZanskar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Predictions for Shivalik
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Meal</th>
-                                                    <th>Prediction</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>monday breakfast</td>
-                                                    <td>774</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>monday lunch</td>
-                                                    <td>1025</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>monday dinner</td>
-                                                    <td>1294</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>tuesday breakfast</td>
-                                                    <td>763</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>tuesday lunch</td>
-                                                    <td>1289</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8">
-                                    <div id="graphShivalik"></div>
+                                <div class="col-lg-12">
+                                    <div id="graphAll hostels"></div>
                                 </div>
                             </div>
                         </div>
@@ -260,69 +170,83 @@
     <script src="../dist/js/sb-admin-2.js"></script>
     <script>
     $(function() {
-    Morris.Bar({
-        element: 'graphZanskar',
+    Morris.Area({
+        element: 'graphAll hostels',
         data: [
         {
-            y: "monday breakfast",
+            y: "12&#x2F;12&#x2F;12",
+            b: 777,
             a: 758
         },
         {
-            y: "monday lunch",
+            y: "12&#x2F;12&#x2F;12",
+            b: 1024,
             a: 1145
         },
         {
-            y: "monday dinner",
+            y: "12&#x2F;12&#x2F;12",
+            b: 1299,
             a: 1344
         },
         {
-            y: "tuesday breakfast",
+            y: "13&#x2F;12&#x2F;12",
+            b: 800,
             a: 766
         },
         {
-            y: "tuesday lunch",
+            y: "13&#x2F;12&#x2F;12",
+            b: 1300,
             a: 1204
         },
-        {}],
+        {
+            y: "13&#x2F;12&#x2F;12",
+            b: 1500,
+            a: 1422
+        },
+        {
+            y: "14&#x2F;12&#x2F;12",
+            b: 800,
+            a: 777
+        },
+        {
+            y: "14&#x2F;12&#x2F;12",
+            b: 0,
+            a: 1100
+        },
+        {
+            y: "14&#x2F;12&#x2F;12",
+            b: 0,
+            a: 1400
+        },
+        {
+            y: "15&#x2F;12&#x2F;12",
+            b: 0,
+            a: 699
+        },
+        {
+            y: "15&#x2F;12&#x2F;12",
+            b: 0,
+            a: 1255
+        },
+        {
+            y: "15&#x2F;12&#x2F;12",
+            b: 0,
+            a: 1344
+        },
+        {
+            y: "16&#x2F;12&#x2F;12",
+            b: 0,
+            a: 766
+        },
+        ],
         xkey: 'y',
-        ykeys: ['a'],
-        labels: ['predicted'],
+        ykeys: ['a','b'],
+        labels: ['actual','predicted'],
         hideHover: 'auto',
         resize: true,
         xLabelAngle: 30,
-        yLabelAngle: 60
-    });
-    Morris.Bar({
-        element: 'graphShivalik',
-        data: [
-        {
-            y: "monday breakfast",
-            a: 774
-        },
-        {
-            y: "monday lunch",
-            a: 1025
-        },
-        {
-            y: "monday dinner",
-            a: 1294
-        },
-        {
-            y: "tuesday breakfast",
-            a: 763
-        },
-        {
-            y: "tuesday lunch",
-            a: 1289
-        },
-        {}],
-        xkey: 'y',
-        ykeys: ['a'],
-        labels: ['predicted'],
-        hideHover: 'auto',
-        resize: true,
-        xLabelAngle: 30,
-        yLabelAngle: 60
+        yLabelAngle: 60,
+        smooth:false
     });
 });
     </script>
