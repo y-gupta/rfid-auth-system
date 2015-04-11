@@ -62,7 +62,7 @@ void MessingRequest::init(string _mac,uint64_t _rfid,uint32_t _amount){
 
 }
 string MessingRequest::toString(){
-    return "/transact/allow/?mac="+mac+"&rfid="+to_string(rfid)
+    return "user/transact/?mac="+mac+"&rfid="+to_string(rfid)
             +"&amount="+to_string(amount);
 }
 
@@ -84,5 +84,5 @@ void StaffLoginRequest::init(string _mac, string _pin){
     pin = _pin;
 }
 string StaffLoginRequest::toString(){
-    return "/?mac="+mac+"&password="+pin;
+    return "/device/login/?mac="+mac+"&password="+pin;
 }
