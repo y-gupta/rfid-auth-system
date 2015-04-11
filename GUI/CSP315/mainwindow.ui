@@ -40,12 +40,12 @@
            <widget class="QLabel" name="label_developed">
             <property name="font">
              <font>
-              <pointsize>16</pointsize>
-              <italic>true</italic>
+              <pointsize>26</pointsize>
+              <italic>false</italic>
              </font>
             </property>
             <property name="text">
-             <string>Developed by IITD</string>
+             <string/>
             </property>
            </widget>
           </item>
@@ -92,7 +92,7 @@
            <widget class="QLabel" name="label_time">
             <property name="font">
              <font>
-              <pointsize>16</pointsize>
+              <pointsize>26</pointsize>
              </font>
             </property>
             <property name="text">
@@ -1841,9 +1841,37 @@ outline:none
     <item row="0" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
        <widget class="QFrame" name="frame_4">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="styleSheet">
-         <string notr="true">border-image : url(../Resources/graph.jpg) 0 0 0 0 stretch stretch;</string>
+         <string notr="true">border-image : url(./iit.png) 0 0 0 0 stretch stretch;</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -1856,7 +1884,7 @@ outline:none
       <item>
        <widget class="QLabel" name="label_hostel_2">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1869,7 +1897,7 @@ outline:none
          </font>
         </property>
         <property name="text">
-         <string>Zanskar Hostel</string>
+         <string>    Zanskar Hostel</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
