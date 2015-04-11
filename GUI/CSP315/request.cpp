@@ -91,5 +91,5 @@ void InitRequest::init(string _mac){
     mac =_mac;
 }
 string InitRequest::toString(){
-    return "/ /?mac="+mac;
+    return "/device/init/?mac="+mac;
 }

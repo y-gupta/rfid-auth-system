@@ -27,7 +27,8 @@ SOURCES += main.cpp\
     network.cpp \
     request.cpp \
     response.cpp \
-    userdialog.cpp
+    userdialog.cpp \
+    base64.cpp
 
 HEADERS  += mainwindow.h \
     ../printer/printer.h \
@@ -37,7 +38,8 @@ HEADERS  += mainwindow.h \
     network.h \
     request.h \
     response.h \
-    userdialog.h
+    userdialog.h \
+    base64.h
 
 FORMS    += mainwindow.ui \
     userdialog.ui

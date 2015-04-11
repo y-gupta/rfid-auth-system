@@ -19,11 +19,12 @@ void MainWindow::doEvent(){
 //    UserDialog dialog;
 //    dialog.show();
 //    dialog.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-//    cout<<"This is the user dialog!"<<endl;
-//    dialog.exec();
-//    if(ui->stackedWidget->currentIndex()==INITIALIZE){
-//        init();
-//    }
+
+
+    //dialog.exec();
+    if(ui->stackedWidget->currentIndex()==INITIALIZE){
+        init();
+    }
     //Date and time event in the welcome screen
     sec_count = (sec_count+ 1)%60;
     idle_time++;

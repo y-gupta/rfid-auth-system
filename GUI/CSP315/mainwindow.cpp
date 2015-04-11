@@ -2,6 +2,7 @@
 #include "rapidjson/document.h"
 #include "ui_mainwindow.h"
 #include "network.h"
+#include "base64.h"
 using namespace rapidjson;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -11,19 +12,19 @@ MainWindow::MainWindow(QWidget *parent) :
     setMouseTracking(true);
     ui->setupUi(this);
 
-    Network::init("192.168.1.104/");
+    Network::init("10.251.216.167:1337");
     //ui->tabWidget_option ->setStyleSheet("QTabBar::tab { height: 100px; width: 660px; }");
 
-//    ui->stackedWidget->setCurrentIndex(INITIALIZE);
+        ui->stackedWidget->setCurrentIndex(INITIALIZE);
 //    ui->label_14->setText(QString::fromUtf8("\u20B9 50"));
-//    ui->toolButton_home->setHidden(true);
+      ui->toolButton_home->setHidden(true);
 
     device_mac = "00-00";
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
     initMessingUi();
     initStaffLoginUi();
-    gotoAdmin();
+  //  gotoWelcome();
     initEventLoop();
 
     //TODO - Send the init request
@@ -42,25 +43,29 @@ MainWindow::~MainWindow()
 
 void MainWindow::init(){
     //TODO - Init request
-//    InitRequest r;
-//    r.init(device_mac);
-//    Network::sendRequest(&r);
-//    string _resp;
-//    Network::response.lock();
-//    while(1){
-//        if(Network::response.isset){
-//            _resp = Network::response.resp;
-//            uint16_t _type = Network::response.type;
-//            if(_type==INIT)
-//                break;
-//            Network::response.unset();
-//        }
-//    }
-//    Network::response.unlock();
-//    processInitResponse(_resp);
-//    gotoWelcome();
-    gotoGeneral();
-//    ui->toolButton_home->setHidden(false);
+    cout<<"initalising"<<endl;
+    InitRequest r;
+    r.init(device_mac);
+    Network::sendRequest(&r);
+    string _resp;
+
+    while(1){
+         Network::response.lock();
+        if(Network::response.isset){
+            _resp = Network::response.resp;
+            uint16_t _type = Network::response.type;
+            if(_type==INIT)
+                break;
+            Network::response.unset();
+        }
+        Network::response.unlock();
+    }
+
+    Network::response.unlock();
+    processInitResponse(_resp);
+    gotoWelcome();
+   // gotoGeneral();
+    ui->toolButton_home->setHidden(false);
 }
 
 void MainWindow::setMyStyleSheet(){
@@ -72,7 +77,8 @@ void MainWindow::setMyStyleSheet(){
     in.close();
     qApp->setStyleSheet(Mystyle.c_str());
 }
-void MainWindow::on_toolButton_home_clicked(){reset();
+void MainWindow::on_toolButton_home_clicked(){
+    reset();
     gotoWelcome();
 }
 void MainWindow::timeout(){
@@ -86,7 +92,9 @@ void MainWindow::reset(){
 
 }
 void MainWindow::processResponse(string _resp,uint16_t _type){
+
     switch(_type){
+
         case AUTH:{
             processAuthResponse(_resp);
             break;
@@ -115,7 +123,22 @@ void MainWindow::processResponse(string _resp,uint16_t _type){
     }
 }
 void MainWindow::processInitResponse(string _resp){
-    //TODO
+    cout<<"processing init response"<<endl;
+
+    //Parse JSON
+    Document d;
+    d.Parse(_resp.c_str());
+    Value& v= d["success"];
+    if(v.GetBool()){
+        v = d["hostel"];
+        hostel_name = v.GetString();
+        v = d["image"];
+        convertToPNG(v.GetString(),"../Resources/graph1.png");
+        //TODO set the expected and logged in
+    }
+    else{
+        cout<<"Initialising the device failed"<<endl;
+    }
 }
 
 void MainWindow::processAuthResponse(string _resp){
@@ -184,9 +207,26 @@ void MainWindow::processAllowTempResponse(string _resp){
 }
 void MainWindow::processMessingRequest(string _resp){
     cout<<"This is Messing request"<<endl;
+    cout<<_resp<<endl;
+    Document d;
+    d.Parse(_resp.c_str());
+    Value& v = d["success"];
+    if(v.GetBool()){
+        cout<<"successful transaction"<<endl;
+        //TODO give the print command
+    }
+    else{
+        cout<<"transaction failed"<<endl;
+    }
+
 }
 void MainWindow::processRebateRequest(string _resp){
-    cout<<"This is rebate request"<<endl;
+//    cout<<"This is rebate request"<<endl;
+//    cout<<_resp<<endl;
+//    //JSON parsing
+//    Document d;
+//    d.Parse(_resp);
+
 }
 void MainWindow::processStaffLoginResponse(string _resp){
     if(attendResponse==STAFF_LOGIN_REQ){
