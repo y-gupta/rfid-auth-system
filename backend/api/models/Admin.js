@@ -8,7 +8,10 @@
 module.exports = {
 
   attributes: {
-
+    email: 'email',
+    password: 'string',
+    token: 'string',
+    hostels: 'array'
   }
 };
 
