@@ -5,7 +5,7 @@
 void RFID::init(){
 	cout<<"Creating pipe ";
     mkfifo("../rfid/rfid_pipe",0666);
-    srand(NULL);
+    srand(0);
 
     cout<<"pipe created ..."<<endl;
 }
@@ -16,7 +16,6 @@ int64_t RFID::readCard(){
         return 1;
 
 //    char buff[20];
-
 //    int fd = open("../rfid/rfid_pipe",O_WRONLY);
 //    assert(fd != -1 && "error opening");
 //    cout<<"writing..."<<endl;

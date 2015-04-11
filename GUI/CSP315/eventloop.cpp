@@ -16,11 +16,11 @@ void MainWindow::initEventLoop(){
     RFID::init();
 }
 void MainWindow::doEvent(){
-    UserDialog dialog;
-    dialog.show();
-    dialog.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    cout<<"This is the user dialog!"<<endl;
-    dialog.exec();
+//    UserDialog dialog;
+//    dialog.show();
+//    dialog.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+//    cout<<"This is the user dialog!"<<endl;
+//    dialog.exec();
 //    if(ui->stackedWidget->currentIndex()==INITIALIZE){
 //        init();
 //    }

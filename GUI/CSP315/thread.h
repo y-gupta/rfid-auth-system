@@ -31,6 +31,7 @@ public:
   ThreadedJob(int _cost=1){
     cost=_cost;
   }
+  virtual ~ThreadedJob(){}
   virtual int process(){//Non zero return value terminates thread!
     delete this;
     return 1;
@@ -102,6 +103,7 @@ public:
     }
     static void* threadEntry(void *payload){
         ((WorkerThread*)payload)->loop();
+        return 0;
     }
 
 };

@@ -11,6 +11,7 @@ using namespace std;
 
 class NetworkJob : public ThreadedJob{
 public:
+    virtual ~NetworkJob();
     string url;
     uint16_t type;
     static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp);

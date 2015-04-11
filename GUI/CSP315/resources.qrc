@@ -13,5 +13,7 @@
         <file>card-remove.png</file>
         <file>card-master.png</file>
         <file>card-add.png</file>
+        <file>right-circle.png</file>
+        <file>left-circle.png</file>
     </qresource>
 </RCC>

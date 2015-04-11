@@ -9,6 +9,7 @@ void setResponse(string resp,uint16_t type){
     Network::response.set(resp,type);
     Network::response.unlock();
 }
+NetworkJob::~NetworkJob(){}
 size_t NetworkJob::WriteCallback(void *contents, size_t size, size_t nmemb, void *userp)
 {
     ((std::string*)userp)->append((char*)contents, size * nmemb);

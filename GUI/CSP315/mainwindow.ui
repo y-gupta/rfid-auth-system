@@ -30,7 +30,7 @@
     <item row="1" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="welcome">
        <layout class="QGridLayout" name="gridLayout">
@@ -1239,7 +1239,7 @@ outline:none
            <item row="0" column="0">
             <widget class="QStackedWidget" name="stackedWidget_admin">
              <property name="currentIndex">
-              <number>2</number>
+              <number>1</number>
              </property>
              <widget class="QWidget" name="page_4">
               <layout class="QGridLayout" name="gridLayout_19">
@@ -1354,7 +1354,7 @@ outline:none
                  </property>
                  <property name="icon">
                   <iconset resource="resources.qrc">
-                   <normaloff>:/images/up-circle.png</normaloff>:/images/up-circle.png</iconset>
+                   <normaloff>:/images/left-circle.png</normaloff>:/images/left-circle.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -1412,7 +1412,7 @@ outline:none
                  </property>
                  <property name="icon">
                   <iconset resource="resources.qrc">
-                   <normaloff>:/images/down-circle.png</normaloff>:/images/down-circle.png</iconset>
+                   <normaloff>:/images/right-circle.png</normaloff>:/images/right-circle.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>

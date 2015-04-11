@@ -6,6 +6,7 @@ UserDialog::UserDialog(QWidget *parent) :
     ui(new Ui::UserDialog)
 {
     ui->setupUi(this);
+    this->setFixedSize(300,300);
 }
 
 UserDialog::~UserDialog()
