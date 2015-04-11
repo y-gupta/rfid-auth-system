@@ -13,14 +13,16 @@ MainWindow::MainWindow(QWidget *parent) :
 
     Network::init("192.168.1.104/");
     ui->tabWidget_option ->setStyleSheet("QTabBar::tab { height: 100px; width: 660px; }");
-\
-    ui->stackedWidget->setCurrentIndex(INITIALIZE);
-    ui->label_14->setText(QString::fromUtf8("\u20B9 50"));
-    ui->toolButton_home->setHidden(true);
+
+//    ui->stackedWidget->setCurrentIndex(INITIALIZE);
+//    ui->label_14->setText(QString::fromUtf8("\u20B9 50"));
+//    ui->toolButton_home->setHidden(true);
 
     device_mac = "00-00";
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
+    initMessingUi();
+    gotoGeneral();
     initEventLoop();
 
     //TODO - Send the init request
@@ -30,29 +32,6 @@ MainWindow::MainWindow(QWidget *parent) :
 //    initWelcomeUi();
 //    checkWelcomeUi();
 //    gotoGeneral();
-
-    QPixmap pixmap(":/images/rupee.jpg");
-    cout<<pixmap.isNull()<<endl;
-    QIcon ButtonIcon(pixmap);
-
-    ui->pushButton->setIcon(ButtonIcon);
-    ui->pushButton->setIconSize(QSize(60,60));
-
-    ui->pushButton_2->setIcon(ButtonIcon);
-    ui->pushButton_2->setIconSize(QSize(60,60));
-
-    ui->pushButton_3->setIcon(ButtonIcon);
-    ui->pushButton_3->setIconSize(QSize(60,60));
-
-    ui->pushButton_4->setIcon(ButtonIcon);
-    ui->pushButton_4->setIconSize(QSize(60,60));
-
-    ui->pushButton_5->setIcon(ButtonIcon);
-    ui->pushButton_5->setIconSize(QSize(60,60));
-
-    ui->pushButton_6->setIcon(ButtonIcon);
-    ui->pushButton_6->setIconSize(QSize(60,60));
-    installEventFilter(this);
 }
 MainWindow::~MainWindow()
 {
@@ -86,6 +65,7 @@ void MainWindow::init(){
 void MainWindow::setMyStyleSheet(){
     ifstream in;
     in.open("../style.css");
+    cout<<"Done"<<endl;
     string Mystyle;
     getline(in,Mystyle,((char)-1));
     in.close();

@@ -19,7 +19,12 @@ QPushButton {
 	text-decoration: none;
 	background-color: #3498DB;
 	border-bottom: 5px solid #2980B9;
-	} 
+        }
+QPushButton:enabled{}
+QPushButton:disabled{
+        background-color: #ADD8E6;
+        border-bottom: 5px solid #ADD8E6;
+        }
 QPushButton:pressed {
 	border-bottom: 1px solid;
 	}
@@ -38,3 +43,8 @@ QToolButton {
 QToolButton:pressed {
 	border-bottom: 1px solid;
 }
+QToolButton:enabled{}
+QToolButton:disabled{
+        background-color: #ADD8E6;
+        border-bottom: 5px solid #ADD8E6;
+        }

@@ -21,28 +21,42 @@ void MainWindow::gotoGeneral(){
     ui->label_hostel_1->setText(QString::fromStdString(current_user.hostel_name));
     ui->label_id->setText(QString::fromStdString(current_user.entry_no));
 }
-void MainWindow::on_pushButton_clicked(){reset();
-    int value = ui->pushButton->text().toInt() * ui->spinBox_val->value();
+void MainWindow::initMessingUi(){
+    ui->pushButton->setText(QString::fromUtf8("\u20B9 5"));
+    ui->pushButton_2->setText(QString::fromUtf8("\u20B9 7"));
+    ui->pushButton_3->setText(QString::fromUtf8("\u20B9 13"));
+    ui->pushButton_4->setText(QString::fromUtf8("\u20B9 19"));
+    ui->pushButton_5->setText(QString::fromUtf8("\u20B9 23"));
+    ui->pushButton_6->setText(QString::fromUtf8("\u20B9 50"));
+}
+void MainWindow::on_pushButton_clicked(){
+    reset();
+    int value = ui->pushButton->text().remove(0,2).toInt() * ui->spinBox_val->value();
     my_printer.extra_messing(current_user,to_string(value));
 }
-void MainWindow::on_pushButton_2_clicked(){reset();
-    int value = ui->pushButton_2->text().toInt() * ui->spinBox_val->value();
+void MainWindow::on_pushButton_2_clicked(){
+    reset();
+    int value = ui->pushButton_2->text().remove(0,2).toInt() * ui->spinBox_val->value();
     my_printer.extra_messing(current_user,to_string(value));
 }
-void MainWindow::on_pushButton_3_clicked(){reset();
-    int value = ui->pushButton_3->text().toInt() * ui->spinBox_val->value();
+void MainWindow::on_pushButton_3_clicked(){
+    reset();
+    int value = ui->pushButton_3->text().remove(0,2).toInt() * ui->spinBox_val->value();
     my_printer.extra_messing(current_user,to_string(value));
 }
-void MainWindow::on_pushButton_4_clicked(){reset();
-    int value = ui->pushButton_4->text().toInt() * ui->spinBox_val->value();
+void MainWindow::on_pushButton_4_clicked(){
+    reset();
+    int value = ui->pushButton_4->text().remove(0,2).toInt() * ui->spinBox_val->value();
     my_printer.extra_messing(current_user,to_string(value));
 }
-void MainWindow::on_pushButton_5_clicked(){reset();
-    int value = ui->pushButton_5->text().toInt() * ui->spinBox_val->value();
+void MainWindow::on_pushButton_5_clicked(){
+    reset();
+    int value = ui->pushButton_5->text().remove(0,2).toInt() * ui->spinBox_val->value();
     my_printer.extra_messing(current_user,to_string(value));
 }
-void MainWindow::on_pushButton_6_clicked(){reset();
-    int value = ui->pushButton_6->text().toInt() * ui->spinBox_val->value();
+void MainWindow::on_pushButton_6_clicked(){
+    reset();
+    int value = ui->pushButton_6->text().remove(0,2).toInt() * ui->spinBox_val->value();
     my_printer.extra_messing(current_user,to_string(value));
 }
 void MainWindow::on_toolButton_inc_2_clicked(){reset();

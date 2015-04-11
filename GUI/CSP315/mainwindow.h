@@ -74,6 +74,7 @@ public:
 
     //General helper functions
     void gotoGeneral();
+    void initMessingUi();
     void checkRebateUi();
 
     //Admin helper function

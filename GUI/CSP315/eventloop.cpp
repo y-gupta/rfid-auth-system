@@ -16,9 +16,9 @@ void MainWindow::initEventLoop(){
     RFID::init();
 }
 void MainWindow::doEvent(){
-    if(ui->stackedWidget->currentIndex()==INITIALIZE){
-        init();
-    }
+//    if(ui->stackedWidget->currentIndex()==INITIALIZE){
+//        init();
+//    }
     //Date and time event in the welcome screen
     sec_count = (sec_count+ 1)%60;
     idle_time++;
@@ -28,10 +28,10 @@ void MainWindow::doEvent(){
     if(sec_count==0){
         checkWelcomeUi();
     }
-    if(idle_time>=time_out){
-        emit TIMEOUT();
-        idle_time=0;
-    }
+//    if(idle_time>=time_out){
+//        emit TIMEOUT();
+//        idle_time=0;
+//    }
 
     Network::response.lock();
     if(Network::response.isset){
