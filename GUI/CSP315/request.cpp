@@ -29,11 +29,10 @@ void CreateCardRequest::init(string _mac,string _pin,uint64_t _rfid,bool master)
     isMasterCard = master;
 }
 string CreateCardRequest::toString(){
-    string res="/device/add/?&mac="+mac
-            +"&rfid="+to_string(rfid)+"&pin="+pin+"&master=";
-    if(isMasterCard)res+="true";
-    else res+="false";
-    return res;
+    if(isMasterCard) return "/device/addmaster/?mac="+mac
+            +"&rfid="+to_string(rfid)+"&pin="+pin;
+    else return "/device/addcard/?mac="+mac
+            +"&rfid="+to_string(rfid)+"&pin="+pin;
 }
 void DeleteCardRequest::init(string _mac,string _pin,uint64_t _rfid){
     type = DELETE_CARD;
@@ -84,7 +83,7 @@ void StaffLoginRequest::init(string _mac, string _pin){
     pin = _pin;
 }
 string StaffLoginRequest::toString(){
-    return "/device/login/?mac="+mac+"&password="+pin;
+    return "/device/login/?mac="+mac+"&pin="+pin;
 }
 void InitRequest::init(string _mac){
     type = INIT;

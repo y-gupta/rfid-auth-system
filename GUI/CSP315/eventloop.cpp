@@ -55,7 +55,7 @@ void MainWindow::doEvent(){
                 cout<<attendRequest<<endl;
                 if(attendRequest==-1){
                 AuthRequest r;
-                r.init(device_mac,88);
+                r.init(device_mac,82);
 
                 cout<<"sending"<<endl;
                 Network::sendRequest(&r);
