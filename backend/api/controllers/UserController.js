@@ -5,6 +5,26 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
+function getTime(str){
+  var parts = str.split("/");
+  return Math.floor(new Date(parseInt("20"+parts[2], 10), parseInt(parts[1], 10) - 1, parseInt(parts[0], 10)).getTime()/1000);
+}
+function mealInfo(time){
+  var res={};
+  res.start=60*Math.floor(time/60);
+  res.end=res.start+60;
+  res.num=res.start%6;
+  if(res.num==0)
+    res.meal='breakfast'
+  else if(res.num==2)
+    res.meal='lunch'
+  else if(res.num==4)
+    res.meal='dinner'
+  else
+    res.meal='break';
+  return res;
+}
+
 module.exports = {
 	login:function(req,res){
     //require('gm')
@@ -32,12 +52,27 @@ module.exports = {
         });
   },
   rebate:function(req,res){
-    //if(req.query.from == null || req.query.to == null || req.query. == null)
-    res.send({success:true});
+    var start=Math.floor(Date.now()/1000), end=start;
+    if(req.query.nmeals == null || req.query.nmeals == 0){
+      if(req.query.start != null && req.query.end != null)
+        start=getTime(req.query.start),end=getTime(req.query.end)+24*3600;
+    }else{
+      start=mealInfo(start).start+120;
+      end=start+req.query.nmeals*120;
+    }
+    if(start===end)
+      res.badRequest("nmeals or start/end is required");
+    else
+      Rebate.create({user:req.props.user.id,start:start,end:end},
+        function(err,rebate){
+          if(err)
+            res.serverError("Failed to insert rebate "+err)
+          else res.send({id:rebate.id,success:true});
+        });
   },
   transact:function(req,res){
     if(req.query.amount == null)
-      res.badRequest("amount is required");
+      res.badRequest("  is required");
     else
       Transaction.create({user:req.props.user.id,amount:_.parseInt(req.query.amount),device:req.props.device},
         function(err,transaction){
