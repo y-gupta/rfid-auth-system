@@ -31,11 +31,31 @@ module.exports = {
     if(req.query.rfid == null)
       res.badRequest('rfid of new card is required');
     else
-      User.create({name:'guest user', rfid:req.query.rfid,entry:'N/A', hostel:req.props.hostel},function(err,user){
-          if(err==null)
-            res.send({id:user.id,success:true})
-          else res.serverError('Failed to insert new user. '+err)
-        });
+      Master.findOne({rfid:req.query.rfid},function(err,user){
+        if(user == null)
+          User.create({name:'guest user', rfid:req.query.rfid,entry:'N/A', hostel:req.props.hostel},function(err,user){
+            if(err==null)
+              res.send({id:user.id,success:true})
+            else res.serverError('Failed to insert new user. '+err)
+          });
+        else
+          res.serverError('A mastercard is registered with this RFID')
+      })
+  },
+  addmaster: function(req,res){
+    if(req.query.rfid == null)
+      res.badRequest('rfid of new card is required')
+    else
+      User.findOne({rfid:req.query.rfid},function(err,user){
+        if(user==null)
+          Master.create({rfid:req.query.rfid,device: req.props.device},function(err,user){
+              if(err==null)
+                res.send({id:user.id,success:true})
+              else res.serverError('Failed to insert new mastercard. '+err)
+            })
+        else
+          res.serverError('A user already exists with this RFID');
+    })
   },
   removecard:function(req,res){
     if(req.query.rfid == null)
