@@ -30,7 +30,7 @@
     <item row="1" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="welcome">
        <layout class="QGridLayout" name="gridLayout">
@@ -2009,15 +2009,14 @@ outline:none
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>pushButton_staff_login</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>pushButton_2</tabstop>
-  <tabstop>tabWidget_option</tabstop>
+  <tabstop>pushButton_staff_login</tabstop>
   <tabstop>pushButton_3</tabstop>
   <tabstop>pushButton_4</tabstop>
   <tabstop>pushButton_5</tabstop>
+  <tabstop>tabWidget_option</tabstop>
   <tabstop>pushButton_6</tabstop>
-  <tabstop>spinBox_val</tabstop>
   <tabstop>toolButton_inc_2</tabstop>
   <tabstop>toolButton_dec_2</tabstop>
   <tabstop>pushButton_9</tabstop>
@@ -2052,6 +2051,7 @@ outline:none
   <tabstop>pushButton_20</tabstop>
   <tabstop>pushButton_enter</tabstop>
   <tabstop>toolButton_home</tabstop>
+  <tabstop>pushButton_confirm_3</tabstop>
  </tabstops>
  <resources>
   <include location="resources.qrc"/>

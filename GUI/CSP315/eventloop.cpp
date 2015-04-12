@@ -6,7 +6,7 @@ void MainWindow::initEventLoop(){
     //Initializing the timer
     timer = new QTimer(this);
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(doEvent()));
-    timer->start(1000);
+    timer->start(50);
     sec_count = 0;
     time_out=5;
     idle_time=3;
@@ -16,12 +16,6 @@ void MainWindow::initEventLoop(){
     RFID::init();
 }
 void MainWindow::doEvent(){
-//    UserDialog dialog;
-//    dialog.show();
-//    dialog.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-
-
-    //dialog.exec();
     if(ui->stackedWidget->currentIndex()==INITIALIZE){
         init();
     }
@@ -61,8 +55,8 @@ void MainWindow::doEvent(){
                 cout<<attendRequest<<endl;
                 if(attendRequest==-1){
                 AuthRequest r;
-                r.init(device_mac,rfid);
-                r.rfid = rfid;
+                r.init(device_mac,88);
+
                 cout<<"sending"<<endl;
                 Network::sendRequest(&r);
                 attendRequest=-1;

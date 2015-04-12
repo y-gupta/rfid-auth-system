@@ -117,7 +117,8 @@ private slots:
     void on_pushButton_7_clicked();
     void on_pushButton_8_clicked();
     void on_pushButton_9_clicked();
-
+    void on_pushButton_confirm_clicked();
+    void sendRebateRequest(int nmeals,string start="",string end="");
     //These are the messing buttons part
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
@@ -155,6 +156,8 @@ private slots:
     void on_toolButton_dec_clicked();
     void on_pushButton_confirm_2_clicked();
     void on_pushButton_confirm_3_clicked();
+
+
 
 private:
     Ui::MainWindow *ui;

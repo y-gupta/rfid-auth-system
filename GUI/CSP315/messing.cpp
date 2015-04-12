@@ -24,6 +24,13 @@ void MainWindow::gotoGeneral(){
     ui->label_name->setText(QString::fromStdString(current_user.user_name));
     ui->label_hostel_1->setText(QString::fromStdString(current_user.hostel_name));
     ui->label_id->setText(QString::fromStdString(current_user.entry_no));
+    UserDialog dialog;
+    dialog.show();
+    cout<<"Before entering loop"<<endl;
+    dialog.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+
+    dialog.exec();
+
 }
 void MainWindow::initMessingUi(){
     ui->pushButton->setText(QString::fromUtf8("\u20B9 5"));
@@ -40,7 +47,7 @@ void MainWindow::on_pushButton_clicked(){
    req.init(device_mac,current_user.rfid,value);
     Network::sendRequest(&req);
     //TODO remove this from here
-    my_printer.extra_messing(current_user,to_string(value));
+   // my_printer.extra_messing(current_user,to_string(value));
 }
 void MainWindow::on_pushButton_2_clicked(){
     reset();
@@ -49,7 +56,7 @@ void MainWindow::on_pushButton_2_clicked(){
    req.init(device_mac,current_user.rfid,value);
     Network::sendRequest(&req);
     //TODO remove this from her
-    my_printer.extra_messing(current_user,to_string(value));
+    //my_printer.extra_messing(current_user,to_string(value));
 }
 void MainWindow::on_pushButton_3_clicked(){
     reset();
@@ -58,7 +65,7 @@ void MainWindow::on_pushButton_3_clicked(){
    req.init(device_mac,current_user.rfid,value);
     Network::sendRequest(&req);
     //TODO remove this from her
-    my_printer.extra_messing(current_user,to_string(value));
+ //   my_printer.extra_messing(current_user,to_string(value));
 }
 void MainWindow::on_pushButton_4_clicked(){
     reset();
@@ -67,7 +74,7 @@ void MainWindow::on_pushButton_4_clicked(){
    req.init(device_mac,current_user.rfid,value);
     Network::sendRequest(&req);
     //TODO remove this from her
-    my_printer.extra_messing(current_user,to_string(value));
+   // my_printer.extra_messing(current_user,to_string(value));
 }
 void MainWindow::on_pushButton_5_clicked(){
     reset();
@@ -76,7 +83,7 @@ void MainWindow::on_pushButton_5_clicked(){
    req.init(device_mac,current_user.rfid,value);
     Network::sendRequest(&req);
     //TODO remove this from her
-    my_printer.extra_messing(current_user,to_string(value));
+    //my_printer.extra_messing(current_user,to_string(value));
 }
 void MainWindow::on_pushButton_6_clicked(){
     reset();
@@ -85,7 +92,7 @@ void MainWindow::on_pushButton_6_clicked(){
    req.init(device_mac,current_user.rfid,value);
     Network::sendRequest(&req);
     //TODO remove this from her
-    my_printer.extra_messing(current_user,to_string(value));
+    //my_printer.extra_messing(current_user,to_string(value));
 }
 void MainWindow::on_toolButton_inc_2_clicked(){reset();
     if(ui->spinBox_val->value() >= 1)

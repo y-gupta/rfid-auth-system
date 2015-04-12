@@ -26,7 +26,7 @@
    <item row="0" column="0">
     <widget class="QFrame" name="frame">
      <property name="styleSheet">
-      <string notr="true">border-image : url(./iit.png) 0 0 0 0 stretch stretch;</string>
+      <string notr="true">border-image : url(./user.png) 0 0 0 0 stretch stretch;</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>

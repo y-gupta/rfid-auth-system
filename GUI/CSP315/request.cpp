@@ -17,7 +17,7 @@ void AuthRequest::init(string _mac, uint64_t _rfid){
     rfid = _rfid;
 }
 string AuthRequest::toString(){
-    return "/user/login/?&mac="+mac+"&rfid="+to_string(rfid);
+    return "/user/login/?mac="+mac+"&rfid="+to_string(rfid);
 }
 
 void CreateCardRequest::init(string _mac,string _pin,uint64_t _rfid,bool master){
@@ -62,7 +62,7 @@ void MessingRequest::init(string _mac,uint64_t _rfid,uint32_t _amount){
 
 }
 string MessingRequest::toString(){
-    return "user/transact/?mac="+mac+"&rfid="+to_string(rfid)
+    return "/user/transact/?mac="+mac+"&rfid="+to_string(rfid)
             +"&amount="+to_string(amount);
 }
 
@@ -76,7 +76,7 @@ void RebateRequest::init(string _mac,uint64_t _rfid,uint32_t _n_meal,string _sta
 }
 string RebateRequest::toString(){
     return "/user/rebate/?mac="+mac+"&n_meals="+to_string(n_meal)
-            +"&start="+start+"&end="+end;
+            +"&start="+start+"&end="+end+"&rfid="+to_string(rfid);
 }
 void StaffLoginRequest::init(string _mac, string _pin){
     type = STAFF_LOGIN_REQ;
