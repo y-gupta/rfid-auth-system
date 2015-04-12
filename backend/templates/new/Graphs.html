@@ -1,0 +1,103 @@
+<div id="page-wrapper">
+    <div class="col-lg-12">
+        <h1 class="page-header"> {{Graphs.Hostel}} Graphs</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+            	<div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Net attendance
+                </div>
+                <div class="panel-body">
+                    <div id="allhostels"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Extra Messing
+                </div>
+                <div class="panel-body">
+                    <div id="extramessing"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Mess Rebate
+                </div>
+                <div class="panel-body">
+                    <div id="messrebate"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../bower_components/raphael/raphael-min.js"></script>
+<script src="../bower_components/morrisjs/morris.min.js"></script>
+<script>
+$(function() {
+    Morris.Bar({
+        element: 'allhostels',
+        data: [
+        {{#Graphs.Attendance}}
+        {
+            y: {{period}},
+            a: {{actual}},
+            b: {{expected}}
+        },
+        {{/Graphs.Attendance}}
+        ],
+        xkey: 'y',
+        ykeys: ['a','b'],
+        labels: ['actual','predicted'],
+        hideHover: 'auto',
+        resize: true,
+        xLabelAngle: 30,
+        yLabelAngle: 60
+    });
+});
+$(function() {
+    Morris.Bar({
+        element: 'extramessing',
+        data: [
+        {{#Graphs.Extramessing}}
+        {
+            y: {{period}},
+            a: {{amount}}
+        },
+        {{/Graphs.Extramessing}}
+        ],
+        xkey: 'y',
+        ykeys: ['a'],
+        labels: ['amount'],
+        hideHover: 'auto',
+        resize: true,
+        xLabelAngle: 30,
+        yLabelAngle: 60
+    });
+});
+$(function() {
+    Morris.Bar({
+        element: 'messrebate',
+        data: [
+        {{#Graphs.Messrebate}}
+        {
+            y: {{period}},
+            a: {{actual}},
+            b: {{expected}}
+        },
+        {{/Graphs.Messrebate}}
+        ],
+        xkey: 'y',
+        ykeys: ['a','b'],
+        labels: ['actual','predicted'],
+        hideHover: 'auto',
+        resize: true,
+        xLabelAngle: 30,
+        yLabelAngle: 60
+    });
+});
+</script>
