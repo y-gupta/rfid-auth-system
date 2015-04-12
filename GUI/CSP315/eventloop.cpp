@@ -93,7 +93,6 @@ void MainWindow::doReadCard(int64_t rfid){
         if(attendRequest==CREATE_NEW_CARD){
             CreateCardRequest r;
             r.init(device.mac,device.pin,rfid,false);
-            r.isMasterCard = false;
             Network::sendRequest(&r);
             read_card=-1;
             attendResponse = CREATE_NEW_CARD;

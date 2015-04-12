@@ -209,25 +209,50 @@ void MainWindow::processCreateMasterCardResponse(string _resp){
         cout<<"Success!"<<endl;
     }
     else{
-        cout<<"Creation of master card failed"<<endl;
+        cout<<"Registration of master card failed"<<endl;
     }
 }
 void MainWindow::processCreateNewCardResponse(string _resp){
-
+    Document d;
+    d.Parse(_resp.c_str());
+    Value& v = d["success"];
+    if(v.GetBool()){
+        //TODO change all the couts to prints in the popup box
+        cout<<"Success!"<<endl;
+    }
+    else{
+        cout<<"Registration of card failed"<<endl;
+    }
 }
 void MainWindow::processDeleteCardResponse(string _resp){
-    bool isSuccess = true;
-    if(isSuccess && attendResponse==DELETE_CARD){
-        attendResponse=-1;
-        gotoWelcome();
-    }
 
+    if(attendResponse==DELETE_CARD){
+        Document d;
+        d.Parse(_resp.c_str());
+        Value& v = d["success"];
+        if(v.GetBool()){
+            attendResponse=-1;
+            cout<<"Success!"<<endl;
+            gotoWelcome();
+        }
+        else{
+            cout<<"Deletion failed!"<<endl;
+          }
+    }
 }
 void MainWindow::processAllowTempResponse(string _resp){
-    bool isSuccess = true;
-    if(isSuccess && attendResponse==ALLOW_TEMP){
-        attendResponse=-1;
-        gotoWelcome();
+    if(attendResponse==ALLOW_TEMP){
+        Document d;
+        d.Parse(_resp.c_str());
+        Value& v = d["success"];
+        if(v.GetBool()){
+            attendResponse=-1;
+            cout<<"Success!"<<endl;
+            gotoWelcome();
+        }
+        else{
+        cout<<"Deletion failed!"<<endl;
+        }
     }
 }
 void MainWindow::processMessingRequest(string _resp){
@@ -264,9 +289,17 @@ void MainWindow::processRebateRequest(string _resp){
 }
 void MainWindow::processStaffLoginResponse(string _resp){
     if(attendResponse==STAFF_LOGIN_REQ){
-        cout<<"This is Staff Login request"<<endl;
+        Document d;
+        d.Parse(_resp.c_str());
+        Value& v = d["success"];
+        if(v.GetBool()){
+            cout<<"Success!"<<endl;
         attendResponse=-1;
         gotoAdmin();
+        }
+        else{
+            cout<<"Staff Login failed"<<endl;
+        }
     }
 }
 void MainWindow::showConfirmation(string s){

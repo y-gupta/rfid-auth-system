@@ -13,7 +13,7 @@ void MainWindow::gotoAdmin(){
 void MainWindow::on_pushButton_allow_clicked(){
     reset();
     AllowTempRequest r;
-    r.init(0,0);
+    r.init(device.mac,device.pin);
     Network::sendRequest(&r);
     ui->label_notification->setText("Your request is being processed!");
     attendRequest=-1;
