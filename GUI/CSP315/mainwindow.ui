@@ -1239,7 +1239,7 @@ outline:none
            <item row="0" column="0">
             <widget class="QStackedWidget" name="stackedWidget_admin">
              <property name="currentIndex">
-              <number>1</number>
+              <number>2</number>
              </property>
              <widget class="QWidget" name="page_4">
               <layout class="QGridLayout" name="gridLayout_19">
@@ -1464,7 +1464,7 @@ outline:none
                  </property>
                  <property name="font">
                   <font>
-                   <pointsize>16</pointsize>
+                   <pointsize>32</pointsize>
                   </font>
                  </property>
                  <property name="text">
@@ -1485,7 +1485,7 @@ outline:none
                  </property>
                  <property name="font">
                   <font>
-                   <pointsize>16</pointsize>
+                   <pointsize>26</pointsize>
                    <weight>75</weight>
                    <bold>true</bold>
                   </font>

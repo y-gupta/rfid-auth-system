@@ -77,10 +77,7 @@ void MainWindow::doEvent(){
 void MainWindow::doReadCard(int64_t rfid){
     switch (read_card){
     case DELETE_CARD:{
-        ui->stackedWidget_admin->setCurrentIndex(OPTION);
-        ui->pushButton_confirm_2->setEnabled(true);
-        ui->toolButton_inc->setEnabled(false);
-        ui->toolButton_dec->setEnabled(false);
+        ui->stackedWidget_admin->setCurrentIndex(DELETE);
         cout<<"Attend-request:"<<attendRequest<<endl;
         if(attendRequest==DELETE_CARD){
             cout<<"Sending the delete card request"<<endl;
@@ -110,8 +107,7 @@ void MainWindow::doReadCard(int64_t rfid){
         break;
     }
     case CREATE_MASTER_CARD:{
-        ui->stackedWidget_admin->setCurrentIndex(OPTION);
-        ui->pushButton_confirm_2->setEnabled(true);
+        ui->stackedWidget_admin->setCurrentIndex(DELETE);
         if(attendRequest==CREATE_MASTER_CARD){
             CreateCardRequest r;
             r.init(device_mac,current_user.pin,rfid,true);
