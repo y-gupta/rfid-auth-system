@@ -12,7 +12,6 @@ UserDialog::UserDialog(QWidget *parent) :
     dummy_timer = new QTimer(this);
     dummy_timer->start(3000);
     connect(dummy_timer,SIGNAL(timeout()),this,SLOT(timeout()));
-    cout<<"Constructed"<<endl;
 }
 
 UserDialog::~UserDialog()
@@ -23,6 +22,5 @@ void UserDialog::mousePressEvent(QMouseEvent *){
     this->close();
 }
 void UserDialog::timeout(){
-    cout<<"Time out is called"<<endl;
     this->close();
 }

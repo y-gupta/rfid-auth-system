@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     request.cpp \
     response.cpp \
     userdialog.cpp \
-    base64.cpp
+    base64.cpp \
+    confirmdialog.cpp
 
 HEADERS  += mainwindow.h \
     ../printer/printer.h \
@@ -39,10 +40,12 @@ HEADERS  += mainwindow.h \
     request.h \
     response.h \
     userdialog.h \
-    base64.h
+    base64.h \
+    confirmdialog.h
 
 FORMS    += mainwindow.ui \
-    userdialog.ui
+    userdialog.ui \
+    confirmdialog.ui
 
 RESOURCES += \
     resources.qrc
