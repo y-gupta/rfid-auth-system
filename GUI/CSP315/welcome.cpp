@@ -52,7 +52,6 @@ void MainWindow::checkWelcomeUi(){
 }
 void MainWindow::gotoWelcome(){
     ui->stackedWidget->setCurrentIndex(WELCOME);
-    cout<<"is set"<<endl;
 }
 void MainWindow::setUpMealTimeUi(){
     //TODO - MEAL TIME STUFF
