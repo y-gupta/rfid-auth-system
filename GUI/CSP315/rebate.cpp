@@ -51,7 +51,7 @@ reset();
 }
 void MainWindow::sendRebateRequest(int nmeals,string start,string end){
     RebateRequest req;
-    req.init(device_mac,current_user.rfid,nmeals,start,end);
+    req.init(device.mac,current_user.rfid,nmeals,start,end);
     Network::sendRequest(&req);
 }
 

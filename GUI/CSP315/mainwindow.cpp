@@ -19,8 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
 //    ui->label_14->setText(QString::fromUtf8("\u20B9 50"));
       ui->toolButton_home->setHidden(true);
 
-    device_mac = "100";
-    pin = "0000";
+    device.mac = "100";
+    device.pin = "0000";
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
     initMessingUi();
@@ -46,7 +46,7 @@ void MainWindow::init(){
     //TODO - Init request
     cout<<"initalising"<<endl;
     InitRequest r;
-    r.init(device_mac);
+    r.init(device.mac);
     Network::sendRequest(&r);
     string _resp;
 
@@ -141,7 +141,7 @@ void MainWindow::processInitResponse(string _resp){
     Value& v= d["success"];
     if(v.GetBool()){
         v = d["hostel"];
-        hostel_name = v.GetString();
+        device.hostel_name = v.GetString();
         v = d["image"];
         convertToPNG(v.GetString(),"../Resources/graph1.png");
         //TODO set the expected and logged in
@@ -169,7 +169,7 @@ void MainWindow::processAuthResponse(string _resp){
         assert(v.IsBool() && "invalide master in auth response");
         user.isAdmin = v.GetBool();
         v = arr["hostel"];
-        user.hostel_name = v.GetString();
+        device.hostel_name = v.GetString();
         v = arr["entry"];
         assert(v.IsString() &&"invalid entry number in response");
         user.entry_no = v.GetString();
@@ -195,6 +195,7 @@ void MainWindow::processAuthResponse(string _resp){
 
             current_user.clear();
             current_user=user;
+            current_user.hostel_name = device.hostel_name;
             gotoGeneral();
         }
     }

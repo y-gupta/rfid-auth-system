@@ -60,9 +60,16 @@ public:
 
     //Extra information
     User current_user;
-    string device_mac;
-    string hostel_name;
-    string pin;
+
+    struct Device{
+        int expected;
+        int logged;
+        string mac;
+        string hostel_name;
+        string pin;
+    } device;
+
+
     //Event loop helper functions
     QTimer *timer;
     int sec_count;
