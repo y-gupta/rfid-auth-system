@@ -7,6 +7,7 @@
 #include "user.h"
 #include "utility.cpp"
 #include "userdialog.h"
+#include "confirmdialog.h"
 
 #include <vector>
 #include <fstream>
@@ -43,6 +44,11 @@ public:
 
     ~MainWindow();
 
+
+    //General
+    void showConfirmation(string s);
+
+    //Style sheet
     void setMyStyleSheet();
     //Timeout helper function
     int time_out;
@@ -54,8 +60,15 @@ public:
 
     //Extra information
     User current_user;
-    string device_mac;
-    string hostel_name;
+
+    struct Device{
+        int expected;
+        int logged;
+        string mac;
+        string hostel_name;
+        string pin;
+    } device;
+
 
     //Event loop helper functions
     QTimer *timer;
@@ -117,7 +130,8 @@ private slots:
     void on_pushButton_7_clicked();
     void on_pushButton_8_clicked();
     void on_pushButton_9_clicked();
-
+    void on_pushButton_confirm_clicked();
+    void sendRebateRequest(int nmeals,string start="",string end="");
     //These are the messing buttons part
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
@@ -155,6 +169,8 @@ private slots:
     void on_toolButton_dec_clicked();
     void on_pushButton_confirm_2_clicked();
     void on_pushButton_confirm_3_clicked();
+
+
 
 private:
     Ui::MainWindow *ui;

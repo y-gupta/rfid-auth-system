@@ -1,6 +1,6 @@
 #include "network.h"
 #include "mainwindow.h"
-
+#include <QTime>
 string Network::url = "";
 WorkerThread* Network::thread=NULL;
 Response Network::response;
@@ -16,7 +16,8 @@ size_t NetworkJob::WriteCallback(void *contents, size_t size, size_t nmemb, void
     return size * nmemb;
 }
 int NetworkJob::process(){
-
+    QTime mtimer;
+    mtimer.start();
     CURL *curl = curl_easy_init();
     CURLcode res;
     string readBuffer;
@@ -36,6 +37,7 @@ int NetworkJob::process(){
      }
          curl_easy_cleanup(curl);
          setResponse(readBuffer,type);
+         cout<<"curl time: "<<mtimer.elapsed()<<endl;
          delete this;
          return 0;
     }

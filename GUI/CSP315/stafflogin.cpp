@@ -61,7 +61,7 @@ reset();
 void MainWindow::on_pushButton_enter_clicked(){
 reset();
 StaffLoginRequest r;
-r.init(device_mac,ui->lineEdit_password->text().toStdString());
+r.init(device.mac,ui->lineEdit_password->text().toStdString());
 Network::sendRequest(&r);
 attendRequest=-1;
 attendResponse=STAFF_LOGIN_REQ;

@@ -30,7 +30,7 @@
     <item row="1" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="welcome">
        <layout class="QGridLayout" name="gridLayout">
@@ -1239,7 +1239,7 @@ outline:none
            <item row="0" column="0">
             <widget class="QStackedWidget" name="stackedWidget_admin">
              <property name="currentIndex">
-              <number>2</number>
+              <number>1</number>
              </property>
              <widget class="QWidget" name="page_4">
               <layout class="QGridLayout" name="gridLayout_19">
@@ -1337,7 +1337,7 @@ outline:none
                 </widget>
                </item>
                <item row="2" column="1">
-                <widget class="QToolButton" name="toolButton_inc">
+                <widget class="QToolButton" name="toolButton_dec">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                    <horstretch>0</horstretch>
@@ -1381,7 +1381,7 @@ outline:none
                   <set>Qt::AlignCenter</set>
                  </property>
                  <property name="readOnly">
-                  <bool>false</bool>
+                  <bool>true</bool>
                  </property>
                  <property name="buttonSymbols">
                   <enum>QAbstractSpinBox::NoButtons</enum>
@@ -1395,7 +1395,7 @@ outline:none
                 </widget>
                </item>
                <item row="2" column="3">
-                <widget class="QToolButton" name="toolButton_dec">
+                <widget class="QToolButton" name="toolButton_inc">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                    <horstretch>0</horstretch>
@@ -2009,15 +2009,14 @@ outline:none
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>pushButton_staff_login</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>pushButton_2</tabstop>
-  <tabstop>tabWidget_option</tabstop>
+  <tabstop>pushButton_staff_login</tabstop>
   <tabstop>pushButton_3</tabstop>
   <tabstop>pushButton_4</tabstop>
   <tabstop>pushButton_5</tabstop>
+  <tabstop>tabWidget_option</tabstop>
   <tabstop>pushButton_6</tabstop>
-  <tabstop>spinBox_val</tabstop>
   <tabstop>toolButton_inc_2</tabstop>
   <tabstop>toolButton_dec_2</tabstop>
   <tabstop>pushButton_9</tabstop>
@@ -2034,9 +2033,9 @@ outline:none
   <tabstop>pushButton_reg</tabstop>
   <tabstop>pushButton_delete</tabstop>
   <tabstop>pushButton_allow</tabstop>
-  <tabstop>toolButton_inc</tabstop>
-  <tabstop>spinBox_days</tabstop>
   <tabstop>toolButton_dec</tabstop>
+  <tabstop>spinBox_days</tabstop>
+  <tabstop>toolButton_inc</tabstop>
   <tabstop>pushButton_confirm_2</tabstop>
   <tabstop>lineEdit_password</tabstop>
   <tabstop>pushButton_14</tabstop>
@@ -2052,6 +2051,7 @@ outline:none
   <tabstop>pushButton_20</tabstop>
   <tabstop>pushButton_enter</tabstop>
   <tabstop>toolButton_home</tabstop>
+  <tabstop>pushButton_confirm_3</tabstop>
  </tabstops>
  <resources>
   <include location="resources.qrc"/>

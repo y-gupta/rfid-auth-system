@@ -17,7 +17,7 @@ void AuthRequest::init(string _mac, uint64_t _rfid){
     rfid = _rfid;
 }
 string AuthRequest::toString(){
-    return "/user/login/?&mac="+mac+"&rfid="+to_string(rfid);
+    return "/user/login/?mac="+mac+"&rfid="+to_string(rfid);
 }
 
 void CreateCardRequest::init(string _mac,string _pin,uint64_t _rfid,bool master){
@@ -29,11 +29,10 @@ void CreateCardRequest::init(string _mac,string _pin,uint64_t _rfid,bool master)
     isMasterCard = master;
 }
 string CreateCardRequest::toString(){
-    string res="/device/add/?&mac="+mac
-            +"&rfid="+to_string(rfid)+"&pin="+pin+"&master=";
-    if(isMasterCard)res+="true";
-    else res+="false";
-    return res;
+    if(isMasterCard) return "/device/addmaster/?mac="+mac
+            +"&rfid="+to_string(rfid)+"&pin="+pin;
+    else return "/device/addcard/?mac="+mac
+            +"&rfid="+to_string(rfid)+"&pin="+pin;
 }
 void DeleteCardRequest::init(string _mac,string _pin,uint64_t _rfid){
     type = DELETE_CARD;
@@ -51,8 +50,7 @@ void AllowTempRequest::init(string _mac,string _pin){
     pin=_pin;
 }
 string AllowTempRequest::toString(){
-    return "/device/allow/?mac="+mac+"&rfid="+to_string(rfid)
-            +"&pin="+pin;
+    return "/device/allow/?mac="+mac+"&pin="+pin;
 }
 void MessingRequest::init(string _mac,uint64_t _rfid,uint32_t _amount){
     type = MESSING_REQ;
@@ -62,7 +60,7 @@ void MessingRequest::init(string _mac,uint64_t _rfid,uint32_t _amount){
 
 }
 string MessingRequest::toString(){
-    return "user/transact/?mac="+mac+"&rfid="+to_string(rfid)
+    return "/user/transact/?mac="+mac+"&rfid="+to_string(rfid)
             +"&amount="+to_string(amount);
 }
 
@@ -76,7 +74,7 @@ void RebateRequest::init(string _mac,uint64_t _rfid,uint32_t _n_meal,string _sta
 }
 string RebateRequest::toString(){
     return "/user/rebate/?mac="+mac+"&n_meals="+to_string(n_meal)
-            +"&start="+start+"&end="+end;
+            +"&start="+start+"&end="+end+"&rfid="+to_string(rfid);
 }
 void StaffLoginRequest::init(string _mac, string _pin){
     type = STAFF_LOGIN_REQ;
@@ -84,7 +82,7 @@ void StaffLoginRequest::init(string _mac, string _pin){
     pin = _pin;
 }
 string StaffLoginRequest::toString(){
-    return "/device/login/?mac="+mac+"&password="+pin;
+    return "/device/login/?mac="+mac+"&pin="+pin;
 }
 void InitRequest::init(string _mac){
     type = INIT;
