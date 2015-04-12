@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
       ui->toolButton_home->setHidden(true);
 
     device_mac = "100";
+    pin = "0000";
     connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
     initWelcomeUi();
     initMessingUi();
@@ -199,7 +200,16 @@ void MainWindow::processAuthResponse(string _resp){
     }
 }
 void MainWindow::processCreateMasterCardResponse(string _resp){
-
+    Document d;
+    d.Parse(_resp.c_str());
+    Value& v = d["success"];
+    if(v.GetBool()){
+        //TODO change all the couts to prints in the popup box
+        cout<<"Success!"<<endl;
+    }
+    else{
+        cout<<"Creation of master card failed"<<endl;
+    }
 }
 void MainWindow::processCreateNewCardResponse(string _resp){
 

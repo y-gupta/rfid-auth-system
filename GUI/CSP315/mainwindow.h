@@ -56,7 +56,7 @@ public:
     User current_user;
     string device_mac;
     string hostel_name;
-
+    string pin;
     //Event loop helper functions
     QTimer *timer;
     int sec_count;

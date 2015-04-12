@@ -50,8 +50,7 @@ void AllowTempRequest::init(string _mac,string _pin){
     pin=_pin;
 }
 string AllowTempRequest::toString(){
-    return "/device/allow/?mac="+mac+"&rfid="+to_string(rfid)
-            +"&pin="+pin;
+    return "/device/allow/?mac="+mac+"&pin="+pin;
 }
 void MessingRequest::init(string _mac,uint64_t _rfid,uint32_t _amount){
     type = MESSING_REQ;
