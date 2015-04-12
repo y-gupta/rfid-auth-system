@@ -7,6 +7,7 @@
 
 module.exports = {
   init: function (req, res) {
+
     require('fs').readFile("ml/results/"+req.props.hostel+".png",function(err,image_data){
       var image = "";
       if(err == null){
@@ -34,6 +35,16 @@ module.exports = {
           if(err==null)
             res.send({id:user.id,success:true})
           else res.serverError('Failed to insert new user. '+err)
+        });
+  },
+  removecard:function(req,res){
+    if(req.query.rfid == null)
+      res.badRequest('rfid of the card is required');
+    else
+      User.destroy({rfid:req.query.rfid, hostel:req.props.hostel},function(err,user){
+          if(err==null)
+            res.send({success:true})
+          else res.forbidden('Failed to delete card. '+err)
         });
   }
 };

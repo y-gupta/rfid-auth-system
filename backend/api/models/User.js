@@ -27,6 +27,10 @@ module.exports = {
       defaultsTo: 'Zanskar',
       index: true
     },
+    image:{
+      type: 'string',
+      defaultsTo: 'default.png'
+    }
   }
 };
 

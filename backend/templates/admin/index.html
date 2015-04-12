@@ -175,13 +175,13 @@
     <script>
     $(function() {
  {{#Predictions}}
-    Morris.Area({
+    Morris.Line({
         element: 'graph{{Hostel}}',
         data: [
         {{#Graph}}
         {
             y: "{{period}}",
-            a: {{actual}},
+          {{#actual}}a: {{actual}},{{/actual}}
             b: {{expected}}
         },
         {{/Graph}}

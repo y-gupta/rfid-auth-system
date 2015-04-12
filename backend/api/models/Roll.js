@@ -20,7 +20,9 @@ module.exports = {
       type:'string',
       index:true
     },
-    success: 'bool',
+    success:{
+      type:'boolean'
+    },
     time:{
       type: 'integer',
       defaultsTo: function(){Math.floor(Date.now()/1000)}
