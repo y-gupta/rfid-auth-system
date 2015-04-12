@@ -12,8 +12,8 @@ using namespace std;
 #define CREATE_NEW_CARD 2
 #define DELETE_CARD 3
 #define ALLOW_TEMP 4
-#define MESSING 5
-#define REBATE 6
+#define MESSING_REQ 5
+#define REBATE_REQ 6
 #define STAFF_LOGIN_REQ 7
 #define INIT 8
 

@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setMouseTracking(true);
     ui->setupUi(this);
 
-    Network::init("10.251.216.167:1337");
+    Network::init("localhost:1337");
     //ui->tabWidget_option ->setStyleSheet("QTabBar::tab { height: 100px; width: 660px; }");
 
         ui->stackedWidget->setCurrentIndex(INITIALIZE);

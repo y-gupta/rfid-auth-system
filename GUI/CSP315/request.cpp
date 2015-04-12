@@ -55,7 +55,7 @@ string AllowTempRequest::toString(){
             +"&pin="+pin;
 }
 void MessingRequest::init(string _mac,uint64_t _rfid,uint32_t _amount){
-    type = MESSING;
+    type = MESSING_REQ;
     mac = _mac;
     rfid = _rfid;
     amount = _amount;
@@ -67,7 +67,7 @@ string MessingRequest::toString(){
 }
 
 void RebateRequest::init(string _mac,uint64_t _rfid,uint32_t _n_meal,string _start,string _end){
-    type = REBATE;
+    type = REBATE_REQ;
     mac = _mac;
     rfid = _rfid;
     n_meal = _n_meal;

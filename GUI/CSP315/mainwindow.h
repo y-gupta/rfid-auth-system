@@ -154,6 +154,7 @@ private slots:
     void on_toolButton_inc_clicked();
     void on_toolButton_dec_clicked();
     void on_pushButton_confirm_2_clicked();
+    void on_pushButton_confirm_3_clicked();
 
 private:
     Ui::MainWindow *ui;

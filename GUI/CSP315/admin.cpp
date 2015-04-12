@@ -58,3 +58,8 @@ void MainWindow::on_pushButton_confirm_2_clicked(){
     cout<<"Request confirmed:" <<attendRequest<<endl;
     reset();
 }
+void MainWindow::on_pushButton_confirm_3_clicked(){
+    attendRequest=read_card;
+    cout<<"Request confirmed:" <<attendRequest<<endl;
+    reset();
+}
