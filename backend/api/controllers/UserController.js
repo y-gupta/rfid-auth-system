@@ -67,7 +67,7 @@ module.exports = {
         function(err,rebate){
           if(err)
             res.serverError("Failed to insert rebate "+err)
-          else res.send({id:rebate.id,success:true});
+          else res.send({id:rebate.id,success:true,start:new Date(start*1000).toString(),end:new Date(end*1000).toString(),nmeals:Math.floor((end-start)/120)});
         });
   },
   transact:function(req,res){

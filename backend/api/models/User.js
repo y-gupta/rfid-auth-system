@@ -14,7 +14,6 @@ module.exports = {
     },
     rfid:{
       type:'string',
-      defaultsTo: 'abcdef123456789',
       unique:true,
       index:true
     },
@@ -24,7 +23,7 @@ module.exports = {
     },
     hostel:{
       type: 'string',
-      defaultsTo: 'Zanskar',
+      defaultsTo: 'zanskar',
       index: true
     },
     image:{

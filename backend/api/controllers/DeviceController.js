@@ -66,6 +66,20 @@ module.exports = {
             res.send({success:true})
           else res.forbidden('Failed to delete card. '+err)
         });
+  },
+  allow:function(req,res){
+    User.findOrCreate({name:req.props.hostel+" admin",entry:"N/A"},function(err,user){
+      if(err)
+        res.serverError("Failed to create/find admin user accountt");
+      else
+        Roll.create({user:user.id,device:req.props.device,hostel:req.props.hostel,success:true},
+          function(err,roll){
+           if(err == null)
+             res.send({success:true});
+           else
+             res.serverError("Failed to record login/roll. "+err)
+          });
+   });
   }
 };
 
