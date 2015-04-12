@@ -258,5 +258,11 @@ void MainWindow::processStaffLoginResponse(string _resp){
         gotoAdmin();
     }
 }
+void MainWindow::showConfirmation(string s){
+    ConfirmDialog dialog;
+    dialog.setString(s);
+    dialog.show();
+    dialog.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 
-
+    dialog.exec();
+}

@@ -7,6 +7,7 @@
 #include "user.h"
 #include "utility.cpp"
 #include "userdialog.h"
+#include "confirmdialog.h"
 
 #include <vector>
 #include <fstream>
@@ -43,6 +44,11 @@ public:
 
     ~MainWindow();
 
+
+    //General
+    void showConfirmation(string s);
+
+    //Style sheet
     void setMyStyleSheet();
     //Timeout helper function
     int time_out;
