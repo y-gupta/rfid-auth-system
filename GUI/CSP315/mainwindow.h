@@ -60,8 +60,12 @@ public:
 
     //Extra information
     User current_user;
-    string device_mac;
-    string hostel_name;
+    struct Information{
+        int expected_students;
+        int logged_students;
+        string device_mac;
+        string hostel_name;
+    };
 
     //Event loop helper functions
     QTimer *timer;
