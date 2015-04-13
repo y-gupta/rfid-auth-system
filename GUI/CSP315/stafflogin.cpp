@@ -3,7 +3,6 @@
 #include "request.h"
 #include "network.h"
 
-
 void MainWindow::gotoStaffLogin(){
     ui->stackedWidget->setCurrentIndex(STAFF_LOGIN);
     ui->lineEdit_password->clear();

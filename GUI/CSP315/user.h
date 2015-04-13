@@ -11,6 +11,8 @@ class User
 public:
     string user_name,entry_no,hostel_name;
     uint64_t rfid;
+    uint32_t value;
+    string start,end;
     bool isAdmin;
     User();
     void init(uint64_t id = 0,string _u = "",string _e = "",string _h="",bool isAdmin=false);

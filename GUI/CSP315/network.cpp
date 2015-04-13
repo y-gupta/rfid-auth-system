@@ -22,7 +22,6 @@ int NetworkJob::process(){
     CURLcode res;
     string readBuffer;
     if(curl){
-     cout<<url<<endl;
      curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
      curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
      curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
@@ -35,7 +34,6 @@ int NetworkJob::process(){
      }
          curl_easy_cleanup(curl);
          setResponse(readBuffer,type);
-         cout<<"curl time: "<<mtimer.elapsed()<<endl;
          delete this;
          return 0;
     }
@@ -59,7 +57,6 @@ void Network::sendRequest(Request *r){
     NetworkJob *job = new NetworkJob;
     job->url = qurl;
     job->type = r->type;
-    //cout<<"Sending request:Type = "<<r->type<<endl;
     Network::thread->pushJob(job);
 }
 

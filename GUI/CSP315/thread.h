@@ -66,7 +66,6 @@ class WorkerThread{
         if(destruct_on_exit){
             delete this;
         }
-        cout<<"process return with error code: "<<err<<endl;
     }
 public:
     void pushJob(ThreadedJob *j){
