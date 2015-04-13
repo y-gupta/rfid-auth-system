@@ -11,47 +11,35 @@ MainWindow::MainWindow(QWidget *parent) :
     setMyStyleSheet();
     setMouseTracking(true);
     ui->setupUi(this);
+    connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
+    ui->stackedWidget->setCurrentIndex(INITIALIZE);
+    ui->toolButton_home->setHidden(true);
 
-    Network::init("192.168.1.105:1337");
-    //ui->tabWidget_option ->setStyleSheet("QTabBar::tab { height: 100px; width: 660px; }");
-
-        ui->stackedWidget->setCurrentIndex(INITIALIZE);
-//    ui->label_14->setText(QString::fromUtf8("\u20B9 50"));
-      ui->toolButton_home->setHidden(true);
-
+    //Hard coded the mac and the pin
+    //Later we can make the script to calculate
     device.mac = "100";
     device.pin = "0000";
-    connect(this,SIGNAL(TIMEOUT()),this,SLOT(timeout()));
+
+    //Initializing everything
+    Network::init("localhost:1337");
     initWelcomeUi();
     initMessingUi();
     initStaffLoginUi();
-  //  gotoWelcome();
     initEventLoop();
-
-    //TODO - Send the init request
-
-    //    gotoAdmin();
-
-//    initWelcomeUi();
-//    checkWelcomeUi();
-//    gotoGeneral();
 }
 MainWindow::~MainWindow()
 {
     delete ui;
-    removeEventFilter(this);
 }
 
 void MainWindow::init(){
-    //TODO - Init request
-    cout<<"initalising"<<endl;
     InitRequest r;
     r.init(device.mac);
     Network::sendRequest(&r);
     string _resp;
 
     while(1){
-         Network::response.lock();
+        Network::response.lock();
         if(Network::response.isset){
             _resp = Network::response.resp;
             uint16_t _type = Network::response.type;
@@ -61,18 +49,16 @@ void MainWindow::init(){
         }
         Network::response.unlock();
     }
-
     Network::response.unlock();
+
     processInitResponse(_resp);
-    gotoWelcome();
-   // gotoGeneral();
     ui->toolButton_home->setHidden(false);
+    gotoWelcome();
 }
 
 void MainWindow::setMyStyleSheet(){
     ifstream in;
     in.open("../style.css");
-    cout<<"Done"<<endl;
     string Mystyle;
     getline(in,Mystyle,((char)-1));
     in.close();
@@ -87,15 +73,13 @@ void MainWindow::timeout(){
 }
 void MainWindow::reset(){
     idle_time=0;
+    //TODO - Request has been expired
     if(attendRequest!=DELETE_CARD && attendRequest!=CREATE_NEW_CARD && attendRequest!=CREATE_MASTER_CARD)
         read_card=-1;
-    //Yourrequest has expired
 
 }
 void MainWindow::processResponse(string _resp,uint16_t _type){
-
     switch(_type){
-
         case AUTH:{
             processAuthResponse(_resp);
             break;
@@ -126,16 +110,13 @@ void MainWindow::processResponse(string _resp,uint16_t _type){
         }
         case STAFF_LOGIN_REQ:{
             processStaffLoginResponse(_resp);
+            break;
         }
         default:
             break;
     }
 }
 void MainWindow::processInitResponse(string _resp){
-    cout<<"processing init response"<<endl;
-
-    //Parse JSON
-
     Document d;
     d.Parse(_resp.c_str());
     Value& v= d["success"];
@@ -144,37 +125,35 @@ void MainWindow::processInitResponse(string _resp){
         device.hostel_name = v.GetString();
         v = d["image"];
         convertToPNG(v.GetString(),"../Resources/graph1.png");
-        //TODO set the expected and logged in
+        //TODO - Set the expected & logged in users
     }
     else{
-        cout<<"Initialising the device failed"<<endl;
+        showConfirmation("Initialization failed!!");
+        qApp->exit(1);
     }
-
 }
 
 void MainWindow::processAuthResponse(string _resp){
-    cout<<"Processing auth"<<endl;
-    //cout<<"Resp:"<<_resp<<endl;
-    Document arr ;arr.Parse(_resp.c_str());
+    Document arr ;
+    arr.Parse(_resp.c_str());
     Value& v = arr["success"];
     assert(v.IsBool() && "invalid auth response");
     User user;
-
     if(v.GetBool()){
-
         v = arr["rfid"];
-        //assert(v.IsInt() && "invalide uid in auth response");
+        //assert(v.IsInt() && "invalid uid in auth response");
         user.rfid=atoi(v.GetString());
         v = arr["master"];
-        assert(v.IsBool() && "invalide master in auth response");
+        assert(v.IsBool() && "invalid master in auth response");
         user.isAdmin = v.GetBool();
         v = arr["hostel"];
         device.hostel_name = v.GetString();
         v = arr["entry"];
+        cout<<"Success"<<endl;
         assert(v.IsString() &&"invalid entry number in response");
         user.entry_no = v.GetString();
-        //user.entry_no = "2013CS007";
         v = arr["name"];
+        cout<<"Success"<<endl;
         assert(v.IsString() &&"invalid name in response");
         user.user_name = v.GetString();
         if(!user.isAdmin){
@@ -183,20 +162,22 @@ void MainWindow::processAuthResponse(string _resp){
         }
     }
 
-    if(user.rfid==0 ||attendResponse!=AUTH){
-        cout<<"Authentication failed!!"<<endl;
-    }
-    else{
-
-        if(user.isAdmin){
-            gotoAdmin();
+    cout<<"Success"<<endl;
+    if(attendResponse==AUTH){
+        attendResponse=-1;
+        if(user.rfid==0){
+            showConfirmation("Authentication failed!!");
         }
         else{
-
-            current_user.clear();
-            current_user=user;
-            current_user.hostel_name = device.hostel_name;
-            gotoGeneral();
+            if(user.isAdmin){
+                gotoAdmin();
+            }
+            else{
+                current_user.clear();
+                current_user=user;
+                current_user.hostel_name = device.hostel_name;
+                gotoGeneral();
+            }
         }
     }
 }
@@ -306,7 +287,6 @@ void MainWindow::showConfirmation(string s){
     ConfirmDialog dialog;
     dialog.setString(s);
     dialog.show();
-    dialog.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-
+    dialog.activateWindow();
     dialog.exec();
 }
