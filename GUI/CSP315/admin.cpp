@@ -6,9 +6,6 @@ void MainWindow::gotoAdmin(){
     ui->stackedWidget->setCurrentIndex(ADMIN);
     ui->stackedWidget_admin->setCurrentIndex(TEXT);
     ui->label_notification->setText("Select any one!");
-    cout<<"Read-card:"<<read_card<<endl;
-    cout<<"Attend-Response"<<attendResponse<<endl;
-    cout<<"Admin page is called"<<endl;
 }
 void MainWindow::on_pushButton_allow_clicked(){
     reset();
@@ -25,7 +22,6 @@ void MainWindow::on_pushButton_delete_clicked(){
     ui->label_notification->setText("Place your card!");
     read_card = DELETE_CARD;
     attendRequest=-1;
-    cout<<"Read-card:"<<read_card<<endl;
 }
 void MainWindow::on_pushButton_reg_clicked(){
     reset();
@@ -33,7 +29,6 @@ void MainWindow::on_pushButton_reg_clicked(){
     ui->label_notification->setText("Place your card!");
     read_card = CREATE_NEW_CARD;
     attendRequest=-1;
-    cout<<"Read-card:"<<read_card<<endl;
 }
 void MainWindow::on_pushButton_master_clicked(){
     reset();
@@ -41,7 +36,6 @@ void MainWindow::on_pushButton_master_clicked(){
     ui->label_notification->setText("Place your card!");
     read_card = CREATE_MASTER_CARD;
     attendRequest=-1;
-    cout<<"Read-card:"<<read_card<<endl;
 }
 void MainWindow::on_toolButton_inc_clicked(){
     reset();
@@ -55,11 +49,9 @@ void MainWindow::on_toolButton_dec_clicked(){
 }
 void MainWindow::on_pushButton_confirm_2_clicked(){
     attendRequest=read_card;
-    cout<<"Request confirmed:" <<attendRequest<<endl;
     reset();
 }
 void MainWindow::on_pushButton_confirm_3_clicked(){
     attendRequest=read_card;
-    cout<<"Request confirmed:" <<attendRequest<<endl;
     reset();
 }

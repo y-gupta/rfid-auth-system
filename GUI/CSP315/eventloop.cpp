@@ -6,12 +6,12 @@ void MainWindow::initEventLoop(){
     //Initializing the timer
     timer = new QTimer(this);
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(doEvent()));
-    timer->start(50);
+    timer->start(1);
+    //Every thing is in milli-seconds
     sec_count = 0;
-    time_out=5;
-    idle_time=3;
-    read_card=-1;
-    attendRequest=-1;
+    time_out=5000;
+    idle_time=1000;
+    read_card=attendRequest=attendResponse=-1;
     //Initializing the rfid
     RFID::init();
 }
@@ -19,46 +19,32 @@ void MainWindow::doEvent(){
     if(ui->stackedWidget->currentIndex()==INITIALIZE){
         init();
     }
-    //showConfirmation("Hey there!");
-    //Date and time event in the welcome screen
-    sec_count = (sec_count+ 1)%60;
+    sec_count = (sec_count+ 1)%60000;
     idle_time++;
-
-    ui->label_time->setText(QString::fromStdString(QTime::currentTime().toString("hh:mm:ss").toStdString()));
-    ui->label_developed->setText(QString::fromStdString(QDate::currentDate().toString("dd/MM/yy").toStdString()));
-
-            if(sec_count==0){
+    ui->label_time->setText(QTime::currentTime().toString("hh:mm:ss"));
+    ui->label_developed->setText(QDate::currentDate().toString("dd/MM/yy"));
+    if(sec_count==0){
         checkWelcomeUi();
     }
-//    if(idle_time>=time_out){
-//        emit TIMEOUT();
-//        idle_time=0;
-//    }
-
+    if(idle_time>=time_out){
+        emit TIMEOUT();
+        idle_time=0;
+    }
     Network::response.lock();
     if(Network::response.isset){
-        string _resp = Network::response.resp;
-        uint16_t _type = Network::response.type;
-        cout<<"Type is:"<<_type<<endl;
-        processResponse(_resp,_type);
+        processResponse(Network::response.resp,Network::response.type);
         Network::response.unset();
     }
     Network::response.unlock();
 
-   // cout<<ui->stackedWidget->currentIndex()<<endl;
-    if(read_card!=-1 || ui->stackedWidget->currentIndex()==0){
+    if(read_card !=-1 || ui->stackedWidget->currentIndex()==0){
         int64_t rfid = RFID::readCard();
-       // cout<<rfid<<endl;
         if(rfid!=-1){
             doReadCard(rfid);
-
-            if(ui->stackedWidget->currentIndex()==0){
-                cout<<attendRequest<<endl;
+         if(ui->stackedWidget->currentIndex()==0){
                 if(attendRequest==-1){
                 AuthRequest r;
-                r.init(device.mac,82);
-
-                cout<<"sending"<<endl;
+                r.init(device.mac,19);
                 Network::sendRequest(&r);
                 attendRequest=-1;
                 attendResponse=AUTH;
@@ -66,16 +52,14 @@ void MainWindow::doEvent(){
             }
         }
     }
-
-
 }
 void MainWindow::doReadCard(int64_t rfid){
+    QString _id = QString::fromStdString(to_string(rfid));
     switch (read_card){
     case DELETE_CARD:{
         ui->stackedWidget_admin->setCurrentIndex(DELETE);
-        cout<<"Attend-request:"<<attendRequest<<endl;
+        ui->label_admin_status->setText("Your card number:"+_id);
         if(attendRequest==DELETE_CARD){
-            cout<<"Sending the delete card request"<<endl;
             DeleteCardRequest r;
             r.init(device.mac,device.pin,rfid);
             Network::sendRequest(&r);
@@ -87,9 +71,7 @@ void MainWindow::doReadCard(int64_t rfid){
     }
     case CREATE_NEW_CARD:{
         ui->stackedWidget_admin->setCurrentIndex(OPTION);
-        ui->toolButton_dec->setEnabled(true);
-        ui->toolButton_inc->setEnabled(true);
-        ui->pushButton_confirm_2->setEnabled(true);
+        ui->label_card_num->setText(_id);
         if(attendRequest==CREATE_NEW_CARD){
             CreateCardRequest r;
             r.init(device.mac,device.pin,rfid,false);
@@ -102,6 +84,7 @@ void MainWindow::doReadCard(int64_t rfid){
     }
     case CREATE_MASTER_CARD:{
         ui->stackedWidget_admin->setCurrentIndex(DELETE);
+        ui->label_admin_status->setText("Your card number:"+_id);
         if(attendRequest==CREATE_MASTER_CARD){
             CreateCardRequest r;
             r.init(device.mac,device.pin,rfid,true);
@@ -113,6 +96,6 @@ void MainWindow::doReadCard(int64_t rfid){
         break;
     }
     default:
-        return;
+        break;
     }
 }

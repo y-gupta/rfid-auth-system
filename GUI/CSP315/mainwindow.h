@@ -43,13 +43,10 @@ public:
     printer my_printer;
 
     ~MainWindow();
-
-
     //General
     void showConfirmation(string s);
-
-    //Style sheet
     void setMyStyleSheet();
+
     //Timeout helper function
     int time_out;
     int idle_time;
@@ -60,7 +57,6 @@ public:
 
     //Extra information
     User current_user;
-
     struct Device{
         int expected;
         int logged;
@@ -91,6 +87,8 @@ public:
     void gotoGeneral();
     void initMessingUi();
     void checkRebateUi();
+    void sendMessingRequest(uint32_t);
+    void sendRebateRequest(int nmeals,string start="",string end="");
 
     //Admin helper function
     void gotoAdmin();
@@ -111,8 +109,6 @@ public:
     void processStaffLoginResponse(string _resp);
     void processInitResponse(string _resp);
 
-
-
 public slots:
     //Event loop helper slots
     void doEvent();
@@ -131,7 +127,7 @@ private slots:
     void on_pushButton_8_clicked();
     void on_pushButton_9_clicked();
     void on_pushButton_confirm_clicked();
-    void sendRebateRequest(int nmeals,string start="",string end="");
+
     //These are the messing buttons part
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
@@ -169,8 +165,6 @@ private slots:
     void on_toolButton_dec_clicked();
     void on_pushButton_confirm_2_clicked();
     void on_pushButton_confirm_3_clicked();
-
-
 
 private:
     Ui::MainWindow *ui;

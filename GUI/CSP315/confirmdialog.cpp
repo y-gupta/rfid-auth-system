@@ -9,8 +9,10 @@ ConfirmDialog::ConfirmDialog(QWidget *parent) :
     this->setFixedSize(300,300);
 
     dummy_timer = new QTimer(this);
-    dummy_timer->start(3000);
+    dummy_timer->start(9000);
     connect(dummy_timer,SIGNAL(timeout()),this,SLOT(timeout()));
+    this->setModal(false);
+    this->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
 }
 
 ConfirmDialog::~ConfirmDialog()

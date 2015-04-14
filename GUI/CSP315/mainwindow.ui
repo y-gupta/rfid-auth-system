@@ -30,7 +30,7 @@
     <item row="1" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="welcome">
        <layout class="QGridLayout" name="gridLayout">
@@ -162,7 +162,7 @@
            <item row="1" column="0">
             <widget class="QStackedWidget" name="stackedWidget_graph">
              <property name="styleSheet">
-              <string notr="true">border-image : url(../Resources/graph1.png) 0 0 0 0 stretch stretch;</string>
+              <string notr="true">border-image : url(./graph1.png) 0 0 0 0 stretch stretch;</string>
              </property>
              <property name="currentIndex">
               <number>0</number>
@@ -1455,7 +1455,7 @@ outline:none
              <widget class="QWidget" name="page_2">
               <layout class="QGridLayout" name="gridLayout_21">
                <item row="1" column="0">
-                <widget class="QLabel" name="label_16">
+                <widget class="QLabel" name="label_admin_status">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                    <horstretch>0</horstretch>
@@ -1476,7 +1476,7 @@ outline:none
                 </widget>
                </item>
                <item row="0" column="0" colspan="2">
-                <widget class="QLabel" name="label_15">
+                <widget class="QLabel" name="label_admin_title">
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
