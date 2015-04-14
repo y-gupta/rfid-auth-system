@@ -1,7 +1,13 @@
 <div id="page-wrapper">
     <div class="col-lg-12">
-        <h1 class="page-header"> {{Graphs.Hostel}} Graphs</h1>
+        <h1 class="page-header"> {{Graphs.Hostel}} Graphs
+            <ll class="pull-right">
+                <span class="pin">**********</span>
+                <span class="st">{{Graphs.Pin}}</span>
+            <ll>
+        </h1>
     </div>
+
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -35,6 +41,11 @@
         </div>
     </div>
 </div>
+<style>
+    ll .st { display: none; }
+    ll:hover .pin { display: none; }
+    ll:hover .st { display: inline; }
+</style>
 <script src="../bower_components/raphael/raphael-min.js"></script>
 <script src="../bower_components/morrisjs/morris.min.js"></script>
 <script>

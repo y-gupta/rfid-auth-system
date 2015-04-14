@@ -9,12 +9,12 @@
     <title>CSP315</title>
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-    <link href="../dist/css/timeline.css" rel="stylesheet">
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
     <link href="../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
     <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../dist/css/timeline.css" rel="stylesheet">
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -23,7 +23,7 @@
                     <span class="sr-only">Toggle navigation</span>
                     
                 </button>
-                <a class="navbar-brand" href="index.html">IITD MESS ATTENDANCE</a>
+                <a class="navbar-brand" href="index.html"><img src="../dist/icons/iit2.ico" height= "24" width="24" style="display: inline-block;vertical-align: middle;"/>  IITD MESS ATTENDANCE</a>
             </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
@@ -33,7 +33,7 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="index.html"><i class="fa fa-user fa-fw"></i> {{username}}</a>
                         </li>
-                        <li><a href="change-password.html?unername={{username}}"><i class="fa fa-gear fa-fw"></i> change password</a>
+                        <li><a href="change-password.html?unername={{username}}"><i class="fa fa-gear fa-fw"></i> Change Password</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -61,7 +61,7 @@
                             <a href="#"><i class="fa fa-reorder fa-fw" ></i> {{Hostels}}<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                             <li>
-                                <a href="Attendence-graph.html"><i class="fa fa-bar-chart fa-fw"></i> Graphs</a>
+                                <a href="Graphs.html"><i class="fa fa-bar-chart fa-fw"></i> Graphs</a>
                             </li>
                             <li>
                                 <a href="Attendance-Tables.html" ><i class="fa fa-male fa-fw"></i> Attendance</a>
@@ -87,6 +87,7 @@
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
     <script src="../dist/js/sb-admin-2.js"></script>
     <script>

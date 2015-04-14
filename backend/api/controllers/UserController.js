@@ -1,4 +1,4 @@
-/**
+!/**
  * UserController
  *
  * @description :: Server-side logic for managing users
@@ -16,7 +16,7 @@ function mealInfo(time){
   res.num=res.start%6;
   if(res.num==0)
     res.meal='breakfast'
-  else if(res.num==2)
+  else if(res.num==2) 
     res.meal='lunch'
   else if(res.num==4)
     res.meal='dinner'

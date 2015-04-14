@@ -8,6 +8,7 @@
  *
  */
 module.exports = function(req, res, next) {
+  console.log("Request (Device Auth): ",req.query);
   req.wantsJSON=true;
   // User is allowed, proceed to the next policy, 
   // or if this is the last policy, the controller
