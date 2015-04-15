@@ -7,10 +7,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>CSP315</title>
+    <link rel="shortcut icon" href="../dist/icons/iit1.ico">
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
     <link href="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
-    <link href="../bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+    <link href="../bower_   components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
     <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="../dist/css/timeline.css" rel="stylesheet">
@@ -48,13 +49,13 @@
                         <li>
                             <a href="index.html"><i class="fa fa-home fa-fw"></i> Home</a>
                         </li>
-                        {{^admin}}
+                        {{^isAdmin}}
                         <li>
                             <a href="Admin-Tables.html"><i class="fa fa-gears fa-fw"></i> Admins</a>
                         </li>
-                        {{/admin}}
+                        {{/isAdmin}}
                         <li>
-                            <a href="Current-cards.html"><i class="fa fa-credit-card fa-fw"></i> Admin Cards</a>
+                            <a href="Current-cards.html"><i class="fa fa-credit-card fa-fw"></i> Master Cards</a>
                         </li>
                         {{#Hostels}}
                         <li>                                

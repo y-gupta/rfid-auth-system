@@ -1,8 +1,8 @@
 <div id="page-wrapper">
     <div class="col-lg-12">
-        <h1 class="page-header"> {{Graphs.Hostel}} Graphs
+        <h1 class="page-header"> {{Graphs.Hostel}}
             <ll class="pull-right">
-                <span class="pin">**********</span>
+                <span class="pin">****</span>
                 <span class="st">{{Graphs.Pin}}</span>
             <ll>
         </h1>
@@ -46,18 +46,19 @@
     ll:hover .pin { display: none; }
     ll:hover .st { display: inline; }
 </style>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../bower_components/raphael/raphael-min.js"></script>
 <script src="../bower_components/morrisjs/morris.min.js"></script>
 <script>
 $(function() {
-    Morris.Bar({
+    Morris.Line({
         element: 'allhostels',
         data: [
         {{#Graphs.Attendance}}
         {
-            y: {{period}},
-            a: {{actual}},
-            b: {{expected}}
+            y: "{{period}}",
+            a: "{{actual}}",
+            b: "{{expected}}"
         },
         {{/Graphs.Attendance}}
         ],
@@ -67,17 +68,18 @@ $(function() {
         hideHover: 'auto',
         resize: true,
         xLabelAngle: 30,
-        yLabelAngle: 60
+        yLabelAngle: 60,
+        parseTime:false
     });
 });
 $(function() {
-    Morris.Bar({
+    Morris.Line({
         element: 'extramessing',
         data: [
         {{#Graphs.Extramessing}}
         {
-            y: {{period}},
-            a: {{amount}}
+            y: "{{period}}",
+            a: "{{actual}}"
         },
         {{/Graphs.Extramessing}}
         ],
@@ -87,18 +89,19 @@ $(function() {
         hideHover: 'auto',
         resize: true,
         xLabelAngle: 30,
-        yLabelAngle: 60
+        yLabelAngle: 60,
+        parseTime:false
     });
 });
 $(function() {
-    Morris.Bar({
+    Morris.Area({
         element: 'messrebate',
         data: [
         {{#Graphs.Messrebate}}
         {
-            y: {{period}},
-            a: {{actual}},
-            b: {{expected}}
+            y: "{{period}}",
+            a: "{{actual}}",
+            b: "{{expected}}"
         },
         {{/Graphs.Messrebate}}
         ],
@@ -108,7 +111,8 @@ $(function() {
         hideHover: 'auto',
         resize: true,
         xLabelAngle: 30,
-        yLabelAngle: 60
+        yLabelAngle: 60,
+        parseTime:false
     });
 });
 </script>

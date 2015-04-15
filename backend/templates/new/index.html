@@ -67,14 +67,14 @@
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
-            <div class="panel panel-red">
+            <div class="panel panel-warning">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
                             <i class="fa fa-sun-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">{{home.breakfast_perc}}</div>
+                            <div class="huge">{{home.breakfast}}</div>
                             <div>Breakfast Attendance</div>
                         </div>
                     </div>
@@ -82,14 +82,14 @@
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
-            <div class="panel panel-red">
+            <div class="panel panel-danger">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-rupee fa-5x"></i>
+                            <i class="fa fa-circle-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">{{home.lunch_attendance}}</div>
+                            <div class="huge">{{home.lunch}}</div>
                             <div>Lunch Attendance</div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                             <i class="fa  fa-moon-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">{{home.dinner_attendance}}</div>
+                            <div class="huge">{{home.dinner}}</div>
                             <div>Dinner Attendance</div>
                         </div>
                     </div>
@@ -117,9 +117,9 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <div class="panel panel-info">
+            <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-circle-o fa-fw"></i> Predictions for all hostels
+                    <i class="fa fa-bar-chart fa-fw"></i> Predictions for all hostels
                 </div>
                 <div class="panel-body">
                     <div id="allhostels"></div>
@@ -128,18 +128,19 @@
         </div>
     </div>
 </div>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../bower_components/raphael/raphael-min.js"></script>
 <script src="../bower_components/morrisjs/morris.min.js"></script>
 <script>
 $(function() {
-    Morris.Bar({
+    Morris.Line({
         element: 'allhostels',
         data: [
         {{#AllHostels}}
         {
-            y: {{period}},
-            a: {{actual}},
-            b: {{expected}}
+            y: "{{period}}",
+            a: "{{actual}}",
+            b: "{{expected}}"
         },
         {{/AllHostels}}
         ],
@@ -149,7 +150,8 @@ $(function() {
         hideHover: 'auto',
         resize: true,
         xLabelAngle: 30,
-        yLabelAngle: 60
+        yLabelAngle: 60,
+        parseTime:false
     });
 });
 </script>
