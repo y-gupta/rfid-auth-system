@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "request.h"
+#include "network.h"
 
 
 #define MEAL_TIME 0
@@ -49,9 +51,15 @@ void MainWindow::checkWelcomeUi(){
         ui->label_time_status->setText(QString::fromStdString(str));
         setUpNoMealTimeUi();
     }
+
+    InitRequest r;
+    r.init(device.mac);
+    Network::sendRequest(&r);
+    attendResponse=INIT;
 }
 void MainWindow::gotoWelcome(){
     ui->stackedWidget->setCurrentIndex(WELCOME);
+    checkWelcomeUi();
 }
 void MainWindow::setUpMealTimeUi(){
     //TODO - MEAL TIME STUFF

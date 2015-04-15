@@ -12,5 +12,5 @@ using namespace std;
 class RFID{
 	public:
 	static void init();
-	static int64_t readCard();
+    static string readCard();
 };
