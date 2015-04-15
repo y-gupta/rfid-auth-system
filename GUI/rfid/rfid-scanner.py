@@ -3,7 +3,9 @@ import os
 import RPi.GPIO as GPIO
 import MFRC522
 import signal
-fpath = "./rfid_pipe"
+readpath = "./rfid_pipe1"
+writepath = "./rfid_pipe2"
+os.mkfifo(writepath)
 continue_reading = True
 # Capture SIGINT for cleanup when the script is aborted
 def end_read(signal,frame):
@@ -29,9 +31,10 @@ def readNfc():
 		return "FAILFAILFAIL"
 
 def main():
-	global fpath
+	global readpath
+	global writepath
 	while continue_reading:
-			rd = open(fpath,'r')
+			rd = open(readpath,'r')
 			print "reading..."
 			msg = rd.read()
 			print "read "+msg
@@ -40,8 +43,8 @@ def main():
 			if msg[0] == 'G':
 				print "received get"
 				uid = readNfc()
-				print "uid : "+str(uid)	
-				wd = open(fpath,'w')
+				print "uid : "+uid	
+				wd = open(writepath,'w')
 				wd.write(uid)
 				wd.close()
 	

@@ -10,7 +10,7 @@ class User
 {
 public:
     string user_name,entry_no,hostel_name;
-    uint64_t rfid;
+    string rfid;
     uint32_t value;
     string start,end;
     bool isAdmin;

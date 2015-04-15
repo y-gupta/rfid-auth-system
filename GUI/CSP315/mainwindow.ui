@@ -162,7 +162,7 @@
            <item row="1" column="0">
             <widget class="QStackedWidget" name="stackedWidget_graph">
              <property name="styleSheet">
-              <string notr="true">border-image : url(./graph1.png) 0 0 0 0 stretch stretch;</string>
+              <string notr="true"/>
              </property>
              <property name="currentIndex">
               <number>0</number>

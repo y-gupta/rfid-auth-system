@@ -11,7 +11,7 @@ string Request::toString(){
     return "";
 }
 
-void AuthRequest::init(string _mac, uint64_t _rfid){
+void AuthRequest::init(string _mac, string _rfid){
     type = AUTH;
     mac = _mac;
     rfid = _rfid;
@@ -20,7 +20,7 @@ string AuthRequest::toString(){
     return "/user/login/?mac="+mac+"&rfid="+to_string(rfid);
 }
 
-void CreateCardRequest::init(string _mac,string _pin,uint64_t _rfid,bool master){
+void CreateCardRequest::init(string _mac,string _pin,string _rfid,bool master){
     if(master)type = CREATE_MASTER_CARD;
     else type = CREATE_NEW_CARD;
     mac = _mac;
@@ -34,7 +34,7 @@ string CreateCardRequest::toString(){
     else return "/device/addcard/?mac="+mac
             +"&rfid="+to_string(rfid)+"&pin="+pin;
 }
-void DeleteCardRequest::init(string _mac,string _pin,uint64_t _rfid){
+void DeleteCardRequest::init(string _mac,string _pin,string _rfid){
     type = DELETE_CARD;
     mac = _mac;
     pin = _pin;
@@ -52,7 +52,7 @@ void AllowTempRequest::init(string _mac,string _pin){
 string AllowTempRequest::toString(){
     return "/device/allow/?mac="+mac+"&pin="+pin;
 }
-void MessingRequest::init(string _mac,uint64_t _rfid,uint32_t _amount){
+void MessingRequest::init(string _mac,string _rfid,uint32_t _amount){
     type = MESSING_REQ;
     mac = _mac;
     rfid = _rfid;
@@ -64,7 +64,7 @@ string MessingRequest::toString(){
             +"&amount="+to_string(amount);
 }
 
-void RebateRequest::init(string _mac,uint64_t _rfid,uint32_t _n_meal,string _start,string _end){
+void RebateRequest::init(string _mac,string _rfid,uint32_t _n_meal,string _start,string _end){
     type = REBATE_REQ;
     mac = _mac;
     rfid = _rfid;

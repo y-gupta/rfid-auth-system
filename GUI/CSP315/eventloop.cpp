@@ -23,6 +23,7 @@ void MainWindow::doEvent(){
     idle_time++;
     ui->label_time->setText(QTime::currentTime().toString("hh:mm:ss"));
     ui->label_developed->setText(QDate::currentDate().toString("dd/MM/yy"));
+
     if(sec_count==0){
         checkWelcomeUi();
     }
@@ -38,13 +39,13 @@ void MainWindow::doEvent(){
     Network::response.unlock();
 
     if(read_card !=-1 || ui->stackedWidget->currentIndex()==0){
-        int64_t rfid = RFID::readCard();
-        if(rfid!=-1){
+        string rfid = RFID::readCard();
+        if(rfid!=""){
             doReadCard(rfid);
          if(ui->stackedWidget->currentIndex()==0){
                 if(attendRequest==-1){
                 AuthRequest r;
-                r.init(device.mac,19);
+                r.init(device.mac,"19");
                 Network::sendRequest(&r);
                 attendRequest=-1;
                 attendResponse=AUTH;
@@ -53,7 +54,7 @@ void MainWindow::doEvent(){
         }
     }
 }
-void MainWindow::doReadCard(int64_t rfid){
+void MainWindow::doReadCard(string rfid){
     QString _id = QString::fromStdString(to_string(rfid));
     switch (read_card){
     case DELETE_CARD:{

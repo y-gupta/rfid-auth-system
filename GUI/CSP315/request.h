@@ -22,7 +22,7 @@ class Request
 public:
     Request();
     uint16_t type;
-    uint64_t rfid;
+    string rfid;
     string mac;
     void init(uint16_t _type);
     virtual string toString();
@@ -30,20 +30,20 @@ public:
 class AuthRequest : public Request{
 public:
 
-    void init(string _mac, uint64_t _rfid);
+    void init(string _mac, string _rfid);
     virtual string toString();
 };
 class CreateCardRequest : public Request{
 public:
     string pin;
     bool isMasterCard;
-    void init(string _mac,string _pin,uint64_t rfid,bool master=false);
+    void init(string _mac,string _pin,string rfid,bool master=false);
     virtual string toString();
 };
 class DeleteCardRequest : public Request{
 public:
     string pin;
-    void init(string _mac,string _pin,uint64_t _rfid);
+    void init(string _mac,string _pin,string _rfid);
     virtual string toString();
 };
 class AllowTempRequest : public Request{
@@ -55,14 +55,14 @@ public:
 class MessingRequest : public Request{
 public:
     uint32_t amount;
-    void init(string _mac,uint64_t _rfid,uint32_t _amount);
+    void init(string _mac,string _rfid,uint32_t _amount);
     virtual string toString();
 };
 class RebateRequest : public Request{
 public:
     string start,end;
     int n_meal;
-    void init(string _mac,uint64_t _rfid,uint32_t _n_meal,string _start,string _end);
+    void init(string _mac,string _rfid,uint32_t _n_meal,string _start,string _end);
     virtual string toString();
 };
 class StaffLoginRequest : public Request{

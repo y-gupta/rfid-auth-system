@@ -48,7 +48,7 @@ void MainWindow::init(){
         Network::response.unlock();
     }
     Network::response.unlock();
-
+    attendResponse=INIT;
     processInitResponse(_resp);
     ui->toolButton_home->setHidden(false);
     gotoWelcome();
@@ -108,24 +108,33 @@ void MainWindow::processResponse(string _resp,uint16_t _type){
             processStaffLoginResponse(_resp);
             break;
         }
+        case INIT:{
+            processInitResponse(_resp);
+            break;
+        }
         default:
             break;
     }
 }
 void MainWindow::processInitResponse(string _resp){
-    Document d;
-    d.Parse(_resp.c_str());
-    Value& v= d["success"];
-    if(v.GetBool()){
-        v = d["hostel"];
-        device.hostel_name = v.GetString();
-        v = d["image"];
-        convertToPNG(v.GetString(),"./graph1.png");
-        //TODO - Set the expected & logged in users
-    }
-    else{
-        showConfirmation("Initialization failed!!");
-        qApp->exit(1);
+    if(attendResponse==INIT){
+        attendResponse=-1;
+        Document d;
+        d.Parse(_resp.c_str());
+        Value& v= d["success"];
+        if(v.GetBool()){
+            v = d["hostel"];
+            device.hostel_name = v.GetString();
+            v = d["image"];
+            convertToPNG(v.GetString(),"./graph1.png");
+            //TODO - Set the expected & logged in users
+            cout<<"setting"<<endl;
+            ui->stackedWidget_graph->setStyleSheet("border-image : url(./graph1.png) 0 0 0 0 stretch stretch;");
+        }
+        else{
+            showConfirmation("Initialization failed!!");
+            qApp->exit(1);
+        }
     }
 }
 void MainWindow::processAuthResponse(string _resp){   
@@ -156,20 +165,20 @@ void MainWindow::processAuthResponse(string _resp){
         convertToPNG(v.GetString(),"./user.png");
         }
     }
-    if(user.rfid==0){
-        showConfirmation("Authentication failed!!");
-    }
-    else{
-        if(user.isAdmin){
-            gotoAdmin();
+        if(user.rfid==""){
+            showConfirmation("Authentication failed!!");
         }
         else{
-            current_user.clear();
-            current_user=user;
-            current_user.hostel_name = device.hostel_name;
-            gotoGeneral();
+            if(user.isAdmin){
+                gotoAdmin();
+            }
+            else{
+                current_user.clear();
+                current_user=user;
+                current_user.hostel_name = device.hostel_name;
+                gotoGeneral();
+            }
         }
-    }
     }
 }
 void MainWindow::processMessingRequest(string _resp){
