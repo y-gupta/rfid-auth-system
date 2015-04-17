@@ -8,6 +8,8 @@
  *
  */
 module.exports = function(req, res, next) {
-  console.log("AdminAuth - public access");
-  return next();
+  if (req.session.auth) {
+    return next();
+  }
+  return res.redirect("admin/login");
 };

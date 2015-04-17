@@ -9,21 +9,7 @@ function getTime(str){
   var parts = str.split("/");
   return Math.floor(new Date(parseInt("20"+parts[2], 10), parseInt(parts[1], 10) - 1, parseInt(parts[0], 10)).getTime()/1000);
 }
-function mealInfo(time){
-  var res={};
-  res.start=60*Math.floor(time/60);
-  res.end=res.start+60;
-  res.num=res.start%6;
-  if(res.num==0)
-    res.meal='breakfast'
-  else if(res.num==2) 
-    res.meal='lunch'
-  else if(res.num==4)
-    res.meal='dinner'
-  else
-    res.meal='break';
-  return res;
-}
+
 
 module.exports = {
 	login:function(req,res){
@@ -38,6 +24,14 @@ module.exports = {
     Roll.create({user:req.props.user.id,device:req.props.device,hostel:req.props.hostel,success:true},
         function(err,roll){
           if(err == null){
+            var meal=ML.meal(Math.floor(Date.now()/1000));
+            
+            History.findOne({hostel:req.props.hostel,start:meal.start},function(err,hist){
+              if(hist)
+                History.update({hostel:req.props.hostel,start:meal.start},{attended:hist.attended+1},function(){});
+              else
+                History.create({hostel:req.props.hostel,start:meal.start,attended:1,expected:0},function(){});});
+
             require('fs').readFile('./assets/user-images/'+req.props.user.image,function(err,data){
               var img;
               console.log(err);
@@ -57,7 +51,7 @@ module.exports = {
       if(req.query.start != null && req.query.end != null)
         start=getTime(req.query.start),end=getTime(req.query.end)+24*3600;
     }else{
-      start=mealInfo(start).start+120;
+      start=ML.meal(start).start+120;
       end=start+req.query.nmeals*120;
     }
     if(start===end)
