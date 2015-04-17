@@ -71,7 +71,7 @@ public:
     int sec_count;
     void initEventLoop();    
     int read_card;
-    void doReadCard(int64_t);
+    void doReadCard(string);
     int attendRequest;
     int attendResponse;
 

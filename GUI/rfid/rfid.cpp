@@ -1,37 +1,31 @@
 #include "rfid.h"
 #include <cstdio>
 #include <cstdlib>
-
+#include <string>
 void RFID::init(){
-	cout<<"Creating pipe ";
-    mkfifo("../rfid/rfid_pipe",0666);
+    mkfifo("../rfid/rfid_pipe1",0666);
     srand(0);
-
-    cout<<"pipe created ..."<<endl;
 }
-int64_t RFID::readCard(){
-    if(rand()%10 < 6)
-        return -1;
-    else
-        return 1;
+string RFID::readCard(){
+     if(rand()%10000 < 9999)
+         return "";
+     else
+         return "1";
+//   char buff[20];
+//   int fd = open("../rfid/rfid_pipe1",O_WRONLY);
+//   assert(fd != -1 && "error opening");
+//   int bytes = write(fd,"GET",sizeof("GET"));
+//   close(fd);
+//   assert(bytes != -1 && "write successful");
+//   close(fd);
 
-//    char buff[20];
-//    int fd = open("../rfid/rfid_pipe",O_WRONLY);
-//    assert(fd != -1 && "error opening");
-//    cout<<"writing..."<<endl;
-//    int bytes = write(fd,"GET",sizeof("GET"));
-//    close(fd);
-//    assert(bytes != -1 && "write successful");
-//    cout<<"writing complete"<<endl;
-
-
-//    fd = open("../rfid/rfid_pipe",O_RDONLY);
-//    assert(fd != -1 && "error opening");
-//    cout<<"reading..."<<endl;
-//    bytes = read(fd,buff,12);
-//    assert(bytes != -1 && "read successful");
-//    buff[12]=0;
-//    if(buff[0]=='F')return -1;
-//    return atoll(buff);
-//    close(fd);
+//   fd = open("../rfid/rfid_pipe2",O_RDONLY);
+//   assert(fd != -1 && "error opening");
+//   bytes = read(fd,buff,20);
+//   assert(bytes != -1 && "read successful");
+//   //buff[12]=0;
+//   cout<<"read:"<<bytes<<" bytes"<<endl;
+//   if(buff[0]=='F')return "";
+//   return string(buff,bytes);
+   
 }

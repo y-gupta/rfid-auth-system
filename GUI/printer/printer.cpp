@@ -9,7 +9,7 @@ printer::~printer(){
 }
 
 string printer::print_user(User usr){
-	line="******************************************************";
+	line="*******************************************";
 	string s;
 	s=s+"user ID :-";
 	int j=print_len-10-usr.user_name.length();
@@ -25,14 +25,12 @@ string printer::print_user(User usr){
 }
 
 int printer::rebate(User The_user,string start, string end){
-	string s = line+"\n"+print_user(The_user)+"\n----Rebate Period----\n"+start+"\nTo\n"+end+"\n"+line+"\nTHANK YOU!!!\n.....";
+	string s = "\nIITD MESS ATENDANCE\n"+line+"\n"+print_user(The_user)+"\n----Rebate Period----\n"+start+"\nTo\n"+end+"\n"+line+"\nTHANK YOU!!!\n.....";
     fd = open("../printer/printer_pipe", O_WRONLY);
 	
-	if(fd<0){
-		cout<<"Cannot open pipe"<<endl;
+    if(fd<0){
 		return -1;
 	}
-
 	bzero(buf,1024);
 	memcpy(buf,s.c_str(),s.size());
 	write(fd,buf,1024); 
@@ -42,34 +40,15 @@ int printer::rebate(User The_user,string start, string end){
 	return 1;
 }
 int printer::extra_messing(User The_user,string amount){
-    string s = line+"\n"+print_user(The_user)+"\nThis Coupon is worth\n"+amount+"\n"+line+"\nTHANK YOU!!!\n.....";
+    string s = "\nIITD MESS ATENDANCE\n"+line+"\n"+print_user(The_user)+"\nThis Coupon is worth\n"+amount+"\n"+line+"\nTHANK YOU!!!\n.....";
 
     fd = open("../printer/printer_pipe", O_WRONLY);
-
     if(fd<0){
-        cout<<"Cannot open pipe"<<endl;
         return -1;
     }
-
     bzero(buf,1024);
     memcpy(buf,s.c_str(),s.size());
     write(fd,buf,1024);
     close(fd);
     return 1;
 }
-
-
-
-
-//int main(int argc,char** argv){
-//printer tmt81;
-
-//tmt81.printit("manav chutiya hai");
-/*
- while(true){
-     string s;
-     cin>>s;
-     tmt81.printit(s);
-}
-*/
-//}
