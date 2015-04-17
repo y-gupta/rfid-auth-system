@@ -5,6 +5,7 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "digitalsignals": "^1.0.0",
     "ejs": "~0.8.4",
     "gm": "^1.17.0",
     "grunt": "0.4.2",
@@ -24,7 +25,8 @@
     "mustache": "^2.0.0",
     "rc": "~0.5.0",
     "sails": "~0.11.0",
-    "sails-disk": "~0.10.0"
+    "sails-disk": "~0.10.0",
+    "synaptic": "^0.1.7"
   },
   "scripts": {
     "start": "node app.js",
