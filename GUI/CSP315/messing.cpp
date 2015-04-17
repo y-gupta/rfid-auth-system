@@ -26,11 +26,11 @@ void MainWindow::gotoGeneral(){
     ui->spinBox_val->setValue(1);
 
     //Show the image of the user
-    UserDialog dialog;
-    dialog.show();
-    dialog.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    dialog.exec();
-    idle_time=0;
+    showConfirmation("Hr");
+    //    UserDialog dialog;
+//    dialog.show();
+//    dialog.exec();
+//    idle_time=0;
 }
 void MainWindow::initMessingUi(){
     ui->pushButton->setText(QString::fromUtf8("\u20B9 5"));

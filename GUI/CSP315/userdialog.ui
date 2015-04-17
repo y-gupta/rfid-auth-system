@@ -20,13 +20,14 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">background-color:rgb(0, 0, 0);</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QFrame" name="frame">
      <property name="styleSheet">
-      <string notr="true">border-image : url(./user.png) 0 0 0 0 stretch stretch;</string>
+      <string notr="true">border-image : url(./user.png) 0 0 0 0 stretch stretch;
+background-color : rgb(255,255,255);</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>

@@ -1,6 +1,7 @@
 #include "userdialog.h"
 #include "ui_userdialog.h"
 #include <iostream>
+#include <QDesktopWidget>
 using namespace std;
 UserDialog::UserDialog(QWidget *parent) :
     QDialog(parent),
@@ -12,6 +13,9 @@ UserDialog::UserDialog(QWidget *parent) :
     dummy_timer = new QTimer(this);
     dummy_timer->start(3000);
     connect(dummy_timer,SIGNAL(timeout()),this,SLOT(timeout()));
+    this->setWindowFlags(Qt::Window | Qt::CustomizeWindowHint);
+    this->move( QApplication::desktop()->rect().center()-this->rect().center());
+
 }
 
 UserDialog::~UserDialog()

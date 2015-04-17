@@ -1,5 +1,6 @@
 #include "confirmdialog.h"
 #include "ui_confirmdialog.h"
+#include <QDesktopWidget>
 
 ConfirmDialog::ConfirmDialog(QWidget *parent) :
     QDialog(parent),
@@ -11,8 +12,8 @@ ConfirmDialog::ConfirmDialog(QWidget *parent) :
     dummy_timer = new QTimer(this);
     dummy_timer->start(9000);
     connect(dummy_timer,SIGNAL(timeout()),this,SLOT(timeout()));
-    this->setModal(false);
-    this->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
+    this->setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint);
+    this->move( QApplication::desktop()->rect().center()-this->rect().center());
 }
 
 ConfirmDialog::~ConfirmDialog()
