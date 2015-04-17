@@ -7,21 +7,25 @@
 
 module.exports = {
   init: function (req, res) {
-
-    require('fs').readFile("ml/results/"+req.props.hostel+".png",function(err,image_data){
-      var image = "";
-      if(err == null){
-        image = image_data.toString('base64');
-      }      
-      res.send({
-      'success':true,
-      'hostel': req.props.hostel,
-      'device': req.props.device,
-      'image': image,
-      'expected':290,
-      'attended':102,
-      'meal':'lunch'
+    var now=Math.floor(Date.now()/1000);
+    ML.plot(req.props.hostel,function(){
+    ML.info(req.props.hostel,now,function(expected,attended){
+      require('fs').readFile("ml/results/"+req.props.hostel+".png",function(err,image_data){
+        var image = "";
+        if(err == null){
+          image = image_data.toString('base64');
+        }      
+        res.send({
+        'success':true,
+        'hostel': req.props.hostel,
+        'device': req.props.device,
+        'image': image,
+        'expected':expected,
+        'attended':attended,
+        'meal': ML.meal(now).meal
+        });
       });
+    });
     });
   },
   login: function (req,res){
@@ -74,8 +78,15 @@ module.exports = {
       else
         Roll.create({user:user.id,device:req.props.device,hostel:req.props.hostel,success:true},
           function(err,roll){
-           if(err == null)
+           if(err == null){
+            var meal=ML.meal(Math.floor(Date.now()/1000));
+             History.findOne({hostel:req.props.hostel,start:meal.start},function(err,hist){
+              if(hist)
+                History.update({hostel:req.props.hostel,start:meal.start},{attended:hist.attended+1},function(){});
+              else
+                History.create({hostel:req.props.hostel,start:meal.start,attended:1},function(){});});
              res.send({success:true});
+           }
            else
              res.serverError("Failed to record login/roll. "+err)
           });
