@@ -14,6 +14,7 @@ function mealInfo(time){
     res.meal='break';
   return res;
 };
+var plot = require('plotter').plot;
 var randgen=require('randgen');
 module.exports = {
   meal: mealInfo,
@@ -36,7 +37,7 @@ module.exports = {
     var do_update=false;
     if(mealInfo(Math.floor(Date.now()/1000)).end==meal.end)
       do_update=true;
-    var askednum=100;
+    var askednum=50;
     var start=meal.start-120*(askednum-1);
 
     History.find({hostel:hostel}).where({start:{'>=':start}}).exec(function(err,graph){
@@ -89,7 +90,7 @@ module.exports = {
   },
   plot: function(hostel,next){
     var now=Math.floor(Date.now()/1000);
-    var num=100;
+    var num=50;
     var start=mealInfo(now).start-120*(num-1);
     // Roll.create({user:req.props.user.id,device:req.props.device,hostel:req.props.hostel,success:true},
     var graph={};
@@ -109,7 +110,23 @@ module.exports = {
      
       // console.log("graph size:",count);
       //TODO: plot it!
-      return next(graph);
+      
+      var img1={},img2={};
+      for(start in graph){
+        if(start<now-120*20)
+          continue;
+        img1[start]=graph[start].expected;
+        img2[start]=graph[start].attended;
+      }
+      plot({
+          data:       { 'actual' : img2,
+              'expected' : img1},
+          filename:   'ml/'+hostel+'.png',
+          xlabel:     'Time',
+          ylabel:   'footfall',
+          time:     'hours'
+      });
+      next(graph);
     });
   },
 };

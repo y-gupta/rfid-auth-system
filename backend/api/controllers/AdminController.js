@@ -47,17 +47,6 @@ var dummy = {
     {"period": "wednesday breakfast","expected": 654,"actual": 600}
     ]}
   ,
-  "attendance":[
-  {"UserId": "userA","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userB","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userC","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userD","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userE","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userF","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userG","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userH","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userI","Time": "12/12/12","Hostel": "Zanskar","Success": "success"}
-  ],
   "UserData": [
   {"UserName": "userA","UserId":123 ,"RF-ID": 12345678,"Hostel": "Zanskar","EntryNo": "2013cs10251","Expiry":"12/12/12"},
   {"UserName": "userB","UserId":123 ,"RF-ID": 12345678,"Hostel": "Zanskar","EntryNo": "2013cs10251","Expiry":"12/12/12"},
@@ -103,19 +92,6 @@ var dummy = {
   {"ID": 12344,"RF-ID": 222555,"Hostel": "Zanskar"},
   {"ID": 12345,"RF-ID": 222555,"Hostel": "Zanskar"}
   ],
-  "Admin": [
-  {"Name": 12346,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12347,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12348,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12349,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12340,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"},{"Hostel":"Shivalik"}]},
-  {"Name": 12341,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12342,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12343,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12344,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12345,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]}
-  ],
-  "isAdmin":true,
   "user": {"UserName": "userA","UserId": 99999,"RF-ID": 12345678,"Hostel": "Zanskar","EntryNo": "1452hh3325","Expiry": "12/12/12"},
   "admin":{"Name": 12340,"Password": 222555,"Hostels": ["Zanskar","Shivalik"]}
 };
