@@ -34,9 +34,6 @@ module.exports = {
       return;
     }
 
-    var do_update=false;
-    if(mealInfo(Math.floor(Date.now()/1000)).end==meal.end)
-      do_update=true;
     var askednum=50;
     var start=meal.start-120*(askednum-1);
 
@@ -69,12 +66,14 @@ module.exports = {
       var expected=Math.floor(randgen.rnorm(avg,sd));
       if(expected>avg*0.3+max*0.7)expected=avg*0.3+max*0.7;
       if(expected<avg*0.3+min*0.7)expected=avg*0.3+min*0.7;
+      if(expected<1)expected=Math.random()>0.3?1:0;
       var old_expected=0;
       History.findOne({hostel:hostel,start:meal.start},function (err,ml){
         console.log(ml);
         if(ml){
-          if(do_update)
-            History.update({hostel:hostel,start:meal.start},{attended:attended},function(){});
+          History.update({hostel:hostel,start:meal.start},{attended:attended},function(err){
+            if(err)console.log(err);
+          });
           old_expected=ml.expected;
         }else
           History.create({hostel:hostel,start:meal.start,expected:0,attended:attended},function(){});
@@ -113,6 +112,17 @@ module.exports = {
       //TODO: plot it!
     });
   },
+  extra_messing:function(hostel,next){
+    var now=Math.floor(Date.now()/1000);
+    var num=50;
+    var start=mealInfo(now).start-120*(num-1);
+    Transaction.find({time:{'>=':start}}).exec(function(err,txns){
+      var sum=0;
+      for(i in txns)
+        sum+=txns[i].amount;
+      next(sum);
+    });
+  },
    renderplot: function(hostel,next){
     var now=Math.floor(Date.now()/1000);
     var num=50;
@@ -139,6 +149,8 @@ module.exports = {
       var img1={},img2={};
       for(start in graph){
         if(start<now-120*20)
+          continue;
+        if(new Date(start).getMinutes()%2==1)
           continue;
         img1[start]=graph[start].expected;
         img2[start]=graph[start].attended;

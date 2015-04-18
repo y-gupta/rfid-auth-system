@@ -1,4 +1,4 @@
-/**
+  /**
 * Transaction.js
 *
 * @description :: TODO: You might write a short summary of how this model works and what it represents here.
@@ -13,8 +13,7 @@ module.exports = {
       index:true
     },
     time:{
-      type:'integer',
-       defaultsTo: function(){Math.floor(Date.now()/1000)}
+      type:'integer'
     },
     amount:{
       type:'integer',
@@ -24,6 +23,12 @@ module.exports = {
       model:'Device',
       index:true
     }
+  },
+  afterCreate:function(row,next){
+    ML.extra_messing('zanskar',function(em){
+      sails.sockets.broadcast('adminUpdates','messing',em);
+    });
+    next();
   }
 };
 

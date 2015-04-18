@@ -39,7 +39,7 @@ module.exports = {
         tmp.b=graph[i].expected;
         graph2.push(tmp);
        }
-    sails.sockets.broadcast('adminUpdates','create',graph2);
+    sails.sockets.broadcast('adminUpdates','update',graph2);
   });
     next();
   }

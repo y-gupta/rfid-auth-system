@@ -15,7 +15,7 @@
                             <i class="fa fa-male fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">{{home.total_attendance}}</div>
+                            <div class="huge" id="attendance">{{home.total_attendance}}</div>
                             <div>Total Attendance</div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                             <i class="fa fa-magic fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">{{home.expected}}</div>
+                            <div class="huge" id="expected">{{home.expected}}</div>
                             <div>Expected Footfall</div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                             <i class="fa fa-crosshairs fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">{{home.accuracy}}</div>
+                            <div class="huge" id="accuracy">{{home.accuracy}}</div>
                             <div>Accuracy</div>
                         </div>
                     </div>
@@ -60,53 +60,8 @@
                             <i class="fa fa-rupee fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">{{home.extra_messing}}</div>
+                            <div class="huge" id="extra_messing">{{home.extra_messing}}</div>
                             <div>Net Extra-Messing</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="panel panel-sky">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-sun-o fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">{{home.breakfast}}</div>
-                            <div>Breakfast Attendance</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="panel panel-orange">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-circle-o fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">{{home.lunch}}</div>
-                            <div>Lunch Attendance</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="panel panel-purple">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa  fa-moon-o fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">{{home.dinner}}</div>
-                            <div>Dinner Attendance</div>
                         </div>
                     </div>
                 </div>
@@ -154,15 +109,19 @@ $(function() {
   io.socket.get("/admin/update",function(a,b){console.log(a,b)});
   io.socket.on("update",function(entry){
      data=entry;
-    //data.pop();
-    // data.push({y: entry.period,a: entry.attended,b: entry.expected});
-    graph.setData(data);
+     graph.setData(data);
+     var attendance=0,expected=0,accuracy;
+     for(i in data){
+        attendance+=data[i].a;
+        expected+=data[i].b;
+     }
+     accuracy=Math.floor(100-(Math.abs(attendance-expected)/attendance)*100);
+     $("#attendance").html(attendance);
+     $("#expected").html(expected);
+     $("#accuracy").html(accuracy+"%");
   });
-  io.socket.on("create",function(entry){
-    data=entry;
-    // data.shift();
-    // data.push({y: entry.period,a: entry.attended,b: entry.expected});
-    graph.setData(data);
+  io.socket.on("messing",function(em){
+    $("#extra_messing").html(em);
   });
 });
 </script>

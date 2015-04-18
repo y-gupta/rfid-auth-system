@@ -7,6 +7,7 @@
 
 module.exports = {
   init: function (req, res) {
+    console.log("Init REQ");
     var now=Math.floor(Date.now()/1000);
     ML.info(req.props.hostel,now,function(expected,attended){
       ML.renderplot(req.props.hostel,function(){
@@ -16,6 +17,7 @@ module.exports = {
           if(err == null){
             image = image_data.toString('base64');
           }else console.log(err);
+          console.log("done INIT!");
           res.send({
           'success':true,
           'hostel': req.props.hostel,

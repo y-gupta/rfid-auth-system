@@ -107,16 +107,33 @@ module.exports = {
     res.send({success:true});
   },
   home: function(req,res){
+
+ 
+
     ML.plot('zanskar',function(graph){
        var graph2=[];var j=0;
+      dummy.home.total_attendance=0;
+      dummy.home.expected=0;
+      dummy.home.accuracy="95.7%";
+      dummy.home.extra_messing=0;
        for(i in graph){
         var date=new Date(graph[i].period*1000);
+        if(date.getMinutes()%2==1)
+          continue;
         graph[i].period=""+(date.getHours()>12?date.getHours()-12:date.getHours())+":"+(date.getMinutes()>9?"":"0")+date.getMinutes();
         graph2.push(graph[i]);
+        dummy.home.total_attendance+=graph[i].attended;
+        dummy.home.expected+=graph[i].expected;
+        dummy.home.extra_messing+=2;//graph[i].extra_messing;
         j++;
        }
+       dummy.home.accuracy=Math.floor(100-Math.abs(dummy.home.expected-dummy.home.total_attendance)/dummy.home.total_attendance*100)+"%";
       dummy.AllHostels=graph2;
+      ML.extra_messing('zanskar',function(em){
+        dummy.home.extra_messing=em;
+
       Template(res,"index",dummy);
+      });
     });
   },
   logout:function(req,res){

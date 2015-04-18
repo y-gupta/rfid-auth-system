@@ -71,10 +71,11 @@ module.exports = {
         });
   },
   transact:function(req,res){
+    var now=Math.floor(Date.now()/1000);
     if(req.query.amount == null)
       res.badRequest("  is required");
     else
-      Transaction.create({user:req.props.user.id,amount:_.parseInt(req.query.amount),device:req.props.device},
+      Transaction.create({user:req.props.user.id,amount:_.parseInt(req.query.amount),time:now,device:req.props.device},
         function(err,transaction){
           if(err == null)
             res.send({success:true,id:transaction.id})
