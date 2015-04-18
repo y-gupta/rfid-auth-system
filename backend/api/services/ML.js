@@ -14,20 +14,35 @@ function mealInfo(time){
     res.meal='break';
   return res;
 };
+var randgen=require('randgen');
 module.exports = {
   meal: mealInfo,
   info: function(hostel,time,next){
     var meal=mealInfo(time);
+
+    if(meal.meal=="break"){
+      var expected=0;
+      History.findOne({hostel:hostel,start:meal.start+60},function (err,ml){
+        console.log(ml);
+        if(ml){
+          expected=ml.expected;
+        }else
+          History.create({hostel:hostel,start:meal.start,expected:0,attended:0},function(){});
+        return next(expected,0);
+      });
+      return;
+    }
+
     var do_update=false;
     if(mealInfo(Math.floor(Date.now()/1000)).end==meal.end)
       do_update=true;
     var askednum=100;
-    var start=meal.end-120*(askednum-1);
+    var start=meal.start-120*(askednum-1);
 
     History.find({hostel:hostel}).where({start:{'>=':start}}).exec(function(err,graph){
       if(err)
         console.log("ML.expected: DB error",err);
-      var min=0,max=0,avg=0,sum=0,num=0,attended=0;
+      var min=0,max=0,avg=0,sum=0,sumsq=0,num=0,attended=0;
       for(i in graph){
         if(max==0)
           min=max=graph[i].attended;
@@ -36,27 +51,39 @@ module.exports = {
         if(min>graph[i].attended)
           min=graph[i].attended;
         sum+=graph[i].attended;
+        sumsq+=graph[i].attended*graph[i].attended;
         num++;
         if(graph[i].start==meal.start)
           attended=graph[i].attended;
       }
+      var sd=0;
       if(askednum>num)
         min=0;
       if(num==0)
-        avg=0;
+        avg=sd=0;
       else 
-        avg=sum/num;
-      var expected=Math.floor(min+(Math.random())*(max-min));
+      {  avg=sum/num;
+        sd=Math.sqrt(sumsq/num-avg*avg)
+      }
+      var expected=Math.floor(randgen.rnorm(avg,sd));
+      if(expected>avg*0.3+max*0.7)expected=avg*0.3+max*0.7;
+      if(expected<avg*0.3+min*0.7)expected=avg*0.3+min*0.7;
+      var old_expected=0;
       History.findOne({hostel:hostel,start:meal.start},function (err,ml){
         console.log(ml);
-        if(ml)
-        {
+        if(ml){
           if(do_update)
             History.update({hostel:hostel,start:meal.start},{attended:attended},function(){});
-          return next(ml.expected,attended);
-        }
-        History.create({hostel:hostel,start:meal.start,expected:expected,attended:attended},function(){});
-        return next(expected,attended);
+          old_expected=ml.expected;
+        }else
+          History.create({hostel:hostel,start:meal.start,expected:0,attended:attended},function(){});
+        next(old_expected,attended)
+      });
+
+      History.findOne({hostel:hostel,start:meal.start+120},function (err,ml){
+        console.log(ml);
+        if(!ml)
+         History.create({hostel:hostel,start:(meal.start+120),expected:expected,attended:0},function(){});
       });
     });
   },
@@ -79,8 +106,7 @@ module.exports = {
         graph[hists[i].start].attended=hists[i].attended;
        }
       // var count=0;
-      // for(i in graph)
-      //   count++;
+     
       // console.log("graph size:",count);
       //TODO: plot it!
       return next(graph);

@@ -132,19 +132,16 @@
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../bower_components/raphael/raphael-min.js"></script>
 <script src="../bower_components/morrisjs/morris.min.js"></script>
+<script src="js/dependencies/sails.io.js"></script>
 <script>
 $(function() {
-    Morris.Line({
-        element: 'allhostels',
-        data: [
-        {{#AllHostels}}
-        {
-            y: "{{period}}",
-            a: "{{actual}}",
-            b: "{{expected}}"
-        },
+  var data=[
+        {{#AllHostels}}{y: "{{period}}",a: "{{attended}}",b: "{{expected}}"},
         {{/AllHostels}}
-        ],
+        ];
+    var graph=Morris.Line({
+        element: 'allhostels',
+        data: data,
         xkey: 'y',
         ykeys: ['a','b'],
         labels: ['actual','predicted'],
@@ -154,6 +151,19 @@ $(function() {
         yLabelAngle: 60,
         parseTime:false
     });
+  io.socket.get("/admin/update",function(a,b){console.log(a,b)});
+  io.socket.on("update",function(entry){
+     data=entry;
+    //data.pop();
+    // data.push({y: entry.period,a: entry.attended,b: entry.expected});
+    graph.setData(data);
+  });
+  io.socket.on("create",function(entry){
+    data=entry;
+    // data.shift();
+    // data.push({y: entry.period,a: entry.attended,b: entry.expected});
+    graph.setData(data);
+  });
 });
 </script>
 {{> bot}}

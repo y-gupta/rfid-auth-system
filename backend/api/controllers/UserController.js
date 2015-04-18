@@ -1,14 +1,14 @@
-!/**
+/**
  * UserController
  *
  * @description :: Server-side logic for managing users
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
-function getTime(str){
+function getTimeFromStr(str){
   var parts = str.split("/");
   return Math.floor(new Date(parseInt("20"+parts[2], 10), parseInt(parts[1], 10) - 1, parseInt(parts[0], 10)).getTime()/1000);
-}
+};
 
 
 module.exports = {
@@ -20,12 +20,14 @@ module.exports = {
     //    if (err) return handle(err);
     //    console.log('done!');
     //   });
-    console.log(req.props.user);
-    Roll.create({user:req.props.user.id,device:req.props.device,hostel:req.props.hostel,success:true},
+    // console.log(req.props.user);
+    var now=Math.floor(Date.now()/1000);
+    Roll.create({user:req.props.user.id,device:req.props.device,hostel:req.props.hostel,success:true,time:now},
         function(err,roll){
           if(err == null){
-            var meal=ML.meal(Math.floor(Date.now()/1000));
-            
+            var meal=ML.meal(now);
+            if(meal.meal=="break")
+              return res.forbidden("This is break time");
             History.findOne({hostel:req.props.hostel,start:meal.start},function(err,hist){
               if(hist)
                 History.update({hostel:req.props.hostel,start:meal.start},{attended:hist.attended+1},function(){});
@@ -46,10 +48,14 @@ module.exports = {
         });
   },
   rebate:function(req,res){
+    
     var start=Math.floor(Date.now()/1000), end=start;
     if(req.query.nmeals == null || req.query.nmeals == 0){
       if(req.query.start != null && req.query.end != null)
-        start=getTime(req.query.start),end=getTime(req.query.end)+24*3600;
+      {
+        start=getTimeFromStr(req.query.start);
+        end=getTimeFromStr(req.query.end)+24*3600;
+      }
     }else{
       start=ML.meal(start).start+120;
       end=start+req.query.nmeals*120;
