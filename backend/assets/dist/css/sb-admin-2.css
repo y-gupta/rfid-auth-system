@@ -352,3 +352,60 @@ table.dataTable thead .sorting:after {
 .panel-yellow a:hover {
     color: #df8a13;
 }
+
+
+.panel-purple {
+    border-color: #9933FF;
+}
+
+.panel-purple .panel-heading {
+    border-color: #9933FF;
+    color: #fff;
+    background-color: #9933FF;
+}
+
+.panel-purple a {
+    color: #9933FF;
+}
+
+.panel-orange {
+    border-color: #FF6600;
+}
+
+.panel-orange .panel-heading {
+    border-color: #FF6600;
+    color: #fff;
+    background-color: #FF6600;
+}
+
+.panel-orange a {
+    color: #FF6600;
+}
+
+.panel-sky {
+    border-color: #0099FF;
+}
+
+.panel-sky .panel-heading {
+    border-color: #0099FF;
+    color: #fff;
+    background-color: #0099FF;
+}
+
+.panel-sky a {
+    color: #0099FF;
+}
+
+.panel-sky {
+    border-color: #6600FF;
+}
+
+.panel-sky .panel-heading {
+    border-color: #6600FF;
+    color: #fff;
+    background-color: #6600FF;
+}
+
+.panel-sky a {
+    color: #6600FF;
+}
