@@ -106,6 +106,7 @@ module.exports = {
         graph[hists[i].start].expected=hists[i].expected;
         graph[hists[i].start].attended=hists[i].attended;
        }
+       next(graph);
       // var count=0;
      
       // console.log("graph size:",count);
