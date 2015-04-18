@@ -80,6 +80,7 @@ public:
     void initWelcomeUi();
     void gotoWelcome();
     void checkWelcomeUi();
+    void checkAlterUi();
     void setUpMealTimeUi();
     void setUpNoMealTimeUi();
 

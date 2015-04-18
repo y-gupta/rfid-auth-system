@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     device.pin = "";
 
     //Initializing everything
-    Network::init("localhost:1337");
+//    Network::init("localhost:1337");
     initWelcomeUi();
     initMessingUi();
     initStaffLoginUi();

@@ -23,7 +23,7 @@ void MainWindow::doEvent(){
     idle_time++;
     ui->label_time->setText(QTime::currentTime().toString("hh:mm:ss"));
     ui->label_developed->setText(QDate::currentDate().toString("dd/MM/yy"));
-
+    checkAlterUi();
     if(sec_count==0){
         checkWelcomeUi();
     }
