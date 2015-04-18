@@ -110,6 +110,30 @@ module.exports = {
      
       // console.log("graph size:",count);
       //TODO: plot it!
+    });
+  },
+   renderplot: function(hostel,next){
+    var now=Math.floor(Date.now()/1000);
+    var num=50;
+    var start=mealInfo(now).start-120*(num-1);
+    // Roll.create({user:req.props.user.id,device:req.props.device,hostel:req.props.hostel,success:true},
+    var graph={};
+    for(var i=0;i<num;i++)
+      graph[start+i*120]=({period:(start+i*120),expected:0,attended:0});
+    History.find({hostel:hostel}).where({start:{'>=':start}}).exec(function(err,hists){
+      if(err)
+        console.log("ML.plot: DB error",err);
+      for(i in hists)
+      {
+        if(!graph[hists[i].start])
+          graph[hists[i].start]=({period:hists[i].start,expected:0,attended:0});
+        graph[hists[i].start].expected=hists[i].expected;
+        graph[hists[i].start].attended=hists[i].attended;
+       }
+      // var count=0;
+     
+      // console.log("graph size:",count);
+      //TODO: plot it!
       
       var img1={},img2={};
       for(start in graph){

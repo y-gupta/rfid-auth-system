@@ -8,24 +8,24 @@
 module.exports = {
   init: function (req, res) {
     var now=Math.floor(Date.now()/1000);
-    ML.plot(req.props.hostel,function(){
     ML.info(req.props.hostel,now,function(expected,attended){
+      ML.renderplot(req.props.hostel,function(){
       require('fs').readFile("ml/"+req.props.hostel+".png",function(err,image_data){
-        var image = "";
-        if(err == null){
-          image = image_data.toString('base64');
-        }      
-        res.send({
-        'success':true,
-        'hostel': req.props.hostel,
-        'device': req.props.device,
-        'image': image,
-        'expected':expected,
-        'attended':attended,
-        'meal': ML.meal(now).meal
-        });
-      });
-    });
+          var image = "";
+          console.log("ml/"+req.props.hostel+".png");
+          if(err == null){
+            image = image_data.toString('base64');
+          }else console.log(err);
+          res.send({
+          'success':true,
+          'hostel': req.props.hostel,
+          'device': req.props.device,
+          'image': image,
+          'expected':expected,
+          'attended':attended,
+          'meal': ML.meal(now).meal
+          });
+    });});
     });
   },
   login: function (req,res){
