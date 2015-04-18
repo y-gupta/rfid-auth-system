@@ -7,35 +7,15 @@
 var dummy = {
   "username": "Rishit",
   "home":{"total_attendance": 1249,"expected":1273,"accuracy":"95.7%","extra_messing":457,"breakfast":"78.9%","lunch":"89.8%","dinner":"97.6%"},
-  "AllHostels": [
-      {"period": 0,"expected": 758 ,"actual":977},
-      {"period": 1,"expected": 1045,"actual":1124},
-      {"period": 2,"expected": 1444,"actual":1299},
-      {"period": 3,"expected": 666,"actual":800},
-      {"period": 4,"expected": 1304,"actual":1200},
-      {"period": 5,"expected": 1382,"actual":1500},
-      {"period": 6,"expected": 677,"actual":800}, 
-      {"period": 7,"expected": 1000,"actual":1200},
-      {"period": 8,"expected": 1500,"actual":1340},
-      {"period": 9,"expected": 599,"actual":870},
-      {"period": 10,"expected": 1455,"actual":1100},
-      {"period": 11,"expected": 1005,"actual":1124},
-      {"period": 12,"expected": 1444,"actual":1299},
-      {"period": 13,"expected": 666,"actual":800},
-      {"period": 14,"expected": 1304,"actual":1200},
-      {"period": 15,"expected": 1282,"actual":1500},
-      {"period": 16,"expected": 677,"actual":800}, 
-      {"period": 17,"expected": 1000,"actual":1200},
-      {"period": 18,"expected": 1500,"actual":1340},
-      {"period": 19,"expected": 799,"actual":0},
-      {"period": 20,"expected": 1055,"actual":0},
-      {"period": 21,"expected": 1144,"actual":0},
-      {"period": 22,"expected": 966,"actual":0}]
+  "AllHostels": []
       ,
   "Hostels":[
     {
-    "Hostels":"Zanskar"
-    }
+    "Hostels":"zanskar",
+    },
+    {
+    "Hostels":"shivalik",
+    },
   ],
   "Graphs":{"Hostel":"Zanskar",
     "Pin":1234,
@@ -67,17 +47,6 @@ var dummy = {
     {"period": "wednesday breakfast","expected": 654,"actual": 600}
     ]}
   ,
-  "attendance":[
-  {"UserId": "userA","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userB","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userC","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userD","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userE","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userF","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userG","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userH","Time": "12/12/12","Hostel": "Zanskar","Success": "success"},
-  {"UserId": "userI","Time": "12/12/12","Hostel": "Zanskar","Success": "success"}
-  ],
   "UserData": [
   {"UserName": "userA","UserId":123 ,"RF-ID": 12345678,"Hostel": "Zanskar","EntryNo": "2013cs10251","Expiry":"12/12/12"},
   {"UserName": "userB","UserId":123 ,"RF-ID": 12345678,"Hostel": "Zanskar","EntryNo": "2013cs10251","Expiry":"12/12/12"},
@@ -123,19 +92,6 @@ var dummy = {
   {"ID": 12344,"RF-ID": 222555,"Hostel": "Zanskar"},
   {"ID": 12345,"RF-ID": 222555,"Hostel": "Zanskar"}
   ],
-  "Admin": [
-  {"Name": 12346,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12347,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12348,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12349,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12340,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"},{"Hostel":"Shivalik"}]},
-  {"Name": 12341,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12342,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12343,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12344,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]},
-  {"Name": 12345,"Password": 222555,"Id":123,"Hostels": [{"Hostel":"Zanskar"}]}
-  ],
-  "isAdmin":true,
   "user": {"UserName": "userA","UserId": 99999,"RF-ID": 12345678,"Hostel": "Zanskar","EntryNo": "1452hh3325","Expiry": "12/12/12"},
   "admin":{"Name": 12340,"Password": 222555,"Hostels": ["Zanskar","Shivalik"]}
 };
@@ -146,9 +102,22 @@ var admins={
   'superadmin@iitd':{name:"Rohan Das",pass:'mypassword',super:true,hostels:[]}
 };
 module.exports = {
+  update:function(req,res){
+    sails.sockets.join(req.socket,'adminUpdates');  
+    res.send({success:true});
+  },
   home: function(req,res){
-    dummy.AllHostels=[];
-    Template(res,"index",dummy);
+    ML.plot('zanskar',function(graph){
+       var graph2=[];var j=0;
+       for(i in graph){
+        var date=new Date(graph[i].period*1000);
+        graph[i].period=""+(date.getHours()>12?date.getHours()-12:date.getHours())+":"+(date.getMinutes()>9?"":"0")+date.getMinutes();
+        graph2.push(graph[i]);
+        j++;
+       }
+      dummy.AllHostels=graph2;
+      Template(res,"index",dummy);
+    });
   },
   logout:function(req,res){
     req.session.auth=false;

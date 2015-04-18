@@ -10,7 +10,7 @@ module.exports = {
     var now=Math.floor(Date.now()/1000);
     ML.plot(req.props.hostel,function(){
     ML.info(req.props.hostel,now,function(expected,attended){
-      require('fs').readFile("ml/results/"+req.props.hostel+".png",function(err,image_data){
+      require('fs').readFile("ml/"+req.props.hostel+".png",function(err,image_data){
         var image = "";
         if(err == null){
           image = image_data.toString('base64');
@@ -72,14 +72,17 @@ module.exports = {
         });
   },
   allow:function(req,res){
+    var now=Math.floor(Date.now()/1000);
+    if(meal.meal=="break")
+      return res.forbidden("This is break time");
     User.findOrCreate({name:req.props.hostel+" admin",entry:"N/A"},function(err,user){
       if(err)
         res.serverError("Failed to create/find admin user accountt");
       else
-        Roll.create({user:user.id,device:req.props.device,hostel:req.props.hostel,success:true},
+        Roll.create({user:user.id,device:req.props.device,hostel:req.props.hostel,success:true,time:now},
           function(err,roll){
            if(err == null){
-            var meal=ML.meal(Math.floor(Date.now()/1000));
+            var meal=ML.meal(now);
              History.findOne({hostel:req.props.hostel,start:meal.start},function(err,hist){
               if(hist)
                 History.update({hostel:req.props.hostel,start:meal.start},{attended:hist.attended+1},function(){});
