@@ -22,40 +22,69 @@ void MainWindow::initWelcomeUi(){
     checkWelcomeUi();
 }
 void MainWindow::checkWelcomeUi(){
-    QTime curr_time = QTime::currentTime();
-    for(int i=0;i<3;i++){
-        if(timing[i].first <= curr_time && curr_time <= timing[i].second){
-            int elapsed = curr_time.secsTo(timing[i].second);
-            int hrs = elapsed/3600;
-            int min = (elapsed%3600)/60;
-            string str = to_string(hrs) + " hr " + to_string(min) + " min remaining";
-            ui->label_time_status->setText(QString::fromStdString(str));
-            setUpMealTimeUi();
-            break;
-        }
-        if(curr_time < timing[i].first){
-            int elapsed = curr_time.secsTo(timing[i].first);
-            int hrs = elapsed/3600;
-            int min = (elapsed%3600)/60;
-            string str = to_string(hrs) + " hr " + to_string(min) + " min to next meal";
-            ui->label_time_status->setText(QString::fromStdString(str));
-            setUpNoMealTimeUi();
-            break;
-        }
-    }
-    if(curr_time > timing[2].second){
-        int elapsed = curr_time.secsTo(timing[3].second) + timing[3].first.secsTo(timing[0].first);
-        int hrs = elapsed/3600;
-        int min = (elapsed%3600)/60;
-        string str = to_string(hrs) + " hr " + to_string(min) + " min to next meal";
-        ui->label_time_status->setText(QString::fromStdString(str));
-        setUpNoMealTimeUi();
-    }
-
+//    QTime curr_time = QTime::currentTime();
+//    for(int i=0;i<3;i++){
+//        if(timing[i].first <= curr_time && curr_time <= timing[i].second){
+//            int elapsed = curr_time.secsTo(timing[i].second);
+//            int hrs = elapsed/3600;
+//            int min = (elapsed%3600)/60;
+//            string str = to_string(hrs) + " hr " + to_string(min) + " min remaining";
+//            ui->label_time_status->setText(QString::fromStdString(str));
+//            setUpMealTimeUi();
+//            break;
+//        }
+//        if(curr_time < timing[i].first){
+//            int elapsed = curr_time.secsTo(timing[i].first);
+//            int hrs = elapsed/3600;
+//            int min = (elapsed%3600)/60;
+//            string str = to_string(hrs) + " hr " + to_string(min) + " min to next meal";
+//            ui->label_time_status->setText(QString::fromStdString(str));
+//            setUpNoMealTimeUi();
+//            break;
+//        }
+//    }
+//    if(curr_time > timing[2].second){
+//        int elapsed = curr_time.secsTo(timing[3].second) + timing[3].first.secsTo(timing[0].first);
+//        int hrs = elapsed/3600;
+//        int min = (elapsed%3600)/60;
+//        string str = to_string(hrs) + " hr " + to_string(min) + " min to next meal";
+//        ui->label_time_status->setText(QString::fromStdString(str));
+//        setUpNoMealTimeUi();
+//    }
     InitRequest r;
     r.init(device.mac);
     Network::sendRequest(&r);
     attendResponse=INIT;
+}
+void MainWindow::checkAlterUi(){
+    uint64_t min = QTime::currentTime().minute();
+    uint64_t sec = QTime::currentTime().second();
+    string str;
+    if(min%6==0){
+        str = to_string(60-sec)+" sec remaining in breakfast.";
+        ui->label_time_status->setText(QString::fromStdString(str));
+        setUpMealTimeUi();
+    }else if(min%6==1){
+        str = to_string(60-sec)+" sec to lunch.";
+        ui->label_time_status->setText(QString::fromStdString(str));
+        setUpNoMealTimeUi();
+    }else if(min%6==2){
+        str = to_string(60-sec)+" sec remaining in lunch.";
+        ui->label_time_status->setText(QString::fromStdString(str));
+        setUpMealTimeUi();
+    }else if(min%6==3){
+        str = to_string(60-sec)+" sec to dinner.";
+        ui->label_time_status->setText(QString::fromStdString(str));
+        setUpNoMealTimeUi();
+    }else if(min%6==4){
+        str = to_string(60-sec)+" sec remaining in dinner.";
+        ui->label_time_status->setText(QString::fromStdString(str));
+        setUpMealTimeUi();
+    }else if(min%6==5){
+        str = to_string(60-sec)+" sec to breakfast.";
+        ui->label_time_status->setText(QString::fromStdString(str));
+        setUpNoMealTimeUi();
+    }
 }
 void MainWindow::gotoWelcome(){
     ui->stackedWidget->setCurrentIndex(WELCOME);
