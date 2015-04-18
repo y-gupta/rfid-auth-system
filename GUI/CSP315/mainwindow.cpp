@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //Hard coded the mac and the pin
     //Later we can make the script to calculate
     device.mac = "100";
-    device.pin = "0000";
+    device.pin = "";
 
     //Initializing everything
     Network::init("localhost:1337");
@@ -140,45 +140,50 @@ void MainWindow::processInitResponse(string _resp){
 void MainWindow::processAuthResponse(string _resp){   
     if(attendResponse==AUTH){
     attendResponse=-1;
-    Document arr ;
-    arr.Parse(_resp.c_str());
-    Value& v = arr["success"];
-    assert(v.IsBool() && "invalid auth response");
-    User user;
-    if(v.GetBool()){
-        v = arr["rfid"];
-        //assert(v.IsInt() && "invalid uid in auth response");
-        user.rfid=atoi(v.GetString());
-        v = arr["master"];
-        assert(v.IsBool() && "invalid master in auth response");
-        user.isAdmin = v.GetBool();
-        v = arr["hostel"];
-        device.hostel_name = v.GetString();
-        v = arr["entry"];
-        assert(v.IsString() &&"invalid entry number in response");
-        user.entry_no = v.GetString();
-        v = arr["name"];
-        assert(v.IsString() &&"invalid name in response");
-        user.user_name = v.GetString();
-        if(!user.isAdmin){
-        v = arr["image_data"];
-        convertToPNG(v.GetString(),"./user.png");
-        }
-    }
-        if(user.rfid==""){
-            showConfirmation("Authentication failed!!");
-        }
-        else{
-            if(user.isAdmin){
-                gotoAdmin();
-            }
-            else{
-                current_user.clear();
-                current_user=user;
-                current_user.hostel_name = device.hostel_name;
-                gotoGeneral();
-            }
-        }
+//    Document arr ;
+//    arr.Parse(_resp.c_str());
+//    Value& v = arr["success"];
+//    assert(v.IsBool() && "invalid auth response");
+//    User user;
+//    if(v.GetBool()){
+
+//        v = arr["master"];
+//        assert(v.IsBool() && "invalid master in auth response");
+//        user.isAdmin = v.GetBool();
+//        if(user.isAdmin){processStaffLoginResponse(_resp);}
+//        else{
+//        v = arr["rfid"];
+//        //assert(v.IsInt() && "invalid uid in auth response");
+//        user.rfid=atoi(v.GetString());
+//        v = arr["master"];
+//        assert(v.IsBool() && "invalid master in auth response");
+//        user.isAdmin = v.GetBool();
+//        v = arr["hostel"];
+//        device.hostel_name = v.GetString();
+//        v = arr["entry"];
+//        assert(v.IsString() &&"invalid entry number in response");
+//        user.entry_no = v.GetString();
+//        v = arr["name"];
+//        assert(v.IsString() &&"invalid name in response");
+//        user.user_name = v.GetString();
+//        if(!user.isAdmin){
+//        v = arr["image_data"];
+//        convertToPNG(v.GetString(),"./user.png");
+//        }
+//        }
+//    }
+//        if(user.rfid==""){
+//            showConfirmation("Authentication failed!!");
+//        }
+//        else{
+
+//            current_user.clear();
+//            current_user=user;
+//            current_user.hostel_name = device.hostel_name;
+//            gotoGeneral();
+
+//        }
+    gotoGeneral();
     }
 }
 void MainWindow::processMessingRequest(string _resp){
@@ -272,6 +277,9 @@ void MainWindow::processStaffLoginResponse(string _resp){
         d.Parse(_resp.c_str());
         Value& v = d["success"];
         if(v.GetBool()){
+            v = d["pin"];
+            device.pin = v.GetString();
+            current_user.isAdmin = true;
             gotoAdmin();
         }
         else{

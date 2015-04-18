@@ -41,7 +41,7 @@ void DeleteCardRequest::init(string _mac,string _pin,string _rfid){
     rfid = _rfid;
 }
 string DeleteCardRequest::toString(){
-     return "/device/delete/?mac="+mac+"&rfid="+to_string(rfid)
+     return "/device/removecard/?mac="+mac+"&rfid="+to_string(rfid)
              +"&pin="+pin;
 }
 void AllowTempRequest::init(string _mac,string _pin){
